@@ -1,9 +1,9 @@
 body{
-  backgound: #f6b26bff
+  backgound: #f6b26bff;
   color: white;
   font-family: 'Open Sans', sans-serif;
 }
 #landing{
   padding: 40px;
-
+  font-size: 20px;
 }
