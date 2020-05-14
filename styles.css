@@ -181,17 +181,17 @@ h2{
     max-width:100%;
   }
   .card{
-    width:46%;
+    width:49%;
     margin:0;
-    margin-right: 2%;
+    /* margin-right: 2%; */
     height: auto;
   }
   .arrow{
     display: none;
   }
   #left,#benefits,#form,#script{
-    margin-left: 5%;
-    width: 90%;
+    margin-left: 5px;
+    width: calc(100% - 10px);
     /* max-width: 80%; */
     height: 100vh;
     /* margin-bottom:80px; */
