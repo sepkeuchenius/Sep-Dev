@@ -165,6 +165,7 @@ h2{
     position: absolute;
     top:-10;
     left: 30%;
+    right:0;
     height: auto;
     z-index: -1;
     width: 200%;
