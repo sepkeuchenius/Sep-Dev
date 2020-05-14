@@ -1,0 +1,178 @@
+function onOpen(){
+  SpreadsheetApp.getUi().createMenu('Copy')
+  .addItem("Copy to Internal Review", "copyRows2")
+  .addToUi()
+}
+
+//enter all the information for the copying script here:
+var Legend3 = {
+  'sheettype': 'active', //enter 'active' to use active sheet, anything else to use the name of the sheet.
+  'sheet_src_name': 'slack/pressreader/pdf', //let's switch to active sheet
+  'mapping_column_name': 'reviewer',
+  'readyness_column_name': 'substack',
+  
+  'extra_mapping_column_name': 'substack',
+  
+  'extra_mapping_values': {
+    'e': {
+      'sheetname': 'ending',
+      'sheetId': '1KQZyilAuQ_Q0TAXMNlWmD23a5neRMjswEpm7LNxd5SQ'
+    },
+    'u': {
+      'sheetname': 'element',
+      'sheetId': '1KQZyilAuQ_Q0TAXMNlWmD23a5neRMjswEpm7LNxd5SQ'
+    },
+    'o': {
+      'sheetname': 'other',
+      'sheetId': '1KQZyilAuQ_Q0TAXMNlWmD23a5neRMjswEpm7LNxd5SQ'
+    },
+    't': {
+      'sheetname': 'title',
+      'sheetId': '1KQZyilAuQ_Q0TAXMNlWmD23a5neRMjswEpm7LNxd5SQ'
+    },
+    'x': {
+      'sheetname': 'main',
+      'sheetId': '1kg4VPKddw2GOavKBcmJ5CQ28OuXArrt0qKeJYoVo4nU'
+    }
+    
+  
+  },
+  
+  
+  'Evgeny': {
+    'sheetname': 'Evgeny',
+    'sheetId': '1KQZyilAuQ_Q0TAXMNlWmD23a5neRMjswEpm7LNxd5SQ'
+  },
+  'Joanna': {
+    'sheetname': 'Evgeny',
+    'sheetId': '1KQZyilAuQ_Q0TAXMNlWmD23a5neRMjswEpm7LNxd5SQ'
+  },
+   'Martin': {
+    'sheetname': 'Evgeny',
+    'sheetId': '1KQZyilAuQ_Q0TAXMNlWmD23a5neRMjswEpm7LNxd5SQ'
+  },
+   'Maria': {
+    'sheetname': 'Evgeny',
+    'sheetId': '1KQZyilAuQ_Q0TAXMNlWmD23a5neRMjswEpm7LNxd5SQ'
+  },
+  'Jem': {
+    'sheetname': 'Evgeny',
+    'sheetId': '1KQZyilAuQ_Q0TAXMNlWmD23a5neRMjswEpm7LNxd5SQ'
+  },
+  'Ekaitz': {
+    'sheetname': 'Ekaitz',
+    'sheetId': '1KQZyilAuQ_Q0TAXMNlWmD23a5neRMjswEpm7LNxd5SQ'
+  },
+  'EC': {
+    'sheetname': 'Ekaitz',
+    'sheetId': '1KQZyilAuQ_Q0TAXMNlWmD23a5neRMjswEpm7LNxd5SQ'
+  },
+   'Eddy': {
+    'sheetname': 'Eddy',
+    'sheetId': '1KQZyilAuQ_Q0TAXMNlWmD23a5neRMjswEpm7LNxd5SQ'
+  }
+
+}
+
+
+function copyRows2(){
+  var sheet;
+  if(Legend3.sheettype == 'active'){
+    sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  }
+  else{
+    sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(Legend3.sheet_src_name);
+  }
+  var data= sheet.getDataRange().getValues();
+  var header = data[0]
+  var lan_col = header.indexOf(Legend3.mapping_column_name)
+  var rev_col = header.indexOf(Legend3.readyness_column_name)
+  var extra_col = header.indexOf(Legend3.extra_mapping_column_name)
+  var to_delete = []
+  var data_to_copy = {}
+  var extra_mapping_data = {}
+  for(var i in data){
+    if(i==0){continue}
+    var row = data[i]
+    if(Legend3.extra_mapping_values[row[extra_col]]){
+      to_delete.push(i)
+      if(extra_mapping_data[row[extra_col]]){
+        extra_mapping_data[row[extra_col]].push(row)
+      }
+      else{
+        extra_mapping_data[row[extra_col]] = [row]
+      }
+      continue;
+    }
+    if(row[rev_col] != ''){
+      //copy row to sheet
+      if(Legend3[row[lan_col]]){
+        to_delete.push(i)
+        if(data_to_copy[row[lan_col]]){
+          data_to_copy[row[lan_col]].push(row)
+        }
+        else{
+          data_to_copy[row[lan_col]] = [row]
+        }
+      }
+    }
+    
+  }
+  for(var lan in data_to_copy){
+    var rows = data_to_copy[lan]
+    var des = Legend3[lan]
+    var destination = SpreadsheetApp.openById(des.sheetId).getSheetByName(des.sheetname)
+    var des_header = destination.getRange('A1:1').getValues()[0];
+    var new_data = []
+    for(var i in rows){
+      var row = rows[i]
+      var new_row = []
+      for(var i in des_header){
+        var des_col = des_header[i]
+        if(row[header.indexOf(des_col)]){
+          new_row.push(row[header.indexOf(des_col)])
+        }
+        else{
+          new_row.push('')
+        } 
+      }
+      new_data.push(new_row)
+    }
+    if(new_data.length > 0){
+    destination.getRange(destination.getLastRow() + 1, 1, new_data.length, new_data[0].length).setValues(new_data)
+    } 
+  }
+  for(var lan in extra_mapping_data){
+    var rows = extra_mapping_data[lan]
+    var des = Legend3.extra_mapping_values[lan]
+    var destination = SpreadsheetApp.openById(des.sheetId).getSheetByName(des.sheetname)
+    var des_header = destination.getRange('A1:1').getValues()[0];
+    var new_data = []
+    for(var i in rows){
+      var row = rows[i]
+      var new_row = []
+      for(var i in des_header){
+        var des_col = des_header[i]
+        if(row[header.indexOf(des_col)]){
+          new_row.push(row[header.indexOf(des_col)])
+        }
+        else{
+          new_row.push('')
+        } 
+      }
+      new_data.push(new_row)
+    }
+    if(new_data.length > 0){
+    destination.getRange(destination.getLastRow() + 1, 1, new_data.length, new_data[0].length).setValues(new_data)
+    } 
+  }
+  if(to_delete.length > 0){
+    for(var x = to_delete.length - 1; x>=0; x--){
+      data.splice(to_delete[x],1)
+    }
+  }
+  sheet.getDataRange().clearContent();
+  
+  sheet.getRange(1,1,data.length, data[0].length).setValues(data)
+  
+}
