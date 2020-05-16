@@ -90,7 +90,7 @@ header{
   top: 50px;
   font-weight: 100;
   right: 50px;
-  /* background: white; */
+  background: rgb(255,255,255,0.8);
   border-radius: 10px;
   height: 200px;
   width: 400px;
@@ -101,14 +101,20 @@ header{
   display: inline-block;
   /* background: white; */
   border-radius: 10px;
-  height: 400px;
-  width: 20%;
-  margin-right: 50px;
+  /* height: 400px; */
+  width: 21%;
+  margin-right: 4%;
   opacity: 1.9;
   /* box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); */
 }
 .card:hover{
   /* padding-top:20px; */
+}
+h1, h2, h3{
+  font-weight: 100;
+  width: 50%;
+  /* background: rgb(240,250,240,0.8); */
+  padding:10px;
 }
 .arrow{
   width:50px; margin-bottom:150px; margin-left: -30px; margin-right:10px;
@@ -144,10 +150,80 @@ h2{
   font-weight: 100;
 
 }
+.info_card{
+  display: inline-flex;
+  width:46%;
+  height: 35%;
+  background:rgb(230,240,230, 0.8);
+  border-radius: 50px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+.info_pic{
+  /* display: flex; */
+  height: 100%;
+  border-radius: 50px;
+  background:#93c47d;
+  background: rgb(160,220,160, 0.5);
+  width: 40%;
+  margin: 0;
+  box-sizing: border-box;
+}
+.info_text{
+  display: table;
+  height: 100%;
+  /* line-height: 40px; */
+  padding:10px;
+  font-size:20px;
+  font-weight: 100;
+  width:50%;
+  margin:0;
+  box-sizing: border-box;
+  padding-left: 30px;
+}
+.info_text_inner{
+  display: table-cell;
+  vertical-align: middle;
+}
+.pic_title{
+  /* position: relative; */
+  /* top: 80%; */
+  /* left: 20%; */
+  /* right: 40%; */
+  /* width: 100%; */
+  /* height: 100px; */
+  /* width: 300px; */
+  text-align: center;
+  margin-top:4%;
+  font-size: 20px;
+  font-weight: 100;
+}
+.info_pic img{
+  width:56%;
+  margin-left: 22%;
+  margin-top: 5%;
+  opacity: 0.8;
+  vertical-align: top;
+}
+#google{
+  background: rgb(230,240,230, 0.8);
+  margin: 0 auto;
+  /* margin-right: 10%; */
+  margin-left: -3%;
+  width: 100%;
+  padding-top:40px;
+  padding-bottom: 10px;
+  padding-left: 0;
+  padding-right: 0;
+
+  border-radius: 20px;
+  text-align: center;
+}
 @media only screen and (max-width: 600px) {
   body {
     /* background-color: lightblue; */
     max-width: 100vw;
+    overflow-x: hidden;
   }
   h1{
     font-size: 25px;
@@ -165,10 +241,12 @@ h2{
     position: absolute;
     top:-10;
     left: 30%;
-    right:0;
+    object-fit: cover;
+    /* right:-160%; */
     height: auto;
     z-index: -1;
     width: 200%;
+    /* transform:scale(2); */
     opacity: 0.25;
   }
   #sep{
