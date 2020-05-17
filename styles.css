@@ -57,10 +57,13 @@ header{
   border-radius: 10px;
   padding: 50px; */
 }
+#background_mobile{
+  display: none;
+}
 #script{
   height: 100vh;
   /* text-align: right; */
-  margin-left:100px;
+  margin-left:5%;
 }
 #left{
   margin-top: 50px;
@@ -256,8 +259,19 @@ h2{
 #regret{
   margin-right:-20%;
   background: rgb(230,240,230, 0.5); padding:10px 20px 10px 20px;
+  width:40%;
 }
 @media only screen and (max-width: 600px) {
+  #background_mobile{
+    position: absolute;
+    top:-10;
+    left: 10%;
+    height:auto;
+    z-index: -1;
+    width: 60%;
+    display: unset;
+    opacity: 0.25;
+  }
   #automate_title{
     display: none;
   }
