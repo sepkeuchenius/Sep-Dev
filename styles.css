@@ -2,6 +2,8 @@ body{
   /* background: #f9f8ed; */
   color: #635d5d;
   font-family: 'Roboto', sans-serif;
+  position: relative;
+  margin: 0;
   /* margin: 0; */
 /* background-image: url('assets/code2.svg');
 background-size: 60%;
@@ -250,25 +252,86 @@ h2{
   background: rgb(230,240,230, 0.5); width: 15%;
 }
 #automation_sub{
-  margin-left: 60px;font-weight: 100;text-align: left;margin-top:50px;line-height: 25px;
+  font-size:20px;
+  margin-left: 60px;font-weight: 100;text-align: left;margin-top:50px;line-height: 27px;
 }
 #automation_title_mobile{
   width:30%;margin:0;margin-top:50px; margin-left:50px; background: rgb(230,240,230, 0.5);
   display:none;
 }
 #regret{
-  margin-right:-20%;
-  background: rgb(230,240,230, 0.5); padding:10px 20px 10px 20px;
+  /* margin-right:-20%; */
+  margin-left: -20px;
+   padding:10px 20px 10px 20px;
   width:40%;
 }
+#form{
+  margin-left: 110px;
+}
+#form_title{
+  width:35%;
+  line-height: 57px;
+  float:left;
+}
+#form_sub{
+  font-weight:100;
+  width: 30%;
+  margin: 0;
+  float:left;
+  margin-left:20px;
+  font-size: 20px;
+}
+#form_msg{
+  float: right;
+    margin-right: 20%;
+    margin-top: 30px;
+    width: 35%;
+    height: 500px;
+    border: 3px solid rgb(200,230,200);
+    border-radius: 3px;
+    font: inherit;
+    font-size: 18px;
+    font-weight: 400;
+    outline: none;
+    padding: 30px 40px;
+    background: rgb(252,252,252,0.7);
+    font-style: italic;
+    color: rgb(100,100,100);
+    line-height: 28px;
+  }
+  #inner_footer{
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .footer_item{
+    margin-right: 100px;
+  }
+  #footer{
+    text-align: center;
+    height:50px;
+    display: table;
+    background: rgb(230,240,230, 0.5);
+    position: absolute;
+    bottom:0;
+    left:0;
+    width: 100%;
+    padding:5px;
+    padding-left: 30px;
+    box-sizing: border-box;
+    }
+    .footer_items{
+      margin: 0 auto;
+      text-align: center;
+      display: inline-flex;
+    }
 @media only screen and (max-width: 600px) {
   #background_mobile{
     position: absolute;
-    top:-10;
+    top:15%;
     left: 10%;
     height:auto;
     z-index: -1;
-    width: 60%;
+    width: 90%;
     display: unset;
     opacity: 0.25;
   }
@@ -313,7 +376,7 @@ h2{
   .info_pic{
     width:50%;
     text-align: left;
-
+    background: rgb(255,255,2550,0.1)
     padding:15px 20px;
     margin-top:0;
   }
@@ -390,6 +453,10 @@ h2{
   }
   .arrow{
     display: none;
+  }
+  #promo{
+    background: rgb(255,255,255,0.6);
+
   }
   #left,#benefits,#form,#script{
     margin-left: 30px;

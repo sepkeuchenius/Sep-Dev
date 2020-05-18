@@ -21,3 +21,4 @@ $('#quote_text').text( reviews[Math.floor(Math.random() * reviews.length)])
 
 review_n++
 }, 5000)
+$('#form_msg').val(' I would like a Google Forms, which asks clients for their measurements. Those measurements should be sent to Google Sheets where they are calculated and stored. Then a Google Doc should be formed automatically, in my style, with their results and their measurements. That document should be downloaded as pdf then, and sent to their email-address, which they entered in the form.')
