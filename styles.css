@@ -283,7 +283,7 @@ h2{
   margin-left: 20px;
    padding:10px 20px 10px 20px;
 width: 100%;
-background: rgb(230,240,230, 0.5)
+
 }
 #form{
   margin-left: 110px;
@@ -295,8 +295,10 @@ background: rgb(230,240,230, 0.5)
 }
 #form_title{
   width:35%;
-  line-height: 57px;
+  /* line-height: 57px; */
+  padding: 0;
   float:left;
+  /* border-bottom: 3px dashed rgb(200,200,200) */
 }
 .x{
   vertical-align: middle;
@@ -312,6 +314,8 @@ background: rgb(230,240,230, 0.5)
   margin-top:2px;
   background: rgb(280,280,280,0.6);
   padding: 10px;
+  line-height: 30px;
+  font-weight: 100;
 }
 .benefit{
   max-width: 50%;
