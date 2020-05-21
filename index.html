@@ -1,6 +1,8 @@
 <html>
 <head>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
   <link rel='stylesheet' type="text/css" href= 'styles.css' />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -26,6 +28,9 @@
 </h1>
 <img src='assets/me.png' id ='sep'>
 </div>
+<br>
+<br>
+<div class='sepa'></div>
 <div id='quotes'>
   <span class='q'>" </span>
   <span id="quote_text"></span>
@@ -55,87 +60,72 @@
 
 
 </div>
+<br>
+<br>
+<div class='sepa r'></div>
+
 <div id="benefits">
+<div id='benefits_left'>
+  <h1 style="" id = 'regret'>I make sure that you won't regret it</h1><br>
 
-<!-- <center> -->
 
-<div id='icons'>
-  <h1 style="" id = 'regret'><span style='background: rgb(230,240,230, 0.5);padding:10px;'>I make sure that you won't regret it</span></h1><br>
 
-  <!-- <img src='assets/stopwatch_circle_text.svg' class='pic'style=" "></img>
-  <img src='assets/money_circle_text.svg' class='pic'style=""></img>
-  <img src='assets/communication_circle_text.svg' class='pic'style=""></img>
-  <img src='assets/idea_circle_text.svg' class='pic'style=""></img> -->
 
-<div id='info_cards' style="width:90%;">
-  <div class='info_card'>
-    <div class='info_pic'><img src='assets/stopwatch.svg' style="width: 50%;margin-left:25%;"/>
-      <div class='pic_title'>Save Time</div>
-    </div>
-    <div class='info_text'>
-<div class='info_text_inner'>
-    I make the computer do all the heavy lifting for you.<br><br>
-The script can be triggered anytime you like, wherever you like.<br><br>
-This way you don’t have to worry about sending that email on monday, reading that data on friday, or analyzing those results.
+
+<!-- <h4 style=" font-weight: 100; font-size:20px;line-height:30px;margin-left:5px;">Using my powers I will make you something so efficent, so great and so fast, that you'll save more time than you'll ever know how to spend.
+</h4> -->
 </div>
-</div>
-  </div>
+<div id='benefits_right'>
+  <div class='benefit'>
+<i class='material-icons x'>schedule</i><span class="icon_title">Save Time</span>
+<h4 class='icon_sub'>
+  I make the computer do all the heavy lifting for you.
 
-  <div class='info_card'>
-    <div class='info_pic'><img src='assets/money.svg' style="margin-top:11%; margin-left: 23%; width:45%;"/>
-      <div class='pic_title'>Save Money</div>
-    </div>
-    <div class='info_text'>
-  <div class='info_text_inner'>
-    By hiring me, you avoid heavy costs
-  for expensive systems like Zapier.
-  <br><br>
+  The script can be triggered anytime you like, wherever you like.
+
+  This way you don’t have to worry about sending that email on monday, reading that data on friday, or analyzing those results.
+
+</h4>
+</div>
+
+<div class='benefit'>
+<i class='material-icons x'>euro_symbol</i><span class="icon_title">Save Money</span>
+<h4 class='icon_sub'>
+  By hiring me, you avoid heavy costs
+  for systems like Zapier.
+
   I work fast, charge little and make sure that the automation you require is timeless.
+</h4>
+</div>
 
-  </div>
-  </div>
-  </div>
 
-  <div class='info_card'>
-    <div class='info_pic'><img src='assets/communication.svg' style="margin-top:15%; margin-left: 15%; width:60%;"/>
-      <div class='pic_title'>Personal Contact</div>
-    </div>
-    <div class='info_text'>
-  <div class='info_text_inner'>
-    My code comes with lifetime warranty.
-  <br><br>
+<div class='benefit'>
+<i class='material-icons x'>contact_support</i><span class="icon_title">Personal Contact</span>
+<h4 class='icon_sub'>
+  My code comes with lifetime warranty.
   I am ready to adapt 24/7 and know exactly what you need because I listen carefully to what you tell me to do.
-
-  </div>
-  </div>
-  </div>
-
-  <div class='info_card'>
-    <div class='info_pic'><img src='assets/lamp.svg' style="margin-top:13%; margin-left: 25%; width:50%; opacity: 1.5;  "/>
-      <div class='pic_title'>Personal Advice</div>
-    </div>
-    <div class='info_text'>
-  <div class='info_text_inner'>
-    My code comes with lifetime warranty.
-  <br><br>
-  I am ready to adapt 24/7 and know exactly what you need because I listen carefully to what you tell me to do.
-
-  </div>
-  </div>
-  </div>
+</h4>
 </div>
 
-
-<!-- <img src='assets/money_circle.svg' class='pic'style="height: 300px;; margin-left: 50px;"> -->
-
-<!-- <img src='assets/communication_circle.svg' class='pic'style="height: 300px; margin-left: 50px;"> -->
+<div class='benefit'>
+<i class='material-icons x'>emoji_objects</i><span class="icon_title">Personal Advice</span>
+<h4 class='icon_sub'>
+I advice on anything that is automation related
+</h4>
 </div>
 
-
 </div>
-<div id='form' style='display:inline-block'>
-<h1 id='form_title'>
-  <span style="background:rgb(230,240,230, 0.5); padding:10px;">Get your automation started today</span></h1>
+  </div>
+
+
+
+<br>
+<br>
+<div class='sepa'></div>
+<br><br><br><br>
+<div id='form' style=''>
+<h1 id='form_title' style="text-decoration:underline;">
+  Get your automation started today!</h1>
   <textarea style='' id='form_msg'>
   </textarea>
 
@@ -147,7 +137,7 @@ issue and tell me what you think is the best way to automate it.<br><br><br><br>
 
 </div>
 </div>
-<div id='footer'><div id= 'inner_footer'><div class='footer_items'><div class='footer_item'>Sep Keuchenius</div> <div class='footer_item'>Sep Dev</div> <div class='footer_item'>KVK 70823</div></div></div></div>
+<!-- <div id='footer'><div id= 'inner_footer'><div class='footer_items'><div class='footer_item'>Sep Keuchenius</div> <div class='footer_item'>Sep Dev</div> <div class='footer_item'>KVK 70823</div></div></div></div> -->
 <script src='script.js'></script>
 </body>
 
