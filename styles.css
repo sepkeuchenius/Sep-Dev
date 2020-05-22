@@ -343,9 +343,10 @@ width: auto;
 .icon_title{
   /* margin-top:20px; */
   /* padding-top:0px; */
-  border-bottom: 2px dashed rgb(100,120,100);
+  font-weight: bold;
+  /* border-bottom: 2px dashed rgb(100,120,100); */
   font-size: 26px;
-  font-weight: 400;
+  /* font-weight: 400; */
   margin-right: 20px;
   margin-left: 15px;
 }
@@ -602,6 +603,8 @@ width: auto;
     margin: 0 auto;
     margin-left: 20px;
     text-align: center;
+    border:none;
+    font-weight: bold;
   }
   .icon_top{
     /* text-align: center; */
