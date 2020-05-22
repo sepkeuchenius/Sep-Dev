@@ -21,8 +21,8 @@ position:relative;}
 .sepa:after{
   content: "";
       position: absolute;
-      border-top: 4px dashed rgb(100,150,100);
-      border-top-style: dashed;
+      /* border-top: 4px dashed rgb(100,150,100); */
+      /* border-top-style: dashed; */
       width: 90%;
       margin-top: 20px;
       margin-left: 5%;
@@ -46,7 +46,8 @@ position:relative;}
   opacity: 0.25;
 }
 h1{
-  font-weight: 100;
+  font-weight: 400 !important;
+  font-size: 2.5em;
 }
 header{
   -webkit-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
@@ -87,11 +88,13 @@ header{
   margin-left:5%;
 }
 #left{
-  margin-top: 50px;
+  padding-top:10px;
+  /* margin-top: 50px; */
   float: left;
   width: 70%;
   margin-left: 100px;
-  height: 60vh;
+  height: 70vh;
+  position: relative;
 }
 .q{
   line-height: 10px !important;
@@ -155,10 +158,13 @@ padding: 20px;
 /* background: rgb(230,240,230, 0.5); */
 }
 #sep{
-  width:200px;
+  width:180px;
+  /* position: absolute; */
+  bottom:10px;
 }
 #devsep{
-  width:400px;
+  /* width:400px; */
+  height: 20vh;
 }
 #icon_des{
   display:block;
@@ -262,28 +268,36 @@ h2{
   display:inline-block
 }
 #automate_title{
-  width:30%;margin:0;margin-top:50px; margin-left:50px; background: rgb(230,240,230, 0.5);
+  width:30%;margin:0;margin-top:50px; margin-left:50px;
+  color: #393c3a;
+  font-weight: 400;
 }
 #header{
-  background: rgb(230,240,230, 0.5); width: 40%;
+  /* background: rgb(230,240,230, 0.5); width: 40%; */
 }
 #subheader{
-  background: rgb(230,240,230, 0.5); width: 15%;
+  /* background: rgb(230,240,230, 0.5); width: 15%; */
 }
 #automation_sub{
   font-size:20px;
   margin-left: 60px;font-weight: 100;text-align: left;margin-top:50px;line-height: 27px;
 }
 #automation_title_mobile{
-  width:30%;margin:0;margin-top:50px; margin-left:50px; background: rgb(230,240,230, 0.5);
+  width:30%;margin:0;margin-top:50px; margin-left:50px;
   display:none;
+  color: #393c3a;
 }
 #regret{
   /* margin-right:-20%; */
   margin-left: 20px;
-   padding:10px 20px 10px 20px;
-width: 100%;
-
+   /* padding:10px 20px 10px 20px; */
+/* width: 90%; */
+font-weight: 400;
+color: #393c3a;
+/* background: rgb(230,240,230, 0.5); */
+/* padding:10px; */
+  margin-bottom: 0;
+width: auto;
 }
 #form{
   margin-left: 110px;
@@ -401,7 +415,16 @@ width: 100%;
       text-align: center;
       display: inline-flex;
     }
+    #mobile_sub{
+      display: none;
+    }
 @media only screen and (max-width: 600px) {
+  #benefits_left{
+    width: 100%;
+  }
+  h1{
+    font-size: 2.2em;
+  }
   #background_mobile{
     position: absolute;
     top:15%;
@@ -416,20 +439,22 @@ width: 100%;
     display: none;
   }
   #automation_title_mobile{
-    display: inline;
+    display: INLINE;
     width:80%;
     margin-top:-30px;
     margin-bottom:60px;
     margin-left: 30px;
   }
   #regret{
-    width:80%;
+    width:100%;
+    padding: 0;
   }
   #icons{
     padding:0;
   }
   #automation_sub{
-    margin-left:20px;
+    margin-left:30px;
+    width: 90%;
   }
   #benefits{
     margin-left: 0px;
@@ -470,6 +495,7 @@ width: 100%;
   }
   #header{
     width:80%;
+    margin-top:0;
   }
   #automate_title{
     width:80%;
@@ -487,10 +513,6 @@ width: 100%;
     /* background-color: lightblue; */
     max-width: 100vw;
     overflow-x: hidden;
-  }
-  h1{
-    font-size: 25px;
-    font-weight: 400;
   }
   #quotes{
     font-size:10px;
@@ -517,7 +539,8 @@ width: 100%;
     /* width: 60%; */
   }
   #devsep{
-    width:80%;
+    margin-left: -2%;
+    width:100%;
   }
   #promo{
     max-width:100%;
@@ -537,10 +560,17 @@ width: 100%;
   }
   #left,#benefits,#form,#script{
     margin-left: 30px;
-    width: calc(100% - 10px);
+    width: calc(100% - 30px);
     /* max-width: 80%; */
-    height: 100vh;
+    /* height: 100vh; */
     /* margin-bottom:80px; */
+  }
+#left{
+  height: 90vh;
+}
+
+  #left{
+    margin-top:0;
   }
   #benefits{
     margin-left:10px;
@@ -553,5 +583,63 @@ width: 100%;
   margin-bottom:10px;
   height:auto;
   margin-left: 0px;
+  }
+  .benefit{
+    width: 100%;
+    display: contents;
+  }
+  #benefits_right{
+    width: 100%;
+    display: block;
+    padding: 0;
+  }
+  .icon_sub{
+    width:100%;
+    margin-left: 0;
+    margin: 0 auto;
+  }
+  .icon_title{
+    margin: 0 auto;
+    margin-left: 20px;
+    text-align: center;
+  }
+  .icon_top{
+    /* text-align: center; */
+    margin: 0 auto;
+    width: auto;
+    margin-left:30px;
+    margin-top:10px;
+  }
+  #form{
+    margin-bottom:0;
+    margin-left:0;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding-left: 30px;
+  }
+  #form, #benefits, #left{
+    box-sizing: border-box;
+  }
+  #form_sub{
+    display: none;
+  }
+  #form_msg{
+    margin:0;
+    float:left;
+    width:90%;
+    height:60vh;
+  }
+  #mobile_sub{
+    display: block;
+    max-width: 60%;
+
+  }
+  #form_title{
+    width: 100%;
+  }
+  h5{
+    font-weight: 100;
+    font-size:20px;
   }
 }
