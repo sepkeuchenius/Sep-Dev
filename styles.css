@@ -74,7 +74,7 @@ header{
   /* height: 80vh; */
   /* text-align: right; */
   margin-left:100px;
-  display: inline-flex;
+  /* display: inline-flex; */
 }
 #benefits{
   display: block;
@@ -93,7 +93,7 @@ header{
   float: left;
   width: 70%;
   margin-left: 100px;
-  height: 70vh;
+  min-height: 75vh;
   position: relative;
 }
 .q{
@@ -112,10 +112,11 @@ header{
 #quotes{
   position:absolute;
   padding: 10px;
-  color: rgb(100,150,100);
+  /* color: rgb(100,150,100); */
   /* font-style: italic; */
   top: 50px;
-  font-weight: 100;
+  /* font-weight: 100; */
+  height: 70vh;
   right: 50px;
   background: rgb(255,255,255,0.8);
   border-radius: 10px;
@@ -321,9 +322,9 @@ width: auto;
 }
 .icon_sub{
   font-weight: 100;
-  margin-left:84px;
+  /* margin-left:84px; */
   margin-bottom:30px;
-  max-width:60%;
+  /* max-width:60%; */
   font-size: 20px;
   margin-top:2px;
   background: rgb(280,280,280,0.6);
@@ -332,23 +333,24 @@ width: auto;
   font-weight: 100;
 }
 .benefit{
-  max-width: 50%;
-  float: left;
-  margin: 0;
-  height: 20%;
-  max-height: 20%;
+  background: white;
+  border-bottom: dashed 3px black;
+  padding:20px;
+  border-radius: 2px;
   width: 40%;
-  height: 300px;
 }
 .icon_title{
   /* margin-top:20px; */
   /* padding-top:0px; */
-  font-weight: bold;
+  /* font-weight: bold; */
   /* border-bottom: 2px dashed rgb(100,120,100); */
   font-size: 26px;
   /* font-weight: 400; */
   margin-right: 20px;
   margin-left: 15px;
+}
+.y{
+  border-bottom: none !important;
 }
 #benefits_left{
   width:40%;
@@ -359,8 +361,9 @@ width: auto;
   display: block;
   /* float:right; */
   background: rgb(255,255,255,0.4);
-  padding-left: 30px;
+  /* padding-left: 30px; */
   /* margin-left: 10%; */
+  margin-left: 130px;
 }
 #form_sub{
   font-weight:100;
@@ -418,6 +421,42 @@ width: auto;
     }
     #mobile_sub{
       display: none;
+    }
+    #scope{
+      margin-left: 100px;
+    }
+    #scope_title{
+      margin-left: 20px;
+      padding: 10px;
+      color:#393c3a;
+    }
+    .image{
+      width: 20%;
+      margin-left: 0px;
+      margin-bottom:20px;
+    }
+    #cards{
+      margin-left: 100px;
+      margin-bottom:100px;
+
+    }
+    .card{
+      background: white;
+      /* border-bottom: dashed 3px orange; */
+      margin-bottom: 50px;
+      padding:20px;
+      border-radius: 2px;
+      width: 40%;
+    }
+    .card_title{
+      font-size: 30px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+    .card_txt{
+      width:70%;
+      font-size: 20px;
+      font-weight: 100;
     }
 @media only screen and (max-width: 600px) {
   #benefits_left{
@@ -590,9 +629,10 @@ width: auto;
     display: contents;
   }
   #benefits_right{
-    width: 100%;
-    display: block;
+    /* width: 100%; */
+    /* display: block; */
     padding: 0;
+    margin-left:200px;
   }
   .icon_sub{
     width:100%;
