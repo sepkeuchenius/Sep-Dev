@@ -46,7 +46,7 @@ position:relative;}
   opacity: 0.25;
 }
 h1{
-  font-weight: 400 !important;
+  font-weight: 500 !important;
   font-size: 2.5em;
 }
 header{
@@ -162,6 +162,7 @@ padding: 20px;
   width:180px;
   /* position: absolute; */
   bottom:10px;
+  margin-top: 50px;
 }
 #devsep{
   /* width:400px; */
@@ -262,8 +263,9 @@ h2{
   border-radius: 20px;
   text-align: center;
 }
+
 .automation_process{
-  width: 60%; float:right; max-height: 80vh; margin-right:5%;
+  width: 70%; float:right; max-height: 80vh; margin-right:0%;
 }
 #script{
   display:inline-block
@@ -397,17 +399,20 @@ width: auto;
   #inner_footer{
     display: table-cell;
     vertical-align: middle;
+    width: 100%;
   }
-  .footer_item{
-    margin-right: 100px;
-  }
+
   #footer{
-    text-align: center;
-    height:50px;
+    /* text-align: center; */
     display: table;
-    background: rgb(230,240,230, 0.5);
-    position: absolute;
-    bottom:0;
+    display: none;
+    height:70px;
+
+    background: white;
+    border-bottom: 1px solid #eee;
+     box-shadow: 0px 0 3px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top:0;
     left:0;
     width: 100%;
     padding:5px;
@@ -415,9 +420,13 @@ width: auto;
     box-sizing: border-box;
     }
     .footer_items{
-      margin: 0 auto;
-      text-align: center;
-      display: inline-flex;
+      /* margin: 0 auto; */
+      /* text-align: center; */
+      width: 100%;
+      /* display: inline-flex; */
+    }
+    .footer_item{
+      margin: 0px 20% 0 5%;
     }
     #mobile_sub{
       display: none;
@@ -465,7 +474,36 @@ width: auto;
       margin-left: 30px;
       color:#393c3a;
     }
+    button{
+      width:auto;
+      padding:10px 24px;
+      background: white;
+      color:green;
+      border:none;
+      margin-bottom: 50px;
+      margin-left: 10px;
+      font-size: 17px;
+      border-radius: 2px;
+      /* text-transform: lowercase; */
+      /* font-weight: 900; */
+      cursor: pointer;
+        /* box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); */
+        outline:none;
+    }
+    .passive{
+      border: 1px solid #e1e1e1;
+      color:inherit;
+    }
+    .active{
+      background: #4ca722;
+      /* color:inherit; */
+      color:white;
+    }
 @media only screen and (max-width: 600px) {
+  #footer
+  {
+    width:120%;
+  }
   #scope_title{
     width:70%;
     margin-left: 0px;
@@ -605,6 +643,7 @@ width: auto;
     opacity: 0.25;
   }
   #sep{
+    /* margin-top: */
     /* width: 60%; */
   }
   #devsep{
