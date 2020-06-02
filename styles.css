@@ -751,4 +751,7 @@ width: auto;
     font-weight: 100;
     font-size:20px;
   }
+  .footer_item{
+    margin: 0 15% 0 0%;
+  }
 }
