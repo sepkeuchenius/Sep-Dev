@@ -30,3 +30,10 @@ window.onscroll = function() {
     $('#footer').css('display', 'none');
   }
 };
+
+function mail(){
+  window.open('mailto:sep@sep.dev', '_blank');
+}
+function learnMore(){
+  document.getElementById('script').scrollIntoView()
+}
