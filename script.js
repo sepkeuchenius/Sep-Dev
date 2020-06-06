@@ -15,22 +15,29 @@ var reviews = [
 ]
 var review_n = 0;
 updateText()
+var qw = $('#quotes').width()
 
 function updateText(){
+  
   var text = reviews[Math.floor(Math.random() * reviews.length)];
   $('#quote_text').text(text)
-  var total = text.length * 50
+  $('#quotebar').width(0)
+  var total = text.length * 30
+  
   var x = 0;
   var perc = 0;
   var w = 0;
-  window.setInterval(function(){
+  var i = window.setInterval(function(){
     x+=10
     perc = x / total
-    w = perc * $('#quotes').width()
+    w = perc * qw
     // console.log(w)
-    $('#quotebar').width(w.toFixed(0))
+    $('#quotebar').width(w)
   }, 10)
-  window.setTimeout(updateText, total)
+  window.setTimeout(function(){
+    window.clearInterval(i);
+    updateText()
+  }, total)
 }
 
 $('#form_msg').val(' I would like a Google Forms, which asks clients for their measurements. Those measurements should be sent to Google Sheets where they are calculated and stored. Then a Google Doc should be formed automatically, in my style, with their results and their measurements. That document should be downloaded as pdf then, and sent to their email-address, which they entered in the form.')
