@@ -571,6 +571,14 @@ width: auto;
       color:white;
     }
 @media only screen and (max-width: 600px) {
+  #scope_table{
+    margin-left:0;
+    width:100%;
+  }
+  .scope_item{
+    width:100%;
+    font-size:17px;
+  }
   #footer
   {
     width:100%;
