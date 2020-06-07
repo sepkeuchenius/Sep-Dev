@@ -451,7 +451,7 @@ width: auto;
 
     }
     .card{
-      background: white;
+      background: rgb(255,255,255,0.5);
       /* border-bottom: dashed 3px orange; */
       margin-bottom: 50px;
       padding:20px;
