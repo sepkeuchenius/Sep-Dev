@@ -84,8 +84,12 @@ p{
   width:30%;
   /*margin-top:50px;*/
   font-size:20px;
+  /*line-height:28px;*/
   font-weight:100;
   /*float:right;*/
+}
+#scope_side p{
+  line-height:28px;
 }
 #scope_left{
   float:left;
