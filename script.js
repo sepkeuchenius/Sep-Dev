@@ -88,3 +88,11 @@ $(document).ready(function(){
         } else { }
     });
 });
+
+function send(){
+  
+  text = 'Hi there! \n' + $('#form_msg').val()
+  window.open('mailto:sep@sep.dev?subject=I would love to automate this&body='+text)
+  
+  
+}
