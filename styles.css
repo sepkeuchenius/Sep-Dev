@@ -628,6 +628,9 @@ width: auto;
   width: 35%;
   height: 500px;
     }
+    #prices{
+      width:50%;
+    }
 @media only screen and (max-width: 600px) {
   #scope_table{
     margin-left:0;
@@ -877,6 +880,10 @@ width: auto;
     height:60vh;
     /*color:white;*/
   }
+  #msg_cont{
+    width:100%;
+    margin:0;
+  }
   #mobile_sub{
     display: block;
     max-width: 60%;
@@ -884,6 +891,9 @@ width: auto;
   }
   #form_title{
     width: 100%;
+  }
+  #prices{
+    width:90%;
   }
   h5{
     font-weight: 100;
@@ -897,5 +907,8 @@ width: auto;
   }
   #scope_side{
     width:90%;
+  }
+  #send{
+    right: 50px;
   }
 }
