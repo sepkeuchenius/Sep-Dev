@@ -51,10 +51,10 @@ window.onscroll = function() {
 };
 
 function mail(){
-  window.open('mailto:sep@sep.dev', '_blank');
+  document.getElementById('form').scrollIntoView({behavior:'smooth'})
 }
 function learnMore(){
-  document.getElementById('script').scrollIntoView()
+  document.getElementById('script').scrollIntoView({behavior:'smooth'})
 }
 
 $(document).ready(function(){
