@@ -422,6 +422,8 @@ width: auto;
 }
 #form_title{
   width:35%;
+  /*height:100px;*/
+  margin-bottom:70px;
   /* line-height: 57px; */
   padding: 0;
   float:left;
