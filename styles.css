@@ -916,6 +916,9 @@ width: auto;
     right: 30%;
   }
   #benefits_right{
-    color:black !important;
+    color:inherit !important;
+  }
+  .x{
+    color:inherit !important;
   }
 }
