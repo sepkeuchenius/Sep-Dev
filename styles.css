@@ -915,4 +915,7 @@ width: auto;
   #send{
     right: 30%;
   }
+  #benefits_right{
+    color:black !important;
+  }
 }
