@@ -83,7 +83,8 @@
   #dialog, #lineDialog, #editDialog, #editLineDialog, #options{
     padding:30px;
     box-sizing:border-box;
-    background:#a0aaca;
+    background:#545a62;
+    color:white;
     position:fixed;
     left:0;
     top:0px;
@@ -117,7 +118,7 @@
     /* border-bottom: 1px solid #c3becc; */
     padding: 15px;
     padding-left: 30px;
-    color: #464649;
+    /* color: #; */
     cursor:pointer;
 }
   section:hover{
