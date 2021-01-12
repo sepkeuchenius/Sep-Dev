@@ -276,7 +276,7 @@
     var textPart = $('<div>')
     textPart.attr('class', 'text')
     var par = $('<p>')
-    textPart.append(p);
+    textPart.append(par);
     par.text($('#name').val())
     $newDiv.append(textPart);
     $newDiv.attr('id', idN++);
