@@ -277,7 +277,7 @@
     textPart.attr('class', 'text')
     var par = $('<p>')
     textPart.append(p);
-    p.text($('#name').val())
+    par.text($('#name').val())
     $newDiv.append(textPart);
     $newDiv.attr('id', idN++);
     console.log($('#colorpicker .selected').attr('id'))
