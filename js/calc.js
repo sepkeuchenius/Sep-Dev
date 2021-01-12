@@ -272,7 +272,11 @@
     $newDiv = $('<div>')
     $newDiv.attr('class', $('#type').val())
     console.log($('#type').val())
-    $newDiv.text($('#name').val())
+    // $newDiv.text($('#name').val())
+    var textPart = $('<div>')
+    textPart.attr('class', 'text')
+    textPart.text($('#name').val())
+    $newDiv.append(textPart);
     $newDiv.attr('id', idN++);
     console.log($('#colorpicker .selected').attr('id'))
     $newDiv.css('background-color', colors[$('#colorpicker .selected').attr('id')]);
