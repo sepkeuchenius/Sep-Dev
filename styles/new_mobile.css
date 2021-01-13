@@ -1,0 +1,46 @@
+@media only screen and (max-width: 600px) {
+  #subtitle{
+    font-size: 20px;
+    padding:0 10%;
+    box-sizing: border-box;
+    /* max-width: 80%; */
+  }
+  
+  .samplebox{
+    width:170px;
+    /* margin-left:5%; */
+    height: 160px;
+  }
+  .samplebox .text{
+    font-size: 12px;
+  }
+  .samplebox .icon{
+    height:15px;
+    margin: 0 4px;
+  }
+  .section{
+    padding: 0 30px;
+  }
+  .section h1{
+    font-size: 20px;
+  }
+  .section p{
+    font-size: 13px;
+  }
+  .section{
+    max-width: 80%
+  }
+  .right button{
+    margin-left:50%;
+  }
+  button{
+      font-size: 14px;
+  }
+  #contact button{
+    margin:0 5px;
+  }
+  #samples{
+    margin: 50px 0;
+    width: 100%;
+  }
+}
