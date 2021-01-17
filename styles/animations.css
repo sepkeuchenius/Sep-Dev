@@ -2,3 +2,7 @@
   from {background-color: white;color:black}
   to {background-color: #b6d7a8;color:white;}
 }
+@keyframes opacity {
+  from {opacity: 0.7}
+  to {opacity: 1;}
+}
