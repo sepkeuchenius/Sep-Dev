@@ -56,7 +56,7 @@ function makeSamples(){
     var icon_div = $("<img>")
     icon_div.attr('src', link);
     icon_div.attr('class', 'icon')
-    $('#icons').append(icon_div)
+    // $('#icons').append(icon_div)
   })
 
 
@@ -83,15 +83,30 @@ function backgroundIteration(){
 }
 var dots = {}
 var xd = 6;
-var yd = 5;
+var yd = 4;
+var totalDots = xd * yd
+var totalIcons = icons.length;
 var increaseSize = 2;
+var used_icons
 
 function drawDot(i,j){
     var dot = $('<div>');
     dot.addClass('dot');
-    var img = $('<img>')
-    var link = icon_links[Object.keys(icon_links)[Math.floor(Math.random() * Object.keys(icon_links).length)]];
-    img.attr('src', link)
+    var img = $('<img>');
+    var isIcon = Math.random() < totalIcons / totalDots;
+    if(isIcon){
+      var iconN = Math.floor(Math.random() * icons.length)
+      var icon = icons[iconN];
+      icons.splice(iconN, 1)
+      if(icon){
+      var link = 'app_icons/' + icon + '.svg'
+      dot.append(img)
+      img.attr('src', link)
+      img.height(24)
+      img.css('opacity', 0.3)
+      dot.css('background', 'transparent')
+    }
+    }
 
     var back = $('#background');
     var w = back.width()/xd;
@@ -100,7 +115,6 @@ function drawDot(i,j){
     var x = w * j + (0 + 0.8 * Math.random()) * w
     var y = h * i + (0 + 0.5 * Math.random()) * h
 
-    // dot.append(img)
 
     dot.css('left',x)
     dot.css('top',y)
@@ -126,6 +140,8 @@ function drawLine(){
   if(!dots[y] || !dots[y][x]){drawLine(); return;}
   var dot2 = dots[y][x];
   if(dot1 == dot2){drawLine(); return;}
+  // if(checkCollision(dot1, dot2)){drawLine(); return;}
+
 
   var newLine = document.createElementNS('http://www.w3.org/2000/svg','line');
   // newLine.setAttribute('id','line' + fromId + '-' + toId);
@@ -138,9 +154,10 @@ function drawLine(){
 
   // newLine.setAttribute('id', id)
   $(newLine).hide();
-  $(newLine).attr('stroke-dasharray', [5,5])
+  $(newLine).attr('stroke-dasharray', [3,3])
   $("#svg").append(newLine);
   $(newLine).fadeIn(1000,function(){approach(newLine, dot1, dot2, 0)})
+  window.setTimeout(function(){$(newLine).fadeOut(3000)}, 20000)
 
 }
 function approach(newLine, dot1, dot2, ratio){
@@ -152,8 +169,10 @@ function approach(newLine, dot1, dot2, ratio){
     var y2 = (1 - ratio) * (dot1.position().top + dot1.height()/2) + ratio * (dot2.position().top + dot2.height()/2)
     newLine.setAttribute('x2',x2);
     newLine.setAttribute('y2',y2);
-    ratio += 0.001
-    window.setTimeout(function(){approach(newLine, dot1, dot2, ratio)}, Math.random() * 15 + 15)
+
+
+    ratio += 0.005
+    window.setTimeout(function(){approach(newLine, dot1, dot2, ratio)},  15)
 }
 function bnw(){
     $('#bnw').hide('slide',{
@@ -168,6 +187,38 @@ function bnw(){
 
 function backgroundmaker(){
   var dot = $('<div>');
-  
+}
+function checkCollision(dot1, dot2){
+  var x1 = dot1.offset().left;
+  var y1 = dot1.offset().top;
+
+  var x2 = dot2.offset().left;
+  var y2 = dot2.offset().top;
+
+
+
+  var slope = (y2 - y1) / (x2 - x1);
+
+
+
+  var start = 0;
+
+
+
+
+  for(i in dots){
+    for(var j in dots[i]){
+      var dot = dots[i][j];
+      var x = dot.offset().left;
+      var y = dot.offset().top;
+      var w = dot.width();
+      var h = dot.height();
+
+      var iets = x - x1;
+
+      if(Math.abs((iets * slope + start) - y) < 10){return true;}
+  }}
+  return false;
+
 
 }
