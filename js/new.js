@@ -6,7 +6,7 @@ var icon_links = {
   'hubspot': 'app_icons/hubspot.svg',
 
 }
-
+var bnws = ['tijdrovende', 'dure', 'vervelende', 'onmogelijke', 'veel', 'achterstallige']
 var samples = [
   {
     'quote': "Neem van elke inkomende mail de bijlagen, en upload ze naar de map van de juiste, bijhorende klant",
@@ -21,7 +21,7 @@ var samples = [
 
 $(document).ready(function(){
   changeSample();
-  // window.setInterval(changeSample, 5000);
+  window.setInterval(bnw, 5000);
 })
 var current = 0;
 function changeSample(){
@@ -31,7 +31,7 @@ function changeSample(){
     var sample_icons = sample.icons;
     var sample_icons_links = sample_icons.map(function(icon){return 'app_icons/'+icon+'.svg'});
     var samplebox = $('.samplebox').first().clone();
-    samplebox.find(".text").first().text(quote);
+    samplebox.find(".text").first().text('"'+quote+'"');
     samplebox.find('.icons').first().empty()
     sample_icons_links.forEach(function(link){
       var icon_div = $("<img>")
@@ -42,4 +42,20 @@ function changeSample(){
     })
     $('#samples').append(samplebox)
   }
+}
+function bnw(){
+    $('#bnw').hide('slide',{
+      direction: 'up'
+    }, 500, function(){
+    $('#bnw').text(bnws[current])
+    current += 1;
+    current %= bnws.length});
+    $('#bnw').show('slide', {'direction': 'down'})
+
+}
+
+function backgroundmaker(){
+  var dot = $('<div>');
+  
+
 }
