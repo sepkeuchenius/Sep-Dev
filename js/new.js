@@ -25,10 +25,11 @@ window.onscroll = function() {
     $('#header_logo').fadeOut()
   }
   if( window.pageYOffset > $('#sub').offset().top){
-    $("#header").css('background', 'rgb(250,255,250,0.8)')
+    $("#header").addClass('scrolledDown')
+    // $("#header").css('background', 'rgb(250,255,250,0.8)')
   }
   else{
-    $("#header").css('background', 'transparent')
+    $("#header").removeClass('scrolledDown')
   }
 };
 
