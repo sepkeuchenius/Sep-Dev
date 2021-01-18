@@ -1,6 +1,6 @@
 @media only screen and (max-width: 700px) {
   #subtitle{
-    font-size: 20px;
+    font-size: 17px;
     padding:0 10%;
     box-sizing: border-box;
     /* max-width: 80%; */
@@ -22,6 +22,8 @@
   #background, #svg{
     height: 50%;
     opacity: 0.2;
+    width:calc(100% - 20px);
+    left:10px;
   }
   .samplebox{
     width:170px;

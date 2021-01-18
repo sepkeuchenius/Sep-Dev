@@ -36,6 +36,12 @@ window.onscroll = function() {
 
 $(document).ready(function(){
   dots = {}
+  if($(document).width() <= 700){
+    xd = 3;
+    yd = 5;
+    var totalDots = xd * yd
+
+  }
   backgroundIteration()
   makeSamples();
   changeTerm();
