@@ -6,6 +6,7 @@ var icon_links = {
   'hubspot': 'app_icons/hubspot.svg',
 
 }
+var terms = ['tijdrovende', 'dure', 'achterstallige', 'vervelende', 'onmenselijke', 'onhandige']
 var icons = ['microsoft','outlook', 'sharepoint', 'onedrive', 'zapier','appsscript','hubspot', 'drive', 'g_forms', 'gmail','docs', 'sheets', 'slides', 'keep', 'insta', 'fb', 'linkedin', 'twitter']
 var samples = [
   {
@@ -37,6 +38,7 @@ $(document).ready(function(){
   dots = {}
   backgroundIteration()
   makeSamples();
+  changeTerm();
   // window.setInterval(backgroundIteration, 5000);
 })
 var current = 0;
@@ -63,9 +65,37 @@ function makeSamples(){
 
 }
 // window.setInterval(createBackground, 1000)
-
-
-
+var termN = 1
+function changeTerm(){
+  var term = $('#term')
+  var current = $('#term').text();
+  var l = current.length;
+  window.setTimeout( function(){removeTerm(l, current, term);}, 3000)
+}
+function removeTerm(l, current, term){
+  if(l<0){
+    var newTerm = terms[termN];
+    addTerm(newTerm, 0)
+    return;
+  }
+  else{
+    term.text(current.substring(0,l));
+    l--
+    window.setTimeout(function(){removeTerm(l, current, term)}, 10 + Math.random() * 100)
+  }
+}
+function addTerm(newTerm, x){
+  var term = $('#term');
+  if(x > newTerm.length){
+    termN++;
+    termN%=terms.length;
+    changeTerm();
+    return;
+  }
+  term.text(newTerm.substring(0,x));
+  x++
+  window.setTimeout(function(){addTerm(newTerm, x)}, 50 + Math.random() * 100)
+}
 function backgroundIteration(){
   for(var i=0;i<yd;i++){
     for(var j=0;j<xd;j++){
