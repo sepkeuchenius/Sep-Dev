@@ -131,7 +131,7 @@ var used_icons;
 var drawnLinks = [];
 
 function drawDot(i,j){
-    if(((i==1 || i==2 ||i==3) && (j==2 ||j ==3)) ){return;}
+    if((((i==1 || i==2 ||i==3) && (j==2 ||j ==3)) && $(document).width() > 700)|| ( $(document).width() <= 700 && i == 1 && j == 1)){return;}
     var dot = $('<div>');
     dot.addClass('dot');
     var img = $('<img>');
@@ -146,6 +146,9 @@ function drawDot(i,j){
       img.attr('src', link)
       img.height(24)
       img.css('opacity', 0.3)
+      if($(document).width() <= 700){
+        img.css('opacity', 0.5)
+      }
       dot.css('background', 'transparent')
     }
     }
@@ -153,9 +156,12 @@ function drawDot(i,j){
     var back = $('#background');
     var w = back.width()/xd;
     var h = back.height()/6;
+    if($(document).width() <= 700){
+      h = back.height()/yd
+    }
 
-    var x = w * j + (0 + 0.8 * Math.random()) * w
-    var y = h * i + (0 + 0.5 * Math.random()) * h
+    var x = w * j + (0.2 + 0.5 * Math.random()) * w
+    var y = h * i + (0.2 + 0.3 * Math.random()) * h
 
 
     dot.css('left',x)
