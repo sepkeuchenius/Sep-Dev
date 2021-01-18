@@ -6,7 +6,7 @@ var icon_links = {
   'hubspot': 'app_icons/hubspot.svg',
 
 }
-var icons = ['microsoft','outlook', 'sharepoint', 'onedrive', 'zapier','appsscript','hubspot', 'drive', 'g_forms', 'gmail','docs', 'sheets', 'slides', 'keep']
+var icons = ['microsoft','outlook', 'sharepoint', 'onedrive', 'zapier','appsscript','hubspot', 'drive', 'g_forms', 'gmail','docs', 'sheets', 'slides', 'keep', 'insta', 'fb', 'linkedin', 'twitter']
 var samples = [
   {
     'quote': "Neem van elke inkomende mail de bijlagen, en upload ze naar de map van de juiste, bijhorende klant",
@@ -79,17 +79,22 @@ function backgroundIteration(){
     drawLine();
     drawLine();
     drawLine();
+    drawLine();
+    drawLine();
+    drawLine();
   },3000)
 }
 var dots = {}
 var xd = 6;
-var yd = 4;
+var yd = 5;
 var totalDots = xd * yd
 var totalIcons = icons.length;
 var increaseSize = 2;
-var used_icons
+var used_icons;
+var drawnLinks = [];
 
 function drawDot(i,j){
+    if(((i==1 || i==2 ||i==3) && (j==2 ||j ==3)) ){return;}
     var dot = $('<div>');
     dot.addClass('dot');
     var img = $('<img>');
@@ -135,11 +140,12 @@ function drawLine(){
   var y = Math.floor(Math.random() * yd);
   if(!dots[y] || !dots[y][x]){drawLine(); return;}
   var dot1 = dots[y][x];
-  x = Math.floor(Math.random() * xd);
-  y = Math.floor(Math.random() * yd);
+  x = x + Math.floor(Math.random() * 2.5);
+  y =y  + Math.floor(Math.random() * 2.5);
   if(!dots[y] || !dots[y][x]){drawLine(); return;}
   var dot2 = dots[y][x];
-  if(dot1 == dot2){drawLine(); return;}
+  if(dot1 == dot2 || drawnLinks.indexOf([dot1, dot2]) != -1){drawLine(); return;}
+  drawnLinks.push([dot1,dot2])
   // if(checkCollision(dot1, dot2)){drawLine(); return;}
 
 
@@ -157,7 +163,9 @@ function drawLine(){
   $(newLine).attr('stroke-dasharray', [3,3])
   $("#svg").append(newLine);
   $(newLine).fadeIn(1000,function(){approach(newLine, dot1, dot2, 0)})
-  window.setTimeout(function(){$(newLine).fadeOut(3000)}, 20000)
+  window.setTimeout(function(){
+    drawnLinks.splice(drawnLinks.indexOf([dot1,dot2]), 1)
+    $(newLine).fadeOut(3000)}, 20000)
 
 }
 function approach(newLine, dot1, dot2, ratio){
@@ -171,7 +179,7 @@ function approach(newLine, dot1, dot2, ratio){
     newLine.setAttribute('y2',y2);
 
 
-    ratio += 0.005
+    ratio += 0.010
     window.setTimeout(function(){approach(newLine, dot1, dot2, ratio)},  15)
 }
 function bnw(){

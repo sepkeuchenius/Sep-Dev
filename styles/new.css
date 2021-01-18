@@ -85,12 +85,19 @@ p{
 .hide{
   display: none;
 }
-.right, .right p{
+.right {
   float:right;
   text-align: right;
 }
+.right p{
+  text-align: right;
+  padding-left: calc(100% - 500px);
+}
  .right button{
-   margin-left:70%;
+   /* margin-left:70%; */
+ }
+ .left{
+   float:left;
  }
 #samples{
   width:90%;
@@ -177,7 +184,16 @@ button:hover{
 }
 #sub .section{
   margin:50px 00px;
-  width:min(100% , 1200px);
+  width:min(100% , 820px);
+}
+.section h1{
+  width:100%;
+}
+.sectionicon{
+    width: 200px;
+    display: inline-block;
+    float: right;
+    margin-top: -40px;
 }
 .dot{
   width:30px;
@@ -193,12 +209,11 @@ button:hover{
 #background, #svg{
   position: absolute;
   top:34px;
-  left:80px;
-  width:calc(100% - 160px);
-  height: calc(100% - 68px);
+  left:40px;
+  width:calc(100% - 80px);
+  height: calc(100% - 200px);
   opacity: 0.5;
   z-index: -1;
-
 }
 #svg{
   z-index: -2;
@@ -272,4 +287,22 @@ span{
 }
 #bnw{
   width:100px;
+}
+#process_drawing{
+  float: left;
+  margin-right: -13px;
+  width: 301px;
+  margin-left: -15px;
+  margin-top: -6px;
+  margin-bottom: -6px;
+  border-radius: 50%;
+}
+#seppicture{
+  float:left;
+  border-radius: 50%;
+
+}
+#seppicture:hover{
+  /* webkit-transform: scaleX(-1); */
+  transform: scaleX(-1);
 }
