@@ -153,5 +153,8 @@
   .text-left , .text-right{
     margin:20px 30px;
   }
+  #header_logo_fixed{
+    display: block;
+  }
 
 }

@@ -62,6 +62,8 @@
 <script>
  var n = 50
   $(document).ready(function(){
+    window.setTimeout(function(){
+
     for(var i=0;i<n;i++){
       var dot = $('<div>');
       dot.addClass('person');
@@ -75,6 +77,7 @@
       $("#svg2").append(strike)
       window.setTimeout(function(){lightning(strike);}, Math.random() * 300)
     }
+  }, 1200)
   })
 
   function move(dot, dirx, diry){
