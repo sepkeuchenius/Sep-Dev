@@ -75,7 +75,8 @@
     margin-right:-37px;
   }
   #seppicture{
-    margin-top:0px;
+    margin-top:0px;margin-left: -20px;
+    margin-bottom:5px; margin-right:5px;
   }
   #clock_drawing{
     margin-top:23px;
