@@ -1,0 +1,53 @@
+#appbox{
+  width:40px;
+  height: 40px;
+  background: #d6e6d6;
+  margin: 100px 0;
+  border-radius: 2px;
+  text-align: center;
+  padding:10px 0;
+  box-sizing: border-box;
+  font-size:18px;
+}
+#svg2{
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+}
+.person{
+  width:20px;
+  height:20px;
+  background:lightblue;
+  border-radius: 50%;
+  position: absolute;
+  opacity: 0.3;
+  z-index: -1;
+}
+line{
+  /* stroke:purple !important; */
+
+}
+.text-left, .text-right{
+  padding: 10px 20px;
+  max-width:500px;
+  display: block;
+  margin-top:40px;
+}
+.text-left{
+  border-left: 3px solid green;
+  float:left;
+  text-align: left;
+  margin-left: calc(50% - 400px);
+  animation: moveLeft 1s;
+}
+.text-right{
+  border-right: 3px solid green;
+  min-height: 50px;
+  float:right;
+  margin-right: calc(50% - 400px);
+  animation: moveRight 1s;
+  text-align: right;
+}

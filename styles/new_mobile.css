@@ -1,4 +1,30 @@
 @media only screen and (max-width: 700px) {
+  @keyframes moveLeft {
+    from {
+      margin-left:calc(200px);
+      margin-right: -200px;
+
+    }
+    to {
+      margin-right: 30px;
+      margin-left:calc(30px);
+    }
+  }
+  @keyframes moveRight {
+    from {
+      margin-left:-200px;
+      margin-right:calc(200px);
+
+    }
+    to {
+      margin-left:30px;
+      margin-right:calc(30px);
+    }
+  }
+
+
+
+
   #subtitle{
     font-size: 17px;
     padding:0 10%;
@@ -124,4 +150,8 @@
   #sub .section{
     margin: 50px 0;
   }
+  .text-left , .text-right{
+    margin:20px 30px;
+  }
+
 }

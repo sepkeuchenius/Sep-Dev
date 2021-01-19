@@ -3,5 +3,23 @@
     font-size: 120px;
   }
 
+  @keyframes moveLeft {
+    from {
+      margin-left:calc(50%);
+
+    }
+    to {
+      margin-left:calc(50% - 400px);
+    }
+  }
+  @keyframes moveRight {
+    from {
+      margin-right:calc(50%);
+
+    }
+    to {
+      margin-right:calc(50% - 400px);
+    }
+  }
 
 }

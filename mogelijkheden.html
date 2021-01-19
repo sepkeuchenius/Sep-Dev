@@ -13,6 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"   rel="stylesheet">
 <link rel='stylesheet' type="text/css" href= 'styles/animations.css' />
+<link rel='stylesheet' type="text/css" href= 'styles/mogelijkheden.css' />
 <link rel='stylesheet' type="text/css" href= 'styles/new.css' />
 <link rel='stylesheet' type="text/css" href= 'styles/new_mobile.css' />
 <link rel='stylesheet' type="text/css" href= 'styles/new_desktop.css' />
@@ -30,6 +31,7 @@
 </head>
 <body>
   <div id='title'></div>
+
   <!-- <a href='index.html'><div id='smalltitle' class=""><span class='darkgreen '>Sep</span> <span class='lightgreen light '>Dev</span></div></a> -->
   <div id='header'>
     <a href='https://sep.dev'><div id='header_logo_fixed'><span class='darkgreen '>Sep</span> <span class='lightgreen light '>Dev</span></div></a>
@@ -41,10 +43,81 @@
   <div id='content' class='hide'>
     <center>
     <h1 class="big">Mogelijkheden</h1>
-    <p>De mogelijkheden zijn letterlijk eindeloos. Bijna elke app en programma dat je dagelijks gebruikt heeft een zogenaamde API.
+    <p>De mogelijkheden zijn letterlijk <b>eindeloos</b>. </p>
   </center>
+    <p class='text-left'>Bijna elke app en programma dat je dagelijks gebruikt heeft een zogenaamde API.</p>
+    <p class='text-right'>Bij het maken van een automatisering verbind ik de apps door hun API aan te spreken een opdrachten te laten uitvoeren.</p>
+    <p class='text-left'>Het aanspreken van die API's gebeurt in een zogenaamd script, waar alle codetaal zich bevindt.</p>
+    <p class='text-right'>Deze scripts kunnen uitgevoerd worden wanneer je wilt. Bijvoorbeeld als je op een knop drukt, elke maandagavond, elke seconde of als je een mailtje binnenkrijgt.</p>
+    <p class='text-left'>Door correcte timing van de uitvoeringen van de scripts en gestructureerd aanspreken van API's kun je elke automatisering maken die je maar wilt.</p>
+  <!-- <div id='appbox'>API -->
+  <!-- </div> -->
+
+<!-- </center> -->
+
+
 </div>
-<div id='footer'></div>
+<!-- <div id='footer'></div> -->
 <script src='js/new.js'></script>
+<script>
+ var n = 50
+  $(document).ready(function(){
+    for(var i=0;i<n;i++){
+      var dot = $('<div>');
+      dot.addClass('person');
+      dot.css('left', Math.random() * ($(document).width() - 40))
+      dot.css('top', Math.random() * ($(document).height() - 40))
+      $('body').append(dot)
+      move(dot, 0.25, 0.25);
+    }
+    for(var j=0; j<0; j++){
+      strike = document.createElementNS('http://www.w3.org/2000/svg','line');
+      $("#svg2").append(strike)
+      window.setTimeout(function(){lightning(strike);}, Math.random() * 300)
+    }
+  })
+
+  function move(dot, dirx, diry){
+    var r = Math.random();
+    var p = 0.0015;
+    var s = 0.5;
+    // dot.fadeOut(function)
+    if(r < p){
+      dirx = Math.random() * s
+      diry = Math.random() * s;
+    }
+    dot.css('left', Math.max(0, Math.min($(document).width() - 20, dot.offset().left + dirx - s/2)))
+    dot.css('top', Math.max(0, Math.min($(document).height() - 20, dot.offset().top + diry - s/2 )))
+    window.setTimeout(function(){move(dot, dirx, diry)}, 7)
+  }
+
+  function lightning(strike, dot1){
+    if(!dot1){
+      var first = Math.ceil(Math.random() * (n-1));
+      var dot1 = $(".person:nth-child("+ first.toString() + ")")
+    }
+    var second = Math.ceil(Math.random() * (n-1));
+    if(first == second){lightning(strike); return}
+    var dot2 = $(".person:nth-child("+ second.toString() + ")")
+
+    if(!dot1.offset() || !dot2.offset()){lightning(strike); return;}
+    // newLine.setAttribute('id','line' + fromId + '-' + toId);
+
+    strike.setAttribute('x1',dot1.offset().left + dot1.width() / 2);
+    strike.setAttribute('x2',dot2.offset().left + dot1.width() / 2);
+    strike.setAttribute('y1',dot1.offset().top + dot1.height() / 2);
+    strike.setAttribute('y2',dot2.offset().top + dot2.height() / 2);
+    $(strike).attr('stroke-dasharray', [3,3])
+
+
+      window.setTimeout(function(){lightning(strike, dot2)}, 300)
+
+
+
+
+  }
+
+
+</script>
 </body>
 </html>

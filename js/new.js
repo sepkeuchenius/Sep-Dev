@@ -20,12 +20,13 @@ var samples = [
 
 ]
 window.onscroll = function() {
+
   if (window.pageYOffset > 80) {
     $('#header_logo').fadeIn()
   } else {
     $('#header_logo').fadeOut()
   }
-  if( window.pageYOffset > $('#sub').offset().top){
+  if($('#sub').offset() && window.pageYOffset > $('#sub').offset().top){
     $("#header").addClass('scrolledDown')
     // $("#header").css('background', 'rgb(250,255,250,0.8)')
   }
