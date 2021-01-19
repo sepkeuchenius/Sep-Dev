@@ -98,4 +98,27 @@
   #stars{
     margin-right: -15px;
   }
+  .priceblock{
+    width:40%;
+    margin:10px;
+    display: inline-block;
+    box-sizing: border-box;
+    padding:20px 20px;
+    padding-bottom:5px;
+  }
+  .priceblock .title{
+    font-size: 17px;
+    font-weight: 500;
+  }
+  .benefits{
+    bottom:10px;
+    font-size: 11px;
+    left:10px;
+  }
+  .price_left,.price_right{
+    font-size:18px;
+  }
+   #makkelijk, #moeilijk{
+    font-size:13px;
+  }
 }
