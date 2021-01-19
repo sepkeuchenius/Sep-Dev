@@ -66,17 +66,19 @@
     padding:0;
   }
   .sectionicon{
-      width: 45% !important;
+      width: 40% !important;
   }
   #process_drawing{
     margin-left:-5px;
     width:69% !important;
     margin-top:0;
+    shape-outside: circle();
     margin-right:-37px;
   }
   #seppicture{
     margin-top:0px;margin-left: -20px;
     margin-bottom:5px; margin-right:5px;
+    shape-outside: circle();
   }
   #clock_drawing{
     margin-top:23px;
