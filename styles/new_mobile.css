@@ -92,4 +92,7 @@
     background:white;
   }
 
+  #star1 , #star2, #star3, #star4, #star5{
+    width:calc(33% - 15px);
+  }
 }

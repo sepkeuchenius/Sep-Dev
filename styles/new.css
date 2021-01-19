@@ -317,3 +317,19 @@ span{
   float:left;
   margin-top:20px;
 }
+#stars_drawing{
+  margin-right:20px;
+  width:max(200px, calc(100% - 650px));
+  margin-top:4px;
+}
+#star1 , #star2, #star3, #star4, #star5{
+  width:calc(33% - 30px);
+  float:none;
+  margin:5px;
+}
+#stars
+{
+  width:max(200px, calc(100% - 650px));
+  text-align: center;
+  margin-top:10px;
+}
