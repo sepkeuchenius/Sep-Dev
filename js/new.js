@@ -46,6 +46,7 @@ $(document).ready(function(){
   backgroundIteration()
   makeSamples();
   changeTerm();
+  // $('#header_logo_fixed').on('click', function(){})
   // window.setInterval(backgroundIteration, 5000);
 })
 var current = 0;
