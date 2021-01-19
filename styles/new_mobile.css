@@ -66,13 +66,20 @@
     padding:0;
   }
   .sectionicon{
-      width: 50% !important;
+      width: 45% !important;
   }
   #process_drawing{
-    margin-left:-20px;
+    margin-left:-5px;
     width:69% !important;
-    margin-top:50px;
-    margin-right:-10px;
+    margin-top:0;
+    margin-right:-37px;
+  }
+  #seppicture{
+    margin-top:0px;
+  }
+  #clock_drawing{
+    margin-top:23px;
+    margin-left:-20px;
   }
   .section h1{
     word-break: break-word;

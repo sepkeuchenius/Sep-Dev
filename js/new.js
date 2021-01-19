@@ -40,6 +40,7 @@ $(document).ready(function(){
     xd = 3;
     yd = 5;
     var totalDots = xd * yd
+    switchTitelPic()
 
   }
   backgroundIteration()
@@ -272,4 +273,9 @@ function checkCollision(dot1, dot2){
   return false;
 
 
+}
+function switchTitelPic(){
+  $('.section h1').each(function(){
+    $(this).after($(this).prev())
+  })
 }

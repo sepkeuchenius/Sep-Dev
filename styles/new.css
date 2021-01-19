@@ -287,7 +287,7 @@ span{
   width:100px;
 }
 #process_drawing{
-  float: left;
+  float: right;
   margin-right: 20px;
   width: max(301px , calc(100% - 550px));
   margin-left: -40px;
@@ -314,5 +314,6 @@ span{
 #clock_drawing{
   width:max(200px, calc(100% - 670px));
   opacity: 0.8;
+  float:left;
   /* margin-top:-70px; */
 }
