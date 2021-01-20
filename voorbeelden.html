@@ -1,0 +1,122 @@
+<html>
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-168912478-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-168912478-1');
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"   rel="stylesheet">
+<link rel='stylesheet' type="text/css" href= 'styles/animations.css' />
+<link rel='stylesheet' type="text/css" href= 'styles/mogelijkheden.css' />
+<link rel='stylesheet' type="text/css" href= 'styles/new.css' />
+<link rel='stylesheet' type="text/css" href= 'styles/new_mobile.css' />
+<link rel='stylesheet' type="text/css" href= 'styles/new_desktop.css' />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+ <script src="https://code.jquery.com/color/jquery.color-2.1.0.js"></script>
+ <link rel="icon"
+     type="image/png"
+     href="app_icons/fav.svg">
+ <title>Voorbeelden - Sep Dev</title>
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+</head>
+<body>
+
+  <div id='title'></div>
+
+  <!-- <a href='index.html'><div id='smalltitle' class=""><span class='darkgreen '>Sep</span> <span class='lightgreen light '>Dev</span></div></a> -->
+  <div id='header'>
+    <a href='https://sep.dev'><div id='header_logo_fixed'><span class='darkgreen '>Sep</span> <span class='lightgreen light '>Dev</span></div></a>
+    <div id='desktop-menu-links'>
+    <a href='/tarieven'>Tarieven</a>
+    <a href='/tarieven'>Mogelijkheden</a>
+    <a href='/tarieven'>Reviews</a>
+    <a href='/tarieven'>Over mij</a>
+  </div>
+  </div>
+  <div id='content' class='hide'>
+  <div id='samples'>
+    <div class='samplebox' id='firstsample'>
+      <div class='icons'>
+
+      </div>
+      <div class='text'></div>
+    </div>
+
+  </div>
+</div>
+<br><br>
+
+<script src='js/new.js'></script>
+<script>
+var icons = ['microsoft','outlook', 'sharepoint', 'onedrive', 'zapier','appsscript','hubspot', 'drive', 'g_forms', 'gmail','docs', 'sheets', 'slides', 'keep', 'insta', 'fb', 'linkedin', 'twitter']
+var samples = [
+  {
+    'quote': "Alle bijlagen van nieuwe mailtjes worden in de juiste map gezet in sharepoint, per klant",
+    'icons': ['outlook', 'sharepoint', 'onedrive', 'hubspot']
+  },
+  {
+    'quote': "Alle respondenten van een formulier worden gemaild met hun doorberekende resultaten via Google Sheets",
+    'icons': ['drive', 'g_forms', 'gmail']
+  },
+  {
+    'quote': "Reacties via Twitter worden verzameld en in een Google Sheet gezet",
+    'icons': ['twitter', 'sheets']
+  },
+  {
+    'quote': "Facebook berichten van bepaalde mensen worden verzameld in een aangemaakte map voor ze in Google Drive",
+    'icons': ['fb', 'drive', 'docs']
+  },
+  {
+    'quote': 'Mensen die vaker Twitter of Facebook posts reageren of liken worden automatisch een PDF offerte gemaild',
+    'icons': ['fb', 'twitter', 'drive', 'docs', 'gmail']
+  },
+  {
+    'quote': 'Connectieverzoeken via LinkedIn worden geaccepteerd als het vrienden zijn op Facebook of oude klanten in sharepoint',
+    'icons': ['linkedin', 'fb', 'sharepoint']
+  },
+  {
+    'quote': 'Er wordt van elke rij in een Google Sheet automatisch een factuur opgesteld in Google Docs en als PDF gemaild',
+    'icons': ['sheets', 'docs', 'drive', 'gmail']
+  },
+  {
+    'quote': 'Als een medewerker een klant mailt, wordt er altijd automatisch een kopie van de mail gestuurd naar de manager',
+    'icons': ['outlook', 'gmail']
+  }
+]
+$(document).ready(function(){makeSamples();})
+function makeSamples(){
+  for(current in samples){
+    var sample = samples[current];
+    var quote = sample.quote;
+      var samplebox = $('.samplebox').first().clone();
+    samplebox.find(".text").first().text('"'+ quote+ '"');
+    samplebox.find('.icons').first().empty()
+
+    samplebox.attr('id', '')
+    $('#samples').append(samplebox)
+    var sample_icons = sample.icons;
+    var sample_icons_links = sample_icons.map(function(icon){return 'app_icons/'+icon+'.svg'});
+    sample_icons_links.forEach(function(link){
+      var icon_div = $("<img>")
+      icon_div.attr('src', link);
+      icon_div.attr('class', 'icon')
+      samplebox.find('.icons').first().append(icon_div)
+    })
+  }
+
+
+
+}
+</script>
+</body>
+</html>

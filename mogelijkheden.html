@@ -30,37 +30,45 @@
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 </head>
 <body>
+
   <div id='title'></div>
 
   <!-- <a href='index.html'><div id='smalltitle' class=""><span class='darkgreen '>Sep</span> <span class='lightgreen light '>Dev</span></div></a> -->
   <div id='header'>
     <a href='https://sep.dev'><div id='header_logo_fixed'><span class='darkgreen '>Sep</span> <span class='lightgreen light '>Dev</span></div></a>
+  <div id='desktop-menu-links'>
     <a href='/tarieven'>Tarieven</a>
     <a href='/tarieven'>Mogelijkheden</a>
     <a href='/tarieven'>Reviews</a>
     <a href='/tarieven'>Over mij</a>
+  </div>
   </div>
   <div id='content' class='hide'>
     <center>
     <h1 class="big">Mogelijkheden</h1>
     <p>De mogelijkheden zijn letterlijk <b>eindeloos</b>. </p>
   </center>
+  <div id='textsections' style="display:inline-block">
     <p class='text-left'>Bijna elke app en programma dat je dagelijks gebruikt heeft een zogenaamde API.</p>
     <p class='text-right'>Bij het maken van een automatisering verbind ik de apps door hun API aan te spreken een opdrachten te laten uitvoeren.</p>
     <p class='text-left'>Het aanspreken van die API's gebeurt in een zogenaamd script, waar alle codetaal zich bevindt.</p>
     <p class='text-right'>Deze scripts kunnen uitgevoerd worden wanneer je wilt. Bijvoorbeeld als je op een knop drukt, elke maandagavond, elke seconde of als je een mailtje binnenkrijgt.</p>
     <p class='text-left'>Door correcte timing van de uitvoeringen van de scripts en gestructureerd aanspreken van API's kun je elke automatisering maken die je maar wilt.</p>
   <!-- <div id='appbox'>API -->
-  <!-- </div> -->
+  </div>
 
 <!-- </center> -->
 
-
+<br>
+<div>
+<center><a href='/voorbeelden'><button onclick='voorbeelden()'>Voorbeelden</button></a></center>
 </div>
-<!-- <div id='footer'></div> -->
+</div>
+<br><br>
+
 <script src='js/new.js'></script>
 <script>
- var n = 50
+ var n = 25
   $(document).ready(function(){
     window.setTimeout(function(){
 
@@ -119,7 +127,10 @@
 
 
   }
-
+  function voorbeelden(){
+    $('.text-left').hide('slide')
+    $('.text-right').hide('slide')
+  }
 
 </script>
 </body>

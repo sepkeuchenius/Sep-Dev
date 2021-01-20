@@ -45,34 +45,13 @@ $(document).ready(function(){
 
   }
   backgroundIteration()
-  makeSamples();
+  // makeSamples();
   changeTerm();
   // $('#header_logo_fixed').on('click', function(){})
   // window.setInterval(backgroundIteration, 5000);
 })
 var current = 0;
-function makeSamples(){
-  for(current in samples){
-    var sample = samples[current];
-    var quote = sample.quote;
-      var samplebox = $('.samplebox').first().clone();
-    samplebox.find(".text").first().text('"'+ quote+ '"');
-    samplebox.find('.icons').first().empty()
 
-    samplebox.attr('id', '')
-    // $('#samples').append(samplebox)
-  }
-  var sample_icons = icons;
-  var sample_icons_links = sample_icons.map(function(icon){return 'app_icons/'+icon+'.svg'});
-  sample_icons_links.forEach(function(link){
-    var icon_div = $("<img>")
-    icon_div.attr('src', link);
-    icon_div.attr('class', 'icon')
-    // $('#icons').append(icon_div)
-  })
-
-
-}
 // window.setInterval(createBackground, 1000)
 var termN = 1
 function changeTerm(){

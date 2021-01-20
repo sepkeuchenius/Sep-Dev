@@ -23,7 +23,9 @@
   }
 
 
-
+  #desktop-menu-links{
+    display: none;
+  }
 
   #subtitle{
     font-size: 17px;
@@ -36,14 +38,19 @@
   }
   #header{
     text-align: center;
+    position: fixed;
+    background: white !important;
   }
   #header_logo{
+    margin-left:10px;
+  }
+  #header_logo_fixed{
     margin-left:10px;
   }
   #header a{
     font-size: 14px;
     margin:0 5px;
-    display: none;
+    /* display: none; */
   }
   #background, #svg{
     height: 50%;
@@ -52,12 +59,14 @@
     left:10px;
   }
   .samplebox{
-    width:170px;
+    width:calc(50% - 20px);
     /* margin-left:5%; */
-    height: 160px;
+    /* height: auto; */
+    margin: 10px;
   }
   .samplebox .text{
     font-size: 12px;
+    bottom:5px;
   }
   .samplebox .icon{
     height:15px;
