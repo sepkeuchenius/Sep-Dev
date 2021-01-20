@@ -302,7 +302,7 @@ line{
   height:50px;
 }
 #content{
-  padding-bottom:100px;
+  /* padding-bottom:100px; */
 }
 span{
   vertical-align: top;
