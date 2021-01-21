@@ -193,7 +193,7 @@
     margin:20px 30px;
   }
   #header_logo_fixed{
-    display: block;
+    display: block;margin-top: -20px;
   }
   #phonemenu{
     display: block;
