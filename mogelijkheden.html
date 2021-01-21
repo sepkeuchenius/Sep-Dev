@@ -65,6 +65,7 @@
 <center><a href='/voorbeelden'><button onclick='voorbeelden()'>Voorbeelden</button></a></center>
 </div>
 </div>
+<br><br>
 <div id='footer'>
   <table>
     <tbody>
@@ -90,7 +91,7 @@
     </tbody>
   </table>
 </div>
-<br><br>
+
 
 <script src='js/global.js'></script>
 <script src='js/new.js'></script>
@@ -103,7 +104,7 @@
       var dot = $('<div>');
       dot.addClass('person');
       dot.css('left', Math.random() * ($(document).width() - 40))
-      dot.css('top', Math.random() * ($(document).height() - 40))
+      dot.css('top', Math.random() * ($(document).height() - 100))
       $('body').append(dot)
       move(dot, 0.25, 0.25);
     }
