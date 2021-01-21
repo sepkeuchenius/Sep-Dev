@@ -202,4 +202,13 @@
     top:10px;
     height: 30px;
   }
+  table{
+    width:100%;
+    margin-left:0px;
+    font-size:10px;
+  }
+  td{
+    padding-left:10px;
+    width:auto;
+  }
 }
