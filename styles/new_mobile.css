@@ -25,6 +25,14 @@
 
   #desktop-menu-links{
     display: none;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    margin-left: -10px;
+    margin-top: -20px;
+    padding-top:50px;
+    background: rgb(255,255,255, 0.8);
   }
 
   #subtitle{
@@ -48,8 +56,11 @@
     margin-left:10px;
   }
   #header a{
-    font-size: 14px;
-    margin:0 5px;
+    font-size: 28px;
+    margin: 35px 100px;
+    /* display: none; */
+    line-height: 69px;
+    border-bottom: 5px solid orange;
     /* display: none; */
   }
   #background, #svg{
@@ -184,5 +195,11 @@
   #header_logo_fixed{
     display: block;
   }
-
+  #phonemenu{
+    display: block;
+    position:fixed;
+    right:25px;
+    top:10px;
+    height: 30px;
+  }
 }

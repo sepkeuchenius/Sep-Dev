@@ -33,6 +33,9 @@ p{
   .scrolledDown{
     background: rgb(250,255,250,0.8);
   }
+#phonemenu{
+  display: none;
+}
 #header_logo , #header_logo_fixed{
   float: left;
   font-size: 30px;
