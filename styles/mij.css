@@ -54,4 +54,15 @@ margin-left:calc(-1 * 15vw);
   p{
     padding: 0 30px;
   }
+  #mij{
+    width:200px;
+    height: 200px;
+    right:30px;
+  }
+  .circle{
+    margin-right:60px;
+    width:200px;
+    height: 200px;
+  }
+
 }
