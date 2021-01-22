@@ -7,3 +7,4 @@ $(document).ready(function(){
     $('#desktop-menu-links').fadeOut();
   })
 })
+$('#title').fadeIn(500, function(){$('#content').fadeIn()})
