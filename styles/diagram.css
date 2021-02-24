@@ -195,9 +195,10 @@
     box-sizing:border-box;
     background:#9edb9e;
     text-align:center;
-    overflow: hidden;
+    /* overflow: hidden; */
     white-space: nowrap;
     word-break:break-word;
+    padding-top:20px;
 
   }
 
