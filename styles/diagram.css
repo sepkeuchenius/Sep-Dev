@@ -1,4 +1,16 @@
+.small-button{
+  margin-top:7px;
+  height: 30px;
+  cursor: pointer;
 
+}
+#right{
+  /* float:right; */
+  width: 200px;
+  text-align: center;
+  display: inline-block;
+  margin-left: calc(50% - 100px);
+}
   h1{
     font-size:23px;
     font-weight:100;

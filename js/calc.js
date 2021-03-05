@@ -587,7 +587,7 @@ function makeDoc(){
 
 
 
-  var fontSize = 8;
+  var fontSize = 10;
   var itemWidth = 55; var itemHeight = 55;
   var percWidth = 30;
   var percHeigt = 15;
@@ -622,7 +622,7 @@ function makeDoc(){
   doc.setFontSize(fontSize);
   doc.setFillColor('#605d76')
   //fill blue background
-  doc.rect(0,0,canvasWidth*10, canvasHeight*10, 'F')
+  // doc.rect(0,0,canvasWidth*10, canvasHeight*10, 'F')
   doc.setLineWidth(1)
   var lines = data[2];
 
@@ -662,8 +662,7 @@ function makeDoc(){
       docItem = doc.roundedRect(itemLeft - offsetx, itemTop-offsety, rectWidth / scale, rectHeight / scale, rectLineWidth / scale, rectLineWidth / scale, 'F')
     }
     if(item.label.length >0){
-      doc.setTextColor('#ffffff')
-      textItem = doc.text(itemLeft, itemTop, item.label);
+      textItem = doc.text(itemLeft - offsetx/2, itemTop, item.label);
     }
   }
   if(info.title == ''){info.title ='Naamloze Diagram'}
