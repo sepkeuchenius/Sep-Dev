@@ -273,7 +273,7 @@
     $newDiv.attr('class', $('#type').val())
     console.log($('#type').val())
     $newDiv.text($('#name').val())
-    
+
     $newDiv.attr('id', idN++);
     console.log($('#colorpicker .selected').attr('id'))
     $newDiv.css('background-color', colors[$('#colorpicker .selected').attr('id')]);
@@ -583,42 +583,87 @@ function makeDoc(){
   var data = getData();
   var items = data[1];
   var info = data[0];
-  var scale = 2
+  var scale = 1.5;
+
+
+
+  var fontSize = 8;
+  var itemWidth = 55; var itemHeight = 55;
+  var percWidth = 30;
+  var percHeigt = 15;
+  var percMargin = 6;
+  var margin = 40;
+
+  var rectWidth = 49.4;
+  var rectHeight = 45.9;
+  var rectLineWidth = 3;
+
+  var lineWidth = 1;
+
+
+  var tableWidth = info.width;
+  var tableHeight = info.height;
+  itemsArray = []
+  for(var i in items){
+      itemsArray.push(items[i])
+  }
+  var outerLeft =(Math.min(...itemsArray.map(function(item){return item.left;})) - margin)/scale;
+  var outerRight =(Math.max(...itemsArray.map(function(item){return item.left;})) + itemWidth + margin)/scale;
+  var outerTop = (Math.min(...itemsArray.map(function(item){return item.top;})) - margin)/scale;
+  var outerBottom = (Math.max(...itemsArray.map(function(item){return item.top;})) + itemHeight + margin)/scale;
+
+  console.log(itemsArray.map(function(item){return item.left;}));
+
+  var canvasWidth = outerRight - outerLeft;
+  var canvasHeight = outerBottom - outerTop;
 
   console.log(info.width, info.height)
-  var doc = new jsPDF("l","pt", [info.width / scale , info.height / scale]);
+  var doc = new jsPDF("l","pt", [canvasWidth  , canvasHeight]);
+  doc.setFontSize(fontSize);
   doc.setFillColor('#605d76')
-  doc.rect(0,0,info.width / scale , info.height / scale, 'F')
-    doc.setLineWidth(1)
+  //fill blue background
+  doc.rect(0,0,canvasWidth*10, canvasHeight*10, 'F')
+  doc.setLineWidth(1)
   var lines = data[2];
-  console.log(items)
+
+
+  var offsetx = 55 / scale / 2;
+  var offsety = 55 / scale / 2;
+
   for(var i in lines){
     var line = lines[i]
     doc.setDrawColor(line.color)
     doc.setFillColor(line.color)
-    var offsetx = 55 / scale / 2
-    var offsety = 55 / scale / 2
+
     if(line.type == 'zeggenschap'){
       doc.setLineDash([3,3])
     }
     else{
       doc.setLineDash([0,0])
     }
-    doc.line(line['x1'] / scale, line['y1'] / scale, line['x2'] / scale , line['y2'] / scale)
-    doc.roundedRect(line.partx / scale, line.party / scale, 30 / scale ,  15 / scale,1,1, 'F')
-    doc.setFontSize(12 / scale)
+    doc.line(line['x1'] / scale - outerLeft, line['y1'] / scale - outerTop, line['x2'] / scale - outerLeft, line['y2'] / scale - outerTop);
+    doc.roundedRect(line.partx / scale - outerLeft, line.party / scale - outerTop, percWidth / scale ,  percHeigt / scale,lineWidth,lineWidth, 'F')
+    doc.setFontSize(fontSize / scale)
     doc.setTextColor(1,1,1)
-    doc.text(line.partx / scale, line.party / scale + 6, line.part)
+    doc.text(line.partx / scale, line.party / scale + percMargin, line.part)
   }
   for(var i in items){
     var item = items[i]
+    var itemLeft = item.left/scale + offsetx - outerLeft;
+    var itemTop = item.top/scale + offsety - outerTop;
     var docItem;
     doc.setFillColor(item.color);
     if(item.type == 'person'){
-      docItem = doc.circle(item.left  / scale + offsetx, item.top / scale + offsety, 33.75 / scale, 'F')
+      //when its a person we need a circle
+      docItem = doc.circle(itemLeft, itemTop, 33.75 / scale, 'F')
     }
     else{
-      docItem = doc.roundedRect(item.left / scale, item.top/ scale, 49.4 / scale, 45.9 / scale, 3 / scale, 3 / scale, 'F')
+      //when its a company we need a rectangle
+      docItem = doc.roundedRect(itemLeft - offsetx, itemTop-offsety, rectWidth / scale, rectHeight / scale, rectLineWidth / scale, rectLineWidth / scale, 'F')
+    }
+    if(item.label.length >0){
+      doc.setTextColor('#ffffff')
+      textItem = doc.text(itemLeft, itemTop, item.label);
     }
   }
   if(info.title == ''){info.title ='Naamloze Diagram'}
