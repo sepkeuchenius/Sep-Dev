@@ -591,7 +591,7 @@ function makeDoc(){
   var itemWidth = 55; var itemHeight = 55;
   var percWidth = 30;
   var percHeigt = 15;
-  var percMargin = 6;
+  var percMargin = 3;
   var margin = 40;
 
   var rectWidth = 49.4;
@@ -644,8 +644,9 @@ function makeDoc(){
     doc.line(line['x1'] / scale - outerLeft, line['y1'] / scale - outerTop, line['x2'] / scale - outerLeft, line['y2'] / scale - outerTop);
     doc.roundedRect(line.partx / scale - outerLeft, line.party / scale - outerTop, percWidth / scale ,  percHeigt / scale,lineWidth,lineWidth, 'F')
     doc.setFontSize(fontSize / scale)
-    doc.setTextColor(1,1,1)
-    doc.text(line.partx / scale, line.party / scale + percMargin, line.part)
+    doc.setTextColor('#ffffff')
+    console.log(line.part)
+    doc.text(line.partx / scale  + percMargin - outerLeft, line.party / scale + percMargin + 5 - outerTop, line.part)
   }
   for(var i in items){
     var item = items[i]
@@ -705,6 +706,6 @@ function getData(){
     }
   })
 
+  console.log(lines)
 return [info, items, lines]
-
 }
