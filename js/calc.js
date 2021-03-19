@@ -781,10 +781,10 @@ function createSlides(){
     var line = lines[i]
     var dash;
     if(line.type == 'zeggenschap'){
-      dash  = [3,3];
+      dash  = false;
     }
     else{
-      dash = [0,0];
+      dash = 'dash';
     }
     var x1 = (line['x1'] / scaleWidth - outerLeft/scaleWidth)
     var x2 = (line['x2'] / scaleWidth - outerLeft/scaleWidth)
@@ -802,7 +802,7 @@ function createSlides(){
     var percY = line.party / scaleHeight - outerTop/scaleHeight;
 
 
-    slide.addShape(pres.ShapeType.line, { line: { color: line.color, width: 1 }, x: x1, y: y1, w:w,  h:h, flipV: flipV });
+    slide.addShape(pres.ShapeType.line, { line: { color: line.color, width: 1 }, x: x1, y: y1, w:w,  h:h, flipV: flipV , dashType:dash});
     slide.addShape(pres.ShapeType.rect, { fill: { color: line.color, type: "solid" }, x: percX, y: percY, w:percWidth/scaleWidth,  h:percHeigt/scaleHeight });
     slide.addText(line.part ,{x: percX, y:percY, valign: 'middle', align:'center', w:(percWidth/scaleWidth) * 1, h:percHeigt/scaleHeight, fontSize: 12 / fontScale, margin:0});
 
@@ -835,10 +835,9 @@ function createSlides(){
   }
 
   if(info.title == ''){info.title ='Naamloze Diagram'}
-  doc.save(info.title+'.pptx');
 
 
-  pres.writeFile(info.title);
+  pres.writeFile(info.title + 'pptx');
   // 4. Save the Presentation
 }
 function download(){
