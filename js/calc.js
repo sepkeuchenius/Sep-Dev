@@ -835,7 +835,7 @@ function createSlides(){
   }
 
   if(info.title == ''){info.title ='Naamloze Diagram'}
-  doc.save(info.title+'.pdf');
+  doc.save(info.title+'.pptx');
 
 
   pres.writeFile(info.title);
