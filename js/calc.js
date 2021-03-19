@@ -780,11 +780,12 @@ function createSlides(){
   for(var i in lines){
     var line = lines[i]
     var dash;
+    console.log(line.type)
     if(line.type == 'zeggenschap'){
-      dash  = false;
+      dash = 'dash';
     }
     else{
-      dash = 'dash';
+      dash  = false;
     }
     var x1 = (line['x1'] / scaleWidth - outerLeft/scaleWidth)
     var x2 = (line['x2'] / scaleWidth - outerLeft/scaleWidth)
@@ -802,7 +803,7 @@ function createSlides(){
     var percY = line.party / scaleHeight - outerTop/scaleHeight;
 
 
-    slide.addShape(pres.ShapeType.line, { line: { color: line.color, width: 1 }, x: x1, y: y1, w:w,  h:h, flipV: flipV , dashType:dash});
+    slide.addShape(pres.ShapeType.line, { line: { color: line.color, width: 1, dashType: dash }, x: x1, y: y1, w:w,  h:h, flipV: flipV});
     slide.addShape(pres.ShapeType.rect, { fill: { color: line.color, type: "solid" }, x: percX, y: percY, w:percWidth/scaleWidth,  h:percHeigt/scaleHeight });
     slide.addText(line.part ,{x: percX, y:percY, valign: 'middle', align:'center', w:(percWidth/scaleWidth) * 1, h:percHeigt/scaleHeight, fontSize: 12 / fontScale, margin:0});
 
