@@ -50,7 +50,6 @@
   function makeDocument(){
     var tableHeight = ($(document).height()) / settings.cellheight;
     var tableWidth = ($(document).width()) / settings.cellwidth;
-    console.log(tableHeight)
 
     for(var i =0; i<15; i++){
       var $tr = $('<tr>')
@@ -78,7 +77,8 @@
 
   $('td').on('click', newCell)
   $('#name').on('input', function(){
-    elementInTheMake.text($(this).val())
+    elementInTheMake.find('.text').text($(this).val())
+    rescale(elementInTheMake.find('text'));
   })
   $('#type').on('change', function(){
     elementInTheMake.attr('class', $(this).val())
@@ -105,7 +105,8 @@
     buildLine()
   })
   $('#editName').on('input', function(){
-    elementInTheEdit.text($(this).val())
+    elementInTheEdit.find('.text').text($(this).val())
+    rescale(elementInTheEdit.find('text'));
   })
   $('#editType').on('change', function(){
     elementInTheEdit.attr('class', $(this).val())
@@ -127,12 +128,10 @@
 
 
   $(document).on('keypress',function(e) {
-    console.log(e)
     if(e.keyCode == 13) {
         enter()
     }
     else if(e.keyCode == 16){
-      console.log('tst')
       shift()
     }
   });
@@ -151,7 +150,6 @@
   }
   var currentCell;
   function newCell(event){
-    console.log(event)
     if(dialogOpen && !event.shiftKey){
       return
     }
@@ -185,7 +183,7 @@
       open = true
       elementInTheEdit = fromEl;
       editObject = {
-        'name': elementInTheEdit.text(),
+        'name': elementInTheEdit.find('.text').text(),
         'type': elementInTheEdit.attr('class'),
         'background': rgbToHex(elementInTheEdit.css('background-color'))
       }
@@ -271,16 +269,16 @@
     $('#name').focus();
     $newDiv = $('<div>')
     $newDiv.attr('class', $('#type').val())
-    console.log($('#type').val())
-    $newDiv.text($('#name').val())
-
+    var text = $('<p>').attr('class', 'text');
+    text.text($('#name').val())
+    // $newDiv.text()
+    $newDiv.append(text);
     $newDiv.attr('id', idN++);
-    console.log($('#colorpicker .selected').attr('id'))
     $newDiv.css('background-color', colors[$('#colorpicker .selected').attr('id')]);
-    console.log($newDiv.css('background'))
     currentCell.append($newDiv)
     elementInTheMake = $newDiv;
-    blurAll([elementInTheMake])
+    blurAll([elementInTheMake]);
+    rescale();
   }
   function newEditDialog(){
     dialogOpen = true;
@@ -305,7 +303,7 @@
   }
   function select($el){
     $('td div').css('box-shadow', 'none');
-    $el.css('box-shadow', '0 0 20px #ddd')
+    $el.css('box-shadow', '0 0 20px #ddd');
   }
   function deselect(){
     $('td div').css('box-shadow', 'none');
@@ -316,11 +314,11 @@
   }
   function newLineDialog(){
     if(connect()){
-      $('#lineType').trigger('change')
-      $('.lineColor .selected').trigger('click')
+      $('#lineType').trigger('change');
+      $('.lineColor .selected').trigger('click');
       dialogOpen = true;
       $('#lineDialog').show( "slide");
-      blurAll([lineInTheMake, percDivInTheMake])
+      blurAll([lineInTheMake, percDivInTheMake]);
     }
     else{
       alert('Kan deze verbinding niet maken. Entiteiten moeten verschillen van hoogte.');
@@ -329,8 +327,8 @@
   function saveLineDialog(keep){
 
     if(!keep){
-      lineInTheMake.remove()
-      percDivInTheMake.remove()
+      lineInTheMake.remove();
+      percDivInTheMake.remove();
     }
      var found = 0;
     $('line').each(function(){
@@ -353,16 +351,15 @@
   }
   function isConnected(fromEl, toEl){
     //needs change (type of line)
-    var fromId = fromEl.attr('id')
-    var toId = toEl.attr('id')
+    var fromId = fromEl.attr('id');
+    var toId = toEl.attr('id');
     if(fromEl.offset().top < toEl.offset().top){
       id = fromEl.attr('id') + '-' + toEl.attr('id');
     }
     else{
       id = toEl.attr('id') + '-' + fromEl.attr('id');
     }
-    console.log(id)
-    return $(document).has($('#' + id)).length
+    return $(document).has($('#' + id)).length;
   }
 
   function saveEditDialog(keep){
@@ -377,7 +374,7 @@
   function cancelEditDialog(){
     closeDialog();
     deselect()
-    elementInTheEdit.text(editObject.name);
+    elementInTheEdit.find('.text').text(editObject.name);
     elementInTheEdit.attr('class', editObject.type);
     elementInTheEdit.css('background-color', editObject.background);
   }
@@ -444,7 +441,6 @@
     $('#editLineType').val(type)
 
     var hex = rgbToHex($(this).css('background-color'));
-    console.log(hex)
     var colorName;
     for(var color in colors){
       if(colors[color] == hex){
@@ -548,19 +544,19 @@
 
   function CreatePDFfromHTML() {
     var doc = new jsPDF();
-var elementHTML = $('#totalDiagram').html();
-var specialElementHandlers = {
-    '#elementH': function (element, renderer) {
-        return true;
-    }
-};
-doc.fromHTML(elementHTML, 15, 15, {
-    'width': 170,
-    'elementHandlers': specialElementHandlers
-});
+    var elementHTML = $('#totalDiagram').html();
+    var specialElementHandlers = {
+        '#elementH': function (element, renderer) {
+            return true;
+        }
+    };
+    doc.fromHTML(elementHTML, 15, 15, {
+        'width': 170,
+        'elementHandlers': specialElementHandlers
+    });
 
 // Save the PDF
-doc.save('sample-document.pdf');
+    doc.save('sample-document.pdf');
 
 }
 function blurAll(exceptThese){
@@ -585,14 +581,12 @@ function makeDoc(){
   var info = data[0];
   var scale = 1.5;
 
-
-
   var fontSize = 10;
-  var itemWidth = 55; var itemHeight = 55;
+  var itemWidth = 30; var itemHeight = 30;
   var percWidth = 30;
   var percHeigt = 15;
   var percMargin = 3;
-  var margin = 40;
+  var margin = 100;
 
   var rectWidth = 49.4;
   var rectHeight = 45.9;
@@ -612,12 +606,10 @@ function makeDoc(){
   var outerTop = (Math.min(...itemsArray.map(function(item){return item.top;})) - margin)/scale;
   var outerBottom = (Math.max(...itemsArray.map(function(item){return item.top;})) + itemHeight + margin)/scale;
 
-  console.log(itemsArray.map(function(item){return item.left;}));
 
   var canvasWidth = outerRight - outerLeft;
   var canvasHeight = outerBottom - outerTop;
 
-  console.log(info.width, info.height)
   var doc = new jsPDF("l","pt", [canvasWidth  , canvasHeight]);
   doc.setFontSize(fontSize);
   doc.setFillColor('#605d76')
@@ -645,7 +637,6 @@ function makeDoc(){
     doc.roundedRect(line.partx / scale - outerLeft, line.party / scale - outerTop, percWidth / scale ,  percHeigt / scale,lineWidth,lineWidth, 'F')
     doc.setFontSize(fontSize / scale)
     doc.setTextColor('#ffffff')
-    console.log(line.part)
     doc.text(line.partx / scale  + percMargin - outerLeft, line.party / scale + percMargin + 5 - outerTop, line.part)
   }
   for(var i in items){
@@ -663,11 +654,14 @@ function makeDoc(){
       docItem = doc.roundedRect(itemLeft - offsetx, itemTop-offsety, rectWidth / scale, rectHeight / scale, rectLineWidth / scale, rectLineWidth / scale, 'F')
     }
     if(item.label.length >0){
-      textItem = doc.text(itemLeft - offsetx/2, itemTop, item.label);
+      doc.setFontSize(item.fontsize / scale)
+      textItem = doc.text(itemLeft - offsetx/2, itemTop + itemHeight, item.label, {
+        'maxWidth': (30*2)/scale,
+      });
     }
   }
   if(info.title == ''){info.title ='Naamloze Diagram'}
-  doc.save(info.title+'.pdf')
+  doc.save(info.title+'.pdf');
 
 }
 function getData(){
@@ -683,7 +677,8 @@ function getData(){
       'left': $(this).offset().left,
       'top': $(this).offset().top,
       'color': rgbToHex($(this).css('background-color')),
-      'label': $(this).text(),
+      'label': $(this).find('.text').text(),
+      'fontsize': Number($(this).find('.text').css('font-size').replace('px', '')),
       'type': $(this).attr('class')
     }
   })
@@ -705,7 +700,26 @@ function getData(){
       'party': part.offset().top
     }
   })
-
-  console.log(lines)
+console.log(items)
 return [info, items, lines]
+}
+function rescale(){
+  $('.text').each(function(){
+    var p = $(this);
+    // var fontSize = Number(p.css('font-size').replace('px', ''));
+    var charsperrule = [25,30,55,300];
+    var fontsizes = [12,10,9,8];
+    var height = p.height();
+    var chars = p.text().length;
+    for(var i in charsperrule){
+      if(chars < charsperrule[i]){
+        p.css('font-size', fontsizes[i]);
+        break;
+      }
+    }
+
+
+
+  })
+
 }
