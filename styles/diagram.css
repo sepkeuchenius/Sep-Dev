@@ -9,6 +9,7 @@
   text-align: center;
   display: inline-block;
   margin-left: calc(50% - 100px);
+  padding:10px;
 }
   h1{
     font-size:23px;
@@ -176,7 +177,7 @@
     left:0;
   }
   .company{
-    border-radius:20px;
+    border-radius:3px;
   }
   .person{
     border-radius:50%;
@@ -241,3 +242,24 @@
   .selected{
    box-shadow: 0 0 9px #000000;
   }
+  #download-button, #download-type{
+    display: inline-block;
+  }
+  #download-type{
+    display: inline-block;
+    width: fit-content;
+    margin-top: 0;
+    vertical-align: 70%;
+    background: none;
+    font-size:12px;
+    color:white;
+    border-bottom:1px solid white;
+    border-radius: 0;
+  }
+  #download-type option{
+    color:black
+  }
+.subtle{
+  width: auto;
+  padding:5px 10px;
+}

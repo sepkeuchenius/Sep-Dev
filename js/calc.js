@@ -575,25 +575,27 @@ function unBlur(){
   $('.part').css('filter', 'none');
 
 }
+var items = data[1];
+var info = data[0];
+var scale = 1.5;
+
+var fontSize = 10;
+var itemWidth = 30; var itemHeight = 30;
+var percWidth = 30;
+var percHeigt = 15;
+var percMargin = 3;
+var margin = 100;
+
+var rectWidth = 49.4;
+var rectHeight = 45.9;
+var rectLineWidth = 3;
+
+var lineWidth = 1;
 function makeDoc(){
   var data = getData();
-  var items = data[1];
+
   var info = data[0];
-  var scale = 1.5;
-
-  var fontSize = 10;
-  var itemWidth = 30; var itemHeight = 30;
-  var percWidth = 30;
-  var percHeigt = 15;
-  var percMargin = 3;
-  var margin = 100;
-
-  var rectWidth = 49.4;
-  var rectHeight = 45.9;
-  var rectLineWidth = 3;
-
-  var lineWidth = 1;
-
+  var items = data[1];
 
   var tableWidth = info.width;
   var tableHeight = info.height;
@@ -647,16 +649,18 @@ function makeDoc(){
     doc.setFillColor(item.color);
     if(item.type == 'person'){
       //when its a person we need a circle
-      docItem = doc.circle(itemLeft, itemTop, 33.75 / scale, 'F')
+      docItem = doc.circle(itemLeft, itemTop, itemWidth / scale, 'F')
     }
     else{
       //when its a company we need a rectangle
       docItem = doc.roundedRect(itemLeft - offsetx, itemTop-offsety, rectWidth / scale, rectHeight / scale, rectLineWidth / scale, rectLineWidth / scale, 'F')
     }
     if(item.label.length >0){
-      doc.setFontSize(item.fontsize / scale)
-      textItem = doc.text(itemLeft - offsetx/2, itemTop + itemHeight, item.label, {
-        'maxWidth': (30*2)/scale,
+      doc.setFontSize(item.fontsize * 1.2 / scale)
+      doc.setTextColor('#000000');
+      textItem = doc.text(itemLeft - offsetx/2 + (itemWidth/3), itemTop + itemHeight, item.label, {
+        'maxWidth': (30*3)/scale,
+        'align':'center',
       });
     }
   }
@@ -722,4 +726,124 @@ function rescale(){
 
   })
 
+}
+function createSlides(){
+  // 1. Create a new Presentation
+  let pres = new PptxGenJS();
+
+  // 2. Add a Slide
+  let slide = pres.addSlide();
+
+
+    // Define new layout for the Presentation
+
+  // 3. Add one or more objects (Tables, Shapes, Images, Text and Media) to the Slide
+  scale =1;
+  var data = getData();
+  var info = data[0];
+  var items = data[1];
+  var lines = data[2];
+
+
+  var tableWidth = info.width;
+  var tableHeight = info.height;
+
+  itemsArray = []
+  for(var i in items){
+      itemsArray.push(items[i])
+  }
+  var outerLeft =(Math.min(...itemsArray.map(function(item){return item.left;})) - margin)/scale;
+  var outerRight =(Math.max(...itemsArray.map(function(item){return item.left;})) + itemWidth + margin)/scale;
+  var outerTop = (Math.min(...itemsArray.map(function(item){return item.top;})) - margin)/scale;
+  var outerBottom = (Math.max(...itemsArray.map(function(item){return item.top;})) + itemHeight + margin)/scale;
+
+
+  var canvasWidth = outerRight - outerLeft;
+  var canvasHeight = outerBottom - outerTop;
+
+  var slidesWidth = 8;
+  var slidesHeight = 8 * (canvasHeight/canvasWidth)
+  pres.defineLayout({ name:'A3', width:slidesWidth, height:slidesHeight });
+
+  // Set presentation to use new layout
+  pres.layout = 'A3';
+
+
+  var scaleWidth = canvasWidth/slidesWidth;
+  var scaleHeight = canvasHeight/slidesHeight;
+
+
+  var offsetx =0;
+  var offsety = 0;
+  var fontScale = (canvasWidth/tableWidth) * 5;
+
+  for(var i in lines){
+    var line = lines[i]
+    var dash;
+    if(line.type == 'zeggenschap'){
+      dash  = [3,3];
+    }
+    else{
+      dash = [0,0];
+    }
+    var x1 = (line['x1'] / scaleWidth - outerLeft/scaleWidth)
+    var x2 = (line['x2'] / scaleWidth - outerLeft/scaleWidth)
+    var y1 = (line['y1'] / scaleHeight - outerTop/scaleHeight)
+    var y2 = (line['y2'] / scaleHeight - outerTop/scaleHeight)
+    var w = Math.abs(x2 - x1);
+    var h = Math.abs(y2 - y1);
+    var flipV = false;
+    if(x1 > x2){
+      flipV = true;
+      x1 = x1 - w;
+      x2 = x2 - w;
+    }
+    var percX = line.partx / scaleWidth - outerLeft/scaleWidth;
+    var percY = line.party / scaleHeight - outerTop/scaleHeight;
+
+
+    slide.addShape(pres.ShapeType.line, { line: { color: line.color, width: 1 }, x: x1, y: y1, w:w,  h:h, flipV: flipV });
+    slide.addShape(pres.ShapeType.rect, { fill: { color: line.color, type: "solid" }, x: percX, y: percY, w:percWidth/scaleWidth,  h:percHeigt/scaleHeight });
+    slide.addText(line.part ,{x: percX, y:percY, valign: 'middle', align:'center', w:(percWidth/scaleWidth) * 1, h:percHeigt/scaleHeight, fontSize: 12 / fontScale, margin:0});
+
+    // doc.line();
+    // doc.roundedRect(line.partx / scale - outerLeft, line.party / scale - outerTop, percWidth / scale ,  percHeigt / scale,lineWidth,lineWidth, 'F')
+    // doc.setFontSize(fontSize / scale)
+    // doc.setTextColor('#ffffff')
+    // doc.text(line.partx / scale  + percMargin - outerLeft, line.party / scale + percMargin + 5 - outerTop, line.part)
+  }
+
+  for(var i in items){
+    var item = items[i]
+    var itemLeft = item.left/scaleWidth  - outerLeft / scaleWidth;
+    var itemTop = item.top/scaleHeight  - outerTop / scaleHeight;
+    console.log(itemLeft)
+    console.log(itemTop)
+    console.log(offsetx)
+    console.log(offsety)
+    if(item.type == 'person'){
+      //when its a person we need a circle
+      slide.addShape(pres.ShapeType.ellipse, { fill: { type: "solid", color: item.color }, x: itemLeft, y: itemTop, w: itemWidth / scaleWidth, h: itemHeight/scaleHeight });
+    }
+    else{
+      //when its a company we need a rectangle
+      slide.addShape(pres.ShapeType.rect, { fill: { type: "solid", color: item.color }, x: itemLeft, y: itemTop, w: itemWidth / scaleWidth, h: itemHeight/scaleHeight});
+    }
+    if(item.label.length >0){
+      slide.addText(item.label ,{x: itemLeft - itemWidth/scaleHeight*0.25, y:itemTop + itemHeight/scaleHeight, valign: 'top', align:'center', w:(itemWidth/scaleWidth)*1.5, h: itemHeight/scaleHeight, fontSize: item.fontsize / fontScale, margin:0});
+    }
+  }
+
+
+
+  pres.writeFile();
+  // 4. Save the Presentation
+}
+function download(){
+  if($('#download-type').val() == 'pdf'){
+    makeDoc();
+  }
+  else{
+    createSlides();
+  }
 }
