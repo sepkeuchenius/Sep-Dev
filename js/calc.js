@@ -834,9 +834,11 @@ function createSlides(){
     }
   }
 
+  if(info.title == ''){info.title ='Naamloze Diagram'}
+  doc.save(info.title+'.pdf');
 
 
-  pres.writeFile();
+  pres.writeFile(info.title);
   // 4. Save the Presentation
 }
 function download(){
