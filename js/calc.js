@@ -76,6 +76,7 @@
   })
 
   $('td').on('click', newCell)
+  $("td").droppable()
   $('#name').on('input', function(){
     elementInTheMake.find('.text').text($(this).val())
     rescale(elementInTheMake.find('text'));
@@ -268,6 +269,11 @@
     $('#dialog').show( "slide");
     $('#name').focus();
     $newDiv = $('<div>')
+    $newDiv.draggable({
+      grid: [82.6,82.6],
+      stop: itemDragged
+    })
+    $newDiv.on('drag', itemDragged)
     $newDiv.attr('class', $('#type').val())
     var text = $('<p>').attr('class', 'text');
     text.text($('#name').val())
@@ -848,4 +854,13 @@ function download(){
   else{
     createSlides();
   }
+}
+function itemDragged(event,ui){
+  console.log(event)
+  $('td').each(function(){
+    if(Math.abs($(this).offset().left - ui.offset.left) < 60 && Math.abs($(this).offset().top - ui.offset.top) < 60){
+      $(this).append(event.target);
+      event.target.css('left', 'unset');
+    }
+  })
 }
