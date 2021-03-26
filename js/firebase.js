@@ -1,5 +1,6 @@
 // Initialize the FirebaseUI Widget using Firebase.
 var user;
+var db;
 $(document).ready(function(){
   var uiConfig = {
     callbacks: {
@@ -8,7 +9,17 @@ $(document).ready(function(){
         // Return type determines whether we continue the redirect automatically
         // or whether we leave that to developer to handle.
         user = authResult.user;
+        db = firebase.database();
+        var userItems = db.ref().child('users').child('0').get().then(function(snap){
+          if(snap.exists()){
+            console.log(snap.val())
+          }
+          else{
+            console.log('failed')
+          }
+        })
         return false;
+
       },
       uiShown: function() {
         // The widget is rendered.
@@ -24,11 +35,22 @@ $(document).ready(function(){
     ],
 
   };
-  var ui = new firebaseui.auth.AuthUI(firebase.auth());
   if(firebase.auth().currentUser && firebase.auth().currentUser != null){
     user = firebase.auth().currentUser;
+    db = firebase.database();
+    var userItems = db.ref().child('diagrams').get().then(function(snap){
+      if(snap.exists()){
+        console.log(snap.val())
+      }
+      else{
+        console.log('failed')
+      }
+    })
   }
   else{
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
     ui.start('#firebaseui-auth-container', uiConfig);
   }
+
+
 })
