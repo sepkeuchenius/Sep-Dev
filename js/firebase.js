@@ -1,4 +1,5 @@
 // Initialize the FirebaseUI Widget using Firebase.
+var uid;
 $(document).ready(function(){
   var uiConfig = {
     callbacks: {
@@ -23,6 +24,10 @@ $(document).ready(function(){
 
   };
   var ui = new firebaseui.auth.AuthUI(firebase.auth());
-  ui.start('#firebaseui-auth-container', uiConfig);
-
+  if(firebase.auth().currentUser && firebase.auth().currentUser != null){
+    uid = firebase.auth().currentUser.uid;
+  }
+  else{
+    ui.start('#firebaseui-auth-container', uiConfig);
+  }
 })
