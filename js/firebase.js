@@ -1,5 +1,5 @@
 // Initialize the FirebaseUI Widget using Firebase.
-var uid;
+var user;
 $(document).ready(function(){
   var uiConfig = {
     callbacks: {
@@ -7,7 +7,7 @@ $(document).ready(function(){
         // User successfully signed in.
         // Return type determines whether we continue the redirect automatically
         // or whether we leave that to developer to handle.
-        console.log(authResult)
+        user = authResult.user;
         return false;
       },
       uiShown: function() {
@@ -26,7 +26,7 @@ $(document).ready(function(){
   };
   var ui = new firebaseui.auth.AuthUI(firebase.auth());
   if(firebase.auth().currentUser && firebase.auth().currentUser != null){
-    uid = firebase.auth().currentUser.uid;
+    user = firebase.auth().currentUser;
   }
   else{
     ui.start('#firebaseui-auth-container', uiConfig);
