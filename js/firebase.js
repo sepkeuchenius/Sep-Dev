@@ -7,6 +7,7 @@ $(document).ready(function(){
         // User successfully signed in.
         // Return type determines whether we continue the redirect automatically
         // or whether we leave that to developer to handle.
+        console.log(authResult)
         return false;
       },
       uiShown: function() {
