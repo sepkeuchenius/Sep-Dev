@@ -15,8 +15,35 @@
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@3.4.0/dist/pptxgen.bundle.js"></script>
     <link rel='stylesheet' type="text/css" href= 'styles/diagram.css' />
     <base target="_top">
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-auth.js"></script>
+    <!-- firebaseUI -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/4.0.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyC17rWafXH-WfeTlyKCgRMVIh86EWQwV90",
+        authDomain: "diagram-maker.firebaseapp.com",
+        projectId: "diagram-maker",
+        storageBucket: "diagram-maker.appspot.com",
+        messagingSenderId: "98620362999",
+        appId: "1:98620362999:web:21fe6a848a2546157a03f2"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+
   </head>
   <body style='height:100%; width:100%'>
+<div id='firebase'>
+<div id="firebaseui-auth-container"></div>
+<div id="loader">Loading...</div>
+</div>
   <div id='toolbar'>
     <!-- <img id='menubutton' src='https://www.materialui.co/materialIcons/navigation/menu_white_24x24.png' style='height:30px;margin-top:7.5px;cursor:pointer;margin-left:20px;'> -->
     <input placeholder="Naamloze Diagram" id='title'>
@@ -143,9 +170,13 @@
     </div>
 
 
+
+
+    <script src='js/firebase.js'>
+          </script>
     <script src='js/calc.js'>
+          </script>
 
 
-      </script>
   </body>
 </html>
