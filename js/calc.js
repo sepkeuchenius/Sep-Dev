@@ -61,6 +61,10 @@
 
     }
   $('body').on('click', function(event){
+    if(user && userDiagramData){
+    saveCurrentDiagramLocally();
+    saveCurrentDiagramFirebase();
+  }
     var targetId = $(event.target).attr('id');
     if(menuOpen && ['options', 'menubutton'].indexOf(targetId) == -1 && !$(event.target).is('section')){
       $('#options').hide('slide')
@@ -526,6 +530,8 @@
       deselect();
       closeDialog();
     }
+    saveCurrentDiagramLocally();
+    saveCurrentDiagramFirebase();
   }
 
   function mouseAndShift($el){

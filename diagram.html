@@ -47,8 +47,9 @@
 <div id="firebaseui-auth-container"></div>
 <div id="loader">Loading...</div>
 </div>
+<div id='application-wrapper'>
   <div id='toolbar'>
-    <!-- <img id='menubutton' src='https://www.materialui.co/materialIcons/navigation/menu_white_24x24.png' style='height:30px;margin-top:7.5px;cursor:pointer;margin-left:20px;'> -->
+    <img id='menubutton' src='https://www.materialui.co/materialIcons/navigation/menu_white_24x24.png' style='height:30px;margin-top:7.5px;cursor:pointer;margin-left:20px;'>
     <input placeholder="Naamloze Diagram" id='title'>
 
     <div id='right'>
@@ -59,9 +60,10 @@
     </div>
   </div>
   <div id='options' class='dialog'>
-    <h1 style='padding-left:30px;padding-top:30px;font-weight:regular;'>Menu</h1>
+    <h1 style='padding-left:30px;padding-top:30px;font-weight:regular;'>Diagrammen</h1>
+    <div id='sections'></div>
     <!-- <section>Deel</section> -->
-    <section onclick='makeDoc()'>Download</section>
+    <!-- <section onclick='loadDiagram()'>Download</section> -->
     <!-- <section>Instellingen</section> -->
     <!-- <section>Importeer</section> -->
     <!-- <section>Print</section> -->
@@ -171,6 +173,7 @@
       <button style='background:red; color:white;'onclick='saveEditLineDialog(false)'>Verwijder</button>
       </center>
     </div>
+  </div>
 
 
 
