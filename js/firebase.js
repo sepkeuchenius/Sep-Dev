@@ -129,14 +129,21 @@ function saveCurrentDiagramLocally(){
   return userDiagramData;
 }
 function saveCurrentDiagramFirebase(){
+  $('#lastsaved').text('Opslaan...');
   saveDiagramFirebase(currentDiagramId.toString())
 }
 function saveDiagramFirebase(id){
   var localData = userDiagramData[id];
-  db.ref('diagrams').child(Number(id)).set(localData);
-  db.ref('users/' + user.uid + '/diagrams').set(userDiagrams);
+  db.ref('diagrams').child(Number(id)).set(localData).then(function(){
+    db.ref('users/' + user.uid + '/diagrams').set(userDiagrams).then(function(){
+      window.setTimeout(function(){
+        $('#lastsaved').text('Laatst opgeslagen om ' + new Date().toLocaleTimeString());
+      },300)
+    });
+  });
 }
 function loadDiagram(id){
+  closeDialog()
   currentDiagramId = id;
   var localData = userDiagramData[id];
   emptyBoard()
@@ -220,6 +227,7 @@ function getSaveData(){
 return [info, items, lines]
 }
 function newDiagram(){
+  closeDialog();
   var id = (Math.random() * 10000).toFixed(0);
   saveCurrentDiagramLocally();
   saveCurrentDiagramFirebase();

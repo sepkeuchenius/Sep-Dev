@@ -1,6 +1,17 @@
 #application-wrapper{
   display: none;
 }
+#newdiagram-section{
+  position: absolute;
+    bottom: 0;
+}
+#lastsaved{;
+  display: inline-block;
+  font-size: 10px;
+  position: absolute;
+  right: 100px;
+  top: 7px;
+}
 .small-button{
   margin-top:7px;
   height: 30px;

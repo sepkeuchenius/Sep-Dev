@@ -57,6 +57,7 @@
       <!-- <img src='assets/download.svg' class="small-button" onclick='download()' id='download-button'> -->
       <button onclick='makeDoc()' class="subtle">PDF</button>
       <button onclick='createSlides()' class="subtle">PowerPoint</button>
+      <p id='lastsaved'></p>
     </div>
   </div>
   <div id='options' class='dialog'>
@@ -68,6 +69,7 @@
     <!-- <section>Importeer</section> -->
     <!-- <section>Print</section> -->
 
+    <section onclick="newDiagram()" id='newdiagram-section'>+ Nieuwe Diagram</section>
   </div>
   <div id='totalDiagram'>
     <svg id="map" width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg"></svg>

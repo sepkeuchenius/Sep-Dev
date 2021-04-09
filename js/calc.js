@@ -521,6 +521,7 @@
     $('#lineDialog').hide('slide');
     $('#editDialog').hide('slide');
     $('#editLineDialog').hide('slide');
+    $('#options').hide('slide');
 
     unBlur();
     dialogOpen = false;
