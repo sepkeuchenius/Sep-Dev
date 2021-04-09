@@ -68,6 +68,7 @@
       menuOpen = false;
     }
   })
+
   $('#menubutton').on('click', function(){
     $('#options').show('slide')
     dialogOpen = true;
@@ -147,6 +148,9 @@
     else if(e.keyCode == 16){
       shift()
     }
+
+    
+
   });
   $('.color').each(function(){
     $(this).css('background', colors[$(this).attr('id')]);

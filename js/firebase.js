@@ -15,6 +15,7 @@ $(document).ready(function(){
         $('#application-wrapper').show();
         user = authResult.user;
         loadDiagrams();
+        
         return false;
 
       },
@@ -89,6 +90,7 @@ function loadDiagrams(){
         saveCurrentDiagramFirebase();
         reloadMenuButtons();
         loadDiagram(currentDiagramId)
+
       })
     }
   });
@@ -111,6 +113,7 @@ function reloadMenuButtons(){
   }
 }
 function deleteDiagram(){
+   event.stopPropagation();
   if(confirm('Weet je zeker dat je de Diagram wilt verwijderen?')){
     var diagramId = $(this).parent().attr('id');
 
@@ -124,7 +127,7 @@ function deleteDiagram(){
     db.ref('diagrams/' + diagramId).remove().then(function(){
       db.ref('users/' + user.uid + '/diagrams').set(userDiagrams).then(function(){
         loadDiagrams()
-        loadDiagram(userDiagrams[0])
+        // loadDiagram(userDiagrams[0])
       });
     });
   }

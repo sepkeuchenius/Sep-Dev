@@ -6,7 +6,8 @@
 }
 #newdiagram-section{
   position: absolute;
-    bottom: 0;
+  bottom: 0;
+  color:#8ef68e;
 }
 #lastsaved{;
   display: inline-block;
