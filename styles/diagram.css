@@ -117,7 +117,7 @@
     height:100%;
     width:300px;
     display:none;
-    z-index:7;
+    z-index:13;
   }
   #toolbar{
     height:45px;
