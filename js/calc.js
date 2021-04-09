@@ -61,10 +61,6 @@
 
     }
   $('body').on('click', function(event){
-    if(user && userDiagramData){
-    saveCurrentDiagramLocally();
-    saveCurrentDiagramFirebase();
-  }
     var targetId = $(event.target).attr('id');
     if(menuOpen && ['options', 'menubutton'].indexOf(targetId) == -1 && !$(event.target).is('section')){
       $('#options').hide('slide')
@@ -83,52 +79,65 @@
   $('#name').on('input', function(){
     elementInTheMake.find('.text').text($(this).val())
     rescale(elementInTheMake.find('text'));
+    save()
   })
   $('#type').on('change', function(){
     elementInTheMake.attr('class', $(this).val())
+    save()
   })
 
   $(".color").on('click', function(){
     $(".color").removeClass('selected');
     $(this).addClass('selected')
     elementInTheMake.css('background', colors[$(this).attr('id')])
+    save()
 
   })
   $('.editColor').on('click', function(){
     $(".editColor").removeClass('selected');
     $(this).addClass('selected')
     elementInTheEdit.css('background', colors[$(this).attr('id')])
+    save()
   })
 
   $('.lineColor').on('click', function(){
     $('.lineColor').removeClass('selected')
     $(this).addClass('selected')
     buildLine();
+    save()
   })
   $('#lineType').on('change', function(){
     buildLine()
+    save()
   })
   $('#editName').on('input', function(){
     elementInTheEdit.find('.text').text($(this).val())
     rescale(elementInTheEdit.find('text'));
+    save()
   })
   $('#editType').on('change', function(){
     elementInTheEdit.attr('class', $(this).val())
+    save()
   })
   $('#part').on('input', function(){
     buildLine()
+    save()
   })
   $('.editLineColor').on('click', function(){
     $('.editLineColor').removeClass('selected')
     $(this).addClass('selected')
     buildLine(true);
+    save()
   })
   $('#editPart').on('input', function(){
     buildLine(true);
+    save()
   })
   $('#editLineType').on('change', function(){
     buildLine(true)
+    save()
   })
+  $( "#title" ).keydown(save);
 
 
   $(document).on('keypress',function(e) {
@@ -167,6 +176,7 @@
     }
     currentCell = $(this)
     newDialog();
+    save()
   }
   var fromEl;
   var toEl;
@@ -283,6 +293,7 @@
     elementInTheMake = $newDiv;
     blurAll([elementInTheMake]);
     rescale();
+    save()
   }
   function newEditDialog(){
     dialogOpen = true;
@@ -327,6 +338,7 @@
     else{
       alert('Kan deze verbinding niet maken. Entiteiten moeten verschillen van hoogte.');
     }
+    save()
   }
   function saveLineDialog(keep){
 
@@ -344,6 +356,7 @@
     }
     closeDialog();
 
+    save()
   }
   var idN = 0;
   function saveDialog(keep){
@@ -374,6 +387,7 @@
       }
     }
     closeDialog();
+    save()
   }
   function cancelEditDialog(){
     closeDialog();
@@ -381,6 +395,7 @@
     elementInTheEdit.find('.text').text(editObject.name);
     elementInTheEdit.attr('class', editObject.type);
     elementInTheEdit.css('background-color', editObject.background);
+    save()
   }
   function makeConnection(){
     open = true;
@@ -461,6 +476,7 @@
     $('#editLineColorpicker #' + colorName).addClass('selected')
     blurAll([lineInTheEdit, percDivInTheEdit])
 
+    save()
   }
   function saveEditLineDialog(keep){
     if(!keep){
@@ -475,12 +491,14 @@
     deselect();
     closeDialog();
 
+    save()
   }
 
   function cancelEditLineDialog(){
     changeLine(lineInTheEdit, percDivInTheEdit, editLineObject);
     deselect();
     closeDialog();
+    save()
   }
 
 
@@ -496,6 +514,7 @@
     line.attr('id', newId)
     part.attr('id', newId +'-part')
     setLinePositions(newId)
+    save()
   }
   function buildLine(edit){
     if(edit){
@@ -525,14 +544,14 @@
 
     unBlur();
     dialogOpen = false;
+    // save()
   }
   function enter(){
     if(dialogOpen){
       deselect();
       closeDialog();
     }
-    saveCurrentDiagramLocally();
-    saveCurrentDiagramFirebase();
+
   }
 
   function mouseAndShift($el){
@@ -855,4 +874,11 @@ function download(){
   else{
     createSlides();
   }
+}
+function save(){
+  console.log(save.caller)
+  if(user && userDiagramData){
+  saveCurrentDiagramLocally();
+  saveCurrentDiagramFirebase();
+}
 }

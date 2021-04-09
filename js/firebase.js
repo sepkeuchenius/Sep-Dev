@@ -102,8 +102,31 @@ function reloadMenuButtons(){
     var name = diagram.title;
     var section = $('<section>');
     section.text(name);
-    section.attr('onclick', 'loadDiagram("'+ i+'")')
+    section.attr('onclick', 'loadDiagram("'+ i+'")').attr('id', i)
+
+    var deletebutton = $('<span>').attr('class', 'delete-diagram material-icons').text('delete');
+    section.append(deletebutton);
+    deletebutton.on('click', deleteDiagram);
     $('#sections').append(section)
+  }
+}
+function deleteDiagram(){
+  if(confirm('Weet je zeker dat je de Diagram wilt verwijderen?')){
+    var diagramId = $(this).parent().attr('id');
+
+    delete userDiagramData[diagramId];
+    for(var i in userDiagrams){
+      if(userDiagrams[i] == diagramId){
+        userDiagrams.splice(i,1);
+        break;
+      }
+    }
+    db.ref('diagrams/' + diagramId).remove().then(function(){
+      db.ref('users/' + user.uid + '/diagrams').set(userDiagrams).then(function(){
+        loadDiagrams()
+        loadDiagram(userDiagrams[0])
+      });
+    });
   }
 }
 function saveCurrentDiagramLocally(){
@@ -129,6 +152,7 @@ function saveCurrentDiagramLocally(){
   return userDiagramData;
 }
 function saveCurrentDiagramFirebase(){
+  reloadMenuButtons();
   $('#lastsaved').text('Opslaan...');
   saveDiagramFirebase(currentDiagramId.toString())
 }

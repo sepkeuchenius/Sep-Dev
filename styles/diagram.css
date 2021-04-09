@@ -1,6 +1,9 @@
 #application-wrapper{
   display: none;
 }
+.delete-diagram{
+  float: right;
+}
 #newdiagram-section{
   position: absolute;
     bottom: 0;
