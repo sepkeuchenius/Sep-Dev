@@ -149,7 +149,7 @@
       shift()
     }
 
-    
+
 
   });
   $('.color').each(function(){
@@ -368,7 +368,7 @@
       elementInTheMake.remove();
     }
     closeDialog();
-
+    save();
   }
   function isConnected(fromEl, toEl){
     //needs change (type of line)

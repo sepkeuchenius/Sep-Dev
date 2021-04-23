@@ -1,10 +1,43 @@
-h1{
-  color: lightblue;
-  font-weight: bold;
+body{
+  font-family: 'Nunito Sans', sans-serif;
+  color: #534e4e;
+  background: #f8f6f6;
+}
+h1, h2, h3{
 }
 #main-logo{
-  font-size:50px;
-  width: 100%;
-  text-align: center;
+  font-size:70px;
+  color: #3a85cd;
   font-weight: 900;
+  text-align: center;
+  margin: 0;
+}
+#subtitle{
+  font-size: 20px;
+  margin-top:0;
+}
+#landing-brand{
+  top:calc(30vh - 25px);
+  width: 100%;
+  position: absolute;
+  left:0;
+}
+button{
+  border:none;
+  border-radius:10px;
+  padding:8 16px;
+  outline:none;
+  font-size:15px;
+  background: white;
+  font-weight: bold;
+  /* text-transform: uppercase; */
+  font-family: 'Nunito Sans';
+  cursor: pointer;
+}
+.active{
+  background:  #3a85cd;
+  color:white;
+}
+#get-started_button{
+  margin-top:100px;
 }
