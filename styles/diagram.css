@@ -1,3 +1,19 @@
+#logo{
+  width:100vw;
+  text-align: center;
+  top:40vh;
+  left:0;
+  position: absolute;
+  font-weight: bold;
+  color:white;
+  font-size: 40px;
+  font-family: 'Nunito Sans', sans-serif;
+}
+#startbutton{
+    width: auto;
+    padding:6px 30px;
+}
+
 #application-wrapper{
   display: none;
 }
@@ -172,7 +188,7 @@
   }
   body{
     background: #605d76;
-
+    margin:0;
     font-family: "Roboto","Helvetica","Arial",sans-serif;
   }
   table{

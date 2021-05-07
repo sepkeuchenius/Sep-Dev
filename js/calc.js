@@ -46,8 +46,13 @@
 
 
   $(document).ready(makeDocument)
-
+  function start(){
+      $('#start').fadeOut();
+      $('#app').fadeIn();
+  }
   function makeDocument(){
+    $('#app').hide();
+
     var tableHeight = ($(document).height()) / settings.cellheight;
     var tableWidth = ($(document).width()) / settings.cellwidth;
 
@@ -71,7 +76,7 @@
 
   $('#menubutton').on('click', function(){
     $('#options').show('slide')
-    dialogOpen = true;
+    dialogOpen = 'menu';
     menuOpen = true;
     justOpened = true;
   })
@@ -141,16 +146,19 @@
   $( "#title" ).keydown(save);
 
 
-  $(document).on('keypress',function(e) {
+  $(document).on('keyup',function(e) {
     if(e.keyCode == 13) {
-        enter()
+      enter();
     }
     else if(e.keyCode == 16){
-      shift()
+      // shift();
     }
-
-
-
+    else if(e.keyCode == 27){
+      esc();
+    }
+    else if(e.keyCode == 46){
+      del();
+    }
   });
   $('.color').each(function(){
     $(this).css('background', colors[$(this).attr('id')]);
@@ -282,7 +290,7 @@
 
 
   function newDialog(){
-    dialogOpen = true;
+    dialogOpen = 'new-item';
     $('#dialog').show( "slide");
     $('#name').focus();
     $newDiv = $('<div>')
@@ -300,7 +308,7 @@
     save()
   }
   function newEditDialog(){
-    dialogOpen = true;
+    dialogOpen = 'edit-item';
     $('#editName').val(editObject.name)
     $('#editName').focus();
     $('#editType').val(editObject.type)
@@ -335,7 +343,7 @@
     if(connect()){
       $('#lineType').trigger('change');
       $('.lineColor .selected').trigger('click');
-      dialogOpen = true;
+      dialogOpen = 'new-line';
       $('#lineDialog').show( "slide");
       blurAll([lineInTheMake, percDivInTheMake]);
     }
@@ -345,21 +353,25 @@
     save()
   }
   function saveLineDialog(keep){
-
+    console.log('tst');
     if(!keep){
       lineInTheMake.remove();
       percDivInTheMake.remove();
     }
-     var found = 0;
-    $('line').each(function(){
-      if($(this).attr('id') == lineInTheMake.attr('id')){found++}
-    })
-    if(found > 1){
-      alert('Deze verbinding is al gemaakt');
-      return;
+    else{
+      console.log('tst');
+       var found = 0;
+       $('line').each(function(){
+         console.log($(this).attr('id'))
+         if($(this).attr('id') == lineInTheMake.attr('id')){found++}
+      });
+      if(found > 1){
+        alert('Deze verbinding is al gemaakt');
+        saveLineDialog(false);
+        return;
+      }
     }
     closeDialog();
-
     save()
   }
   var idN = 0;
@@ -457,7 +469,7 @@
     var lineId = $(this).attr('id').replace('-part', '');
     lineInTheEdit = $('#' + lineId);
     var type = lineId.split('-')[2]
-    dialogOpen = true;
+    dialogOpen = 'edit-line';
     $('#editLineDialog').show('slide');
     $('#editPart').val($(this).text().replace('%', ''))
     $('.editLineColor').removeClass('selected');
@@ -551,11 +563,47 @@
     // save()
   }
   function enter(){
-    if(dialogOpen){
-      deselect();
-      closeDialog();
+    if(dialogOpen == 'new-item'){
+      saveDialog(true);
+    }
+    else if(dialogOpen == 'new-line'){
+      saveLineDialog(true);
+    }
+    else if(dialogOpen == 'edit-item'){
+      saveEditDialog(true);
+    }
+    else if(dialogOpen == 'edit-line'){
+      saveEditLineDialog(true);
     }
 
+  }
+  function esc(){
+    if(dialogOpen == 'new-item'){
+      saveDialog(false);
+    }
+    else if(dialogOpen == 'new-line'){
+      saveLineDialog(false);
+    }
+    else if(dialogOpen == 'edit-item'){
+      cancelEditDialog(false);
+    }
+    else if(dialogOpen == 'edit-line'){
+      cancelEditLineDialog(false);
+    }
+  }
+  function del(){
+    if(dialogOpen == 'new-item'){
+      saveDialog(false);
+    }
+    else if(dialogOpen == 'new-line'){
+      saveLineDialog(false);
+    }
+    else if(dialogOpen == 'edit-item'){
+      saveEditDialog(false);
+    }
+    else if(dialogOpen == 'edit-line'){
+      saveEditLineDialog(false);
+    }
   }
 
   function mouseAndShift($el){
@@ -880,7 +928,6 @@ function download(){
   }
 }
 function save(){
-  console.log(save.caller)
   if(user && userDiagramData){
   saveCurrentDiagramLocally();
   saveCurrentDiagramFirebase();

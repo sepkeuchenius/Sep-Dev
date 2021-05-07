@@ -11,6 +11,7 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
     <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
@@ -45,141 +46,147 @@
 
   </head>
   <body style='height:100%; width:100%'>
-<div id='firebase'>
-<div id="firebaseui-auth-container"></div>
-<div id="loader">Loading...</div>
+<div id='app'>
+  <div id='firebase'>
+  <div id="firebaseui-auth-container"></div>
+  <div id="loader">Loading...</div>
+  </div>
+  <div id='application-wrapper'>
+    <div id='toolbar'>
+      <img id='menubutton' src='https://www.materialui.co/materialIcons/navigation/menu_white_24x24.png' style='height:30px;margin-top:7.5px;cursor:pointer;margin-left:20px;'>
+      <input placeholder="Naamloze Diagram" id='title'>
+
+      <div id='right'>
+        <!-- <select id='download-type'><option value='pdf'>PDF</option><option value='pp'>PowerPoint</option></select> -->
+        <!-- <img src='assets/download.svg' class="small-button" onclick='download()' id='download-button'> -->
+        <button onclick='makeDoc()' class="subtle">PDF</button>
+        <button onclick='createSlides()' class="subtle">PowerPoint</button>
+        <p id='lastsaved'></p>
+      </div>
+    </div>
+    <div id='options' class='dialog'>
+      <h1 style='padding-left:30px;padding-top:30px;font-weight:regular;'>Diagrammen</h1>
+      <div id='sections'></div>
+      <!-- <section>Deel</section> -->
+      <!-- <section onclick='loadDiagram()'>Download</section> -->
+      <!-- <section>Instellingen</section> -->
+      <!-- <section>Importeer</section> -->
+      <!-- <section>Print</section> -->
+
+      <section onclick="newDiagram()" id='newdiagram-section'>+ Nieuwe Diagram</section>
+    </div>
+    <div id='totalDiagram'>
+      <svg id="map" width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg"></svg>
+      <div id='canvas'>
+        <table width=2000px height=1200px border=1>
+          <tbody>
+
+
+          </tbody>
+
+        </table>
+
+      </div>
+      </div>
+      <div id='dialog' class='dialog'>
+        <center>
+          <h1>Nieuw Item</h1>
+        <input type='text' id='name' placeholder="Naam"><br>
+        <select id='type'>
+          <option value='person'>Persoon</option>
+          <option value='company'>Rechtspersoon</option>
+        </select><br>
+       <br>
+      <div id='colorpicker'>
+        <div class='color' id='wit'></div>
+        <div class='color' id='blauw'></div>
+        <div class='color selected' id='groen'></div>
+        <div class='color' id='geel'></div>
+        <div class='color' id='oranje'></div>
+        <div class='color' id='rood'></div>
+        <div class='color' id='paars'></div>
+        <div class='color' id='zwart'></div>
+      </div>
+  <br>
+        <button onclick='saveDialog(true)'>Opslaan</button> <button onclick='saveDialog(false)'>Annuleer</button>
+        </center>
+      </div>
+       <div id='editDialog' class='dialog'>
+        <center>
+          <h1>Edit Item</h1>
+        <input type='text' id='editName' placeholder="Naam"><br>
+        <select id='editType'>
+          <option value='person'>Persoon</option>
+          <option value='company'>Rechtspersoon</option>
+        </select><br>
+       <br>
+      <div id='editColorpicker'>
+        <div class='editColor' id='wit'></div>
+        <div class='editColor' id='blauw'></div>
+        <div class='editColor selected' id='groen'></div>
+        <div class='editColor' id='geel'></div>
+        <div class='editColor' id='oranje'></div>
+        <div class='editColor' id='rood'></div>
+        <div class='editColor' id='paars'></div>
+        <div class='editColor' id='zwart'></div>
+      </div>
+  <br>
+        <button onclick='saveEditDialog(true)'>Opslaan</button> <button onclick='cancelEditDialog()'>Annuleer</button> <br><br>
+        <button style='background:#82d682;color:white;font-weight:bold;'onclick='makeConnection()'>Verbind</button>
+        <button style='background:#f57c7c;color:white'onclick='saveEditDialog(false)'>Verwijder</button>
+        </center>
+      </div>
+      <div id='lineDialog' class='dialog'>
+        <center>
+          <h1>Nieuwe Verbinding</h1>
+        <input type='text' id='part' value="100" style='width:35px;padding:3px;'>%<br>
+        <select id='lineType'>
+          <option value='eigendom'>Eigendom</option>
+          <option value='zeggenschap'>Bestuur</option>
+        </select><br><br>
+        <div id='lineColorpicker'>
+        <!-- <div class='lineColor' id='wit'></div> -->
+        <div class='lineColor selected' id='blauw'></div>
+        <div class='lineColor' id='groen'></div>
+        <div class='lineColor' id='geel'></div>
+        <div class='lineColor' id='oranje'></div>
+        <div class='lineColor' id='rood'></div>
+        <div class='lineColor' id='paars'></div>
+        <div class='lineColor' id='zwart'></div>
+      </div><br><br>
+        <button onclick='saveLineDialog(true)'>Opslaan</button> <button onclick='saveLineDialog(false)'>Annuleer</button>
+        </center>
+      </div>
+      <div id='editLineDialog' class='dialog'>
+        <center>
+          <h1>Edit Verbinding</h1>
+        <input type='text' id='editPart' value="100" style='width:60px'>%<br>
+        <select id='editLineType'>
+          <option value='eigendom'>Eigendom</option>
+          <option value='zeggenschap'>Bestuur</option>
+        </select><br><br>
+        <div id='editLineColorpicker'>
+        <!-- <div class='editLineColor' id='wit'></div> -->
+        <div class='editLineColor selected' id='blauw'></div>
+        <div class='editLineColor' id='groen'></div>
+        <div class='editLineColor' id='geel'></div>
+        <div class='editLineColor' id='oranje'></div>
+        <div class='editLineColor' id='rood'></div>
+        <div class='editLineColor' id='paars'></div>
+        <div class='editLineColor' id='zwart'></div>
+      </div><br><br>
+        <button onclick='saveEditLineDialog(true)'>Opslaan</button> <button onclick='cancelEditLineDialog()'>Annuleer</button> <br> <br>
+        <button style='background:red; color:white;'onclick='saveEditLineDialog(false)'>Verwijder</button>
+        </center>
+      </div>
+    </div>
 </div>
-<div id='application-wrapper'>
-  <div id='toolbar'>
-    <img id='menubutton' src='https://www.materialui.co/materialIcons/navigation/menu_white_24x24.png' style='height:30px;margin-top:7.5px;cursor:pointer;margin-left:20px;'>
-    <input placeholder="Naamloze Diagram" id='title'>
-
-    <div id='right'>
-      <!-- <select id='download-type'><option value='pdf'>PDF</option><option value='pp'>PowerPoint</option></select> -->
-      <!-- <img src='assets/download.svg' class="small-button" onclick='download()' id='download-button'> -->
-      <button onclick='makeDoc()' class="subtle">PDF</button>
-      <button onclick='createSlides()' class="subtle">PowerPoint</button>
-      <p id='lastsaved'></p>
-    </div>
-  </div>
-  <div id='options' class='dialog'>
-    <h1 style='padding-left:30px;padding-top:30px;font-weight:regular;'>Diagrammen</h1>
-    <div id='sections'></div>
-    <!-- <section>Deel</section> -->
-    <!-- <section onclick='loadDiagram()'>Download</section> -->
-    <!-- <section>Instellingen</section> -->
-    <!-- <section>Importeer</section> -->
-    <!-- <section>Print</section> -->
-
-    <section onclick="newDiagram()" id='newdiagram-section'>+ Nieuwe Diagram</section>
-  </div>
-  <div id='totalDiagram'>
-    <svg id="map" width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg"></svg>
-    <div id='canvas'>
-      <table width=2000px height=1200px border=1>
-        <tbody>
-
-
-        </tbody>
-
-      </table>
-
-    </div>
-    </div>
-    <div id='dialog' class='dialog'>
-      <center>
-        <h1>Nieuw Item</h1>
-      <input type='text' id='name' placeholder="Naam"><br>
-      <select id='type'>
-        <option value='person'>Persoon</option>
-        <option value='company'>Rechtspersoon</option>
-      </select><br>
-     <br>
-    <div id='colorpicker'>
-      <div class='color' id='wit'></div>
-      <div class='color' id='blauw'></div>
-      <div class='color selected' id='groen'></div>
-      <div class='color' id='geel'></div>
-      <div class='color' id='oranje'></div>
-      <div class='color' id='rood'></div>
-      <div class='color' id='paars'></div>
-      <div class='color' id='zwart'></div>
-    </div>
-<br>
-      <button onclick='saveDialog(true)'>Opslaan</button> <button onclick='saveDialog(false)'>Annuleer</button>
-      </center>
-    </div>
-     <div id='editDialog' class='dialog'>
-      <center>
-        <h1>Edit Item</h1>
-      <input type='text' id='editName' placeholder="Naam"><br>
-      <select id='editType'>
-        <option value='person'>Persoon</option>
-        <option value='company'>Rechtspersoon</option>
-      </select><br>
-     <br>
-    <div id='editColorpicker'>
-      <div class='editColor' id='wit'></div>
-      <div class='editColor' id='blauw'></div>
-      <div class='editColor selected' id='groen'></div>
-      <div class='editColor' id='geel'></div>
-      <div class='editColor' id='oranje'></div>
-      <div class='editColor' id='rood'></div>
-      <div class='editColor' id='paars'></div>
-      <div class='editColor' id='zwart'></div>
-    </div>
-<br>
-      <button onclick='saveEditDialog(true)'>Opslaan</button> <button onclick='cancelEditDialog()'>Annuleer</button> <br><br>
-      <button style='background:#82d682;color:white;font-weight:bold;'onclick='makeConnection()'>Verbind</button>
-      <button style='background:#f57c7c;color:white'onclick='saveEditDialog(false)'>Verwijder</button>
-      </center>
-    </div>
-    <div id='lineDialog' class='dialog'>
-      <center>
-        <h1>Nieuwe Verbinding</h1>
-      <input type='text' id='part' value="100" style='width:35px;padding:3px;'>%<br>
-      <select id='lineType'>
-        <option value='eigendom'>Eigendom</option>
-        <option value='zeggenschap'>Bestuur</option>
-      </select><br><br>
-      <div id='lineColorpicker'>
-      <!-- <div class='lineColor' id='wit'></div> -->
-      <div class='lineColor selected' id='blauw'></div>
-      <div class='lineColor' id='groen'></div>
-      <div class='lineColor' id='geel'></div>
-      <div class='lineColor' id='oranje'></div>
-      <div class='lineColor' id='rood'></div>
-      <div class='lineColor' id='paars'></div>
-      <div class='lineColor' id='zwart'></div>
-    </div><br><br>
-      <button onclick='saveLineDialog(true)'>Opslaan</button> <button onclick='saveLineDialog(false)'>Annuleer</button>
-      </center>
-    </div>
-    <div id='editLineDialog' class='dialog'>
-      <center>
-        <h1>Edit Verbinding</h1>
-      <input type='text' id='editPart' value="100" style='width:60px'>%<br>
-      <select id='editLineType'>
-        <option value='eigendom'>Eigendom</option>
-        <option value='zeggenschap'>Bestuur</option>
-      </select><br><br>
-      <div id='editLineColorpicker'>
-      <!-- <div class='editLineColor' id='wit'></div> -->
-      <div class='editLineColor selected' id='blauw'></div>
-      <div class='editLineColor' id='groen'></div>
-      <div class='editLineColor' id='geel'></div>
-      <div class='editLineColor' id='oranje'></div>
-      <div class='editLineColor' id='rood'></div>
-      <div class='editLineColor' id='paars'></div>
-      <div class='editLineColor' id='zwart'></div>
-    </div><br><br>
-      <button onclick='saveEditLineDialog(true)'>Opslaan</button> <button onclick='cancelEditLineDialog()'>Annuleer</button> <br> <br>
-      <button style='background:red; color:white;'onclick='saveEditLineDialog(false)'>Verwijder</button>
-      </center>
-    </div>
-  </div>
-
-
+<div id='start'>
+  <h1 id="logo">
+    Corporate Structure Diagram Builder<br>
+    <button  id='startbutton' onclick='start()'>Start</button>
+  </h1>
+</div>
 
 
     <script src='js/firebase.js'>
