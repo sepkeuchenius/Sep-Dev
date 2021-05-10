@@ -1,10 +1,15 @@
 <html>
   <head>
     <title>HouseHold</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel='stylesheet' href='household/css/styles.css'>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
       <header></header>
@@ -14,10 +19,60 @@
         <h1 id='main-logo'>HouseHold</h1>
         <h3 id='subtitle'>Get your home organized</h3>
 
-        <button class="active" id='get-started_button'>Get started</button>
+        <button class="active" id='get-started_button' onclick='getStarted()'>Get started</button>
       </center>
       </div>
+      <div id='login' class="hidden page">
+        <div id='firebase'>
+        <div id="firebaseui-auth-container"></div>
+        <div id="loader">Loading...</div>
+        </div>
+      </div>
+      <div id="houses" class="hidden page">
+        <div id="house-elements"></div>
+    	  <button onclick='newHouse()' id='new-house-button'><i class="material-icons">add</i></button>
+      </div>
+      <div id="house" class="page hidden">
+        <h1 id="house-name"></h1>
+        <p id="house-participants"></p>
+      </div>
+
+
       </main>
       <footer></footer>
+
+
+
+
+
+
+
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-database.js"></script>
+      <!-- firebaseUI -->
+      <script src="https://cdn.firebase.com/libs/firebaseui/4.0.0/firebaseui.js"></script>
+      <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+
+
+      <!-- TODO: Add SDKs for Firebase products that you want to use
+           https://firebase.google.com/docs/web/setup#available-libraries -->
+
+      <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+          apiKey: "AIzaSyDRRKO9w1tFsMDvAjl4vDduA1ADpKbRJDQ",
+          authDomain: "household-3af03.firebaseapp.com",
+          projectId: "household-3af03",
+          storageBucket: "household-3af03.appspot.com",
+          messagingSenderId: "458409994",
+          appId: "1:458409994:web:7bb16cf9e547b75d74f7f3"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+      </script>
+
+      <script src='household/js/script.js'></script>
   </body>
 </html>

@@ -41,3 +41,37 @@ button{
 #get-started_button{
   margin-top:100px;
 }
+.hidden{
+  display: none;
+}
+#houses{
+  width: fit-content;
+  margin: auto;
+  margin-top:30vh;
+}
+#house-elements , #new-house-button{
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 10px;
+}
+.house{
+  display: inline-block;
+  padding:20px;
+  box-sizing: border-box;
+  cursor: pointer;
+  background: white;
+  font-size: 30px;
+  text-align: center;
+  background: #3a85cd;
+  border-radius: 20px;
+  color: white;
+}
+.trans{
+  background-color: transparent;
+}
+#house{
+  text-align: center;
+}
+#house-name{
+  color: #3a85cd;
+}
