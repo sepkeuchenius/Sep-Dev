@@ -9,7 +9,7 @@
 
     }
     to {
-      margin-left:calc(50% - 400px);
+      margin-left:calc(50% - 250px);
     }
   }
   @keyframes moveRight {
@@ -18,7 +18,7 @@
 
     }
     to {
-      margin-right:calc(50% - 400px);
+      margin-right:calc(50% - 250px);
     }
   }
 
