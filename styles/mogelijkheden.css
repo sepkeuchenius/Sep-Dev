@@ -40,14 +40,14 @@ line{
   border-left: 3px solid green;
   float:left;
   text-align: left;
-  margin-left: calc(50% - 400px);
+  margin-left: calc(50% - 250px);
   animation: moveLeft 1s;
 }
 .text-right{
   border-right: 3px solid green;
   min-height: 50px;
   float:right;
-  margin-right: calc(50% - 400px);
+  margin-right: calc(50% - 250px);
   animation: moveRight 1s;
   text-align: right;
 }
