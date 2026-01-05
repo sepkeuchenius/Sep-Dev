@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Raleway", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+html,
+body {
+  @apply bg-[#F6F0D7];
+
+  /* @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+  } */
+
+  color-scheme: light;
+
+  color: #3a3a3a;
+  height: 100vh;
+}
+
+@keyframes border-draw {
+  0% {
+    background: conic-gradient(from 0deg, #C5D89D 0%, transparent 0%);
+  }
+  12.5% {
+    background: conic-gradient(from 0deg, #C5D89D 12.5%, transparent 12.5%);
+  }
+  25% {
+    background: conic-gradient(from 0deg, #C5D89D 25%, transparent 25%);
+  }
+  37.5% {
+    background: conic-gradient(from 0deg, #C5D89D 37.5%, transparent 37.5%);
+  }
+  50% {
+    background: conic-gradient(from 0deg, #C5D89D 50%, transparent 50%);
+  }
+  62.5% {
+    background: conic-gradient(from 0deg, #C5D89D 62.5%, transparent 62.5%);
+  }
+  75% {
+    background: conic-gradient(from 0deg, #C5D89D 75%, transparent 75%);
+  }
+  87.5% {
+    background: conic-gradient(from 0deg, #C5D89D 87.5%, transparent 87.5%);
+  }
+  100% {
+    background: conic-gradient(from 0deg, #C5D89D 100%, transparent 100%);
+  }
+}
+
+.border-draw-hover {
+  position: relative;
+  border: 2px solid transparent;
+}
+
+.border-draw-hover::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: transparent;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+
+.border-draw-hover:hover::before {
+  opacity: 1;
+  animation: border-draw 0.6s ease-in-out forwards;
+}
