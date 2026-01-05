@@ -130,7 +130,7 @@ function SoftwareChainItem({ title, description, icon, subItems }: { title: stri
       </div>
       
       {showSubItems && subItems && subItems.length > 0 && (
-        <div className="absolute top-full mt-2 sm:mt-4 left-1/2 transform -translate-x-1/2 md:left-auto md:transform-none flex flex-wrap gap-1.5 sm:gap-2 justify-center min-w-[150px] sm:min-w-[200px] max-w-[250px] sm:max-w-[300px] z-10 px-2">
+        <div className="absolute top-full mt-2 sm:mt-4 left-1/2 transform -translate-x-1/2 flex flex-wrap gap-1.5 sm:gap-2 justify-center min-w-[150px] sm:min-w-[200px] max-w-[250px] sm:max-w-[300px] z-10 px-2">
           {subItems.map((item, index) => (
             <div 
               key={index}
