@@ -81,36 +81,76 @@ function SoftwareChain() {
   )
 }
 
-function SoftwareChainItem({ title, description, icon }: { title: string, description: string, icon: React.ReactNode }) {
+function SoftwareChainItem({ title, description, icon, subItems }: { title: string, description: string, icon: React.ReactNode, subItems?: string[] }) {
+  const [isHovered, setIsHovered] = React.useState(false);
+
   return (
-    <div className="flex flex-col items-center justify-center p-15 gap-5 rounded cursor-pointer border-draw-hover rounded-full w-16">
+    <div 
+      className="relative flex flex-col items-center justify-center p-15 gap-5 rounded cursor-pointer border-draw-hover rounded-full w-16"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <p className="text-lg">{description}</p>
       {icon}
+      
+      {isHovered && subItems && subItems.length > 0 && (
+        <div className="absolute top-full mt-4 flex flex-wrap gap-2 justify-center min-w-[200px] max-w-[300px] z-10">
+          {subItems.map((item, index) => (
+            <div 
+              key={index}
+              className="px-3 py-1 bg-[#C5D89D] rounded-full text-sm text-[#3a3a3a] whitespace-nowrap opacity-0 animate-fade-in"
+              style={{ animationDelay: `${index * 50}ms` }}
+            >
+              {item}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }
 
 function Backend() {
   return (
-    <SoftwareChainItem title="Backend" description="Backend" icon={<Server />} />
+    <SoftwareChainItem 
+      title="Backend" 
+      description="Backend" 
+      icon={<Server />} 
+      subItems={["Python", "C#", "Rust", "Kubernetes", "Docker", "PostgreSQL", "Redis"]}
+    />
   )
 }
 
 function Frontend() {
   return (
-      <SoftwareChainItem title="Frontend" description="Frontend" icon={<Code />} />
+    <SoftwareChainItem 
+      title="Frontend" 
+      description="Frontend" 
+      icon={<Code />} 
+      subItems={["React", "TypeScript", "Tailwind CSS", "Vite", "Prisma", "GraphQL", "REST", "WebSocket"]}
+    />
   )
 }
 
 function AI() {
   return (
-    <SoftwareChainItem title="AI" description="AI" icon={<Brain />} />
+    <SoftwareChainItem 
+      title="AI" 
+      description="AI" 
+      icon={<Brain />} 
+      subItems={["NLP", "Knowledge Graphs", "RAG", "OpenAI", "LangChain", "LLMs", "MLOps", "Huggingface", "Transformers"]}
+    />
   )
 }
 
 function DevOps() {
   return (
-    <SoftwareChainItem title="DevOps" description="DevOps" icon={<Rocket />} />
+    <SoftwareChainItem 
+      title="DevOps" 
+      description="DevOps" 
+      icon={<Rocket />} 
+      subItems={["AWS", "Azure", "CI/CD", "Ansible", "GitHub Actions", "Monitoring"]}
+    />
   )
 }
 
