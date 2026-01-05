@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Brain, Code, Server } from "lucide-react";
+import { Brain, Code, Rocket, Server } from "lucide-react";
 import type { Route } from "./+types/home";
 import { Dots } from "../components/dots";
 
@@ -110,7 +110,7 @@ function AI() {
 
 function DevOps() {
   return (
-    <SoftwareChainItem title="DevOps" description="DevOps" icon={<Server />} />
+    <SoftwareChainItem title="DevOps" description="DevOps" icon={<Rocket />} />
   )
 }
 
