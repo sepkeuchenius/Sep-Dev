@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Brain, Code, Rocket, Server } from "lucide-react";
+import { Link } from "react-router";
 import type { Route } from "./+types/home";
 import { Dots } from "../components/dots";
 
@@ -23,14 +24,18 @@ export default function Home() {
     <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 md:gap-20 mt-6 sm:mt-8 md:mt-10 w-full max-w-7xl">
       <Article>
         <h1 className="text-xl sm:text-2xl font-bold text-center sm:text-left">About me</h1>
-        <p className="text-sm sm:text-base md:text-lg text-center sm:text-left">I am a software engineer with a passion for building products that help people live better lives.</p>
-        <ArticleButton>Why</ArticleButton>
+        <p className="text-sm sm:text-base md:text-lg text-center sm:text-left">A skilled, quick-learning full-stack & AI engineer. Currently leading a team of AI engineers at Y. Digital, building intelligent, scalable AI platforms. Comfortable behind a screen and in front of an audience, taking energy from building complete tools that help people.</p>
+        <Link to="/about" className="w-full sm:w-auto">
+          <ArticleButton>Why</ArticleButton>
+        </Link>
       </Article>
 
       <Article>
         <h1 className="text-xl sm:text-2xl font-bold text-center sm:text-left">My work</h1>
-        <p className="text-sm sm:text-base md:text-lg text-center sm:text-left">I have worked on a variety of projects, from small side projects to large scale products.</p>
-        <ArticleButton>Show me</ArticleButton>
+        <p className="text-sm sm:text-base md:text-lg text-center sm:text-left">From leading AI platform development at Y. Digital to freelance automation projects and personal ventures like Spotter and MoneyFlow. Building scalable solutions with React, Python, Kubernetes, and cutting-edge AI technologies.</p>
+        <Link to="/projects" className="w-full sm:w-auto">
+          <ArticleButton>Show me</ArticleButton>
+        </Link>
       </Article>
     </div>
     {/* <Dots /> */}
