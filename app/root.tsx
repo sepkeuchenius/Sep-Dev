@@ -51,8 +51,26 @@ export function Layout({ children }: { children: React.ReactNode }) {
 function Logo() {
   const location = useLocation();
   const [isVisible, setIsVisible] = React.useState(false);
+  const [scrollY, setScrollY] = React.useState(0);
   const isHome = location.pathname === "/";
+  const isAboutOrProjects = location.pathname === "/about" || location.pathname === "/projects";
   const containerRef = React.useRef<HTMLDivElement>(null);
+
+  // Track scroll position
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+      // Hide indicator on scroll
+      setIsVisible(false);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    setScrollY(window.scrollY); // Set initial scroll position
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   // Hide on click outside
   React.useEffect(() => {
@@ -73,21 +91,6 @@ function Logo() {
     };
   }, [isVisible]);
 
-  // Hide on scroll
-  React.useEffect(() => {
-    const handleScroll = () => {
-      setIsVisible(false);
-    };
-
-    if (isVisible) {
-      window.addEventListener('scroll', handleScroll, { passive: true });
-    }
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [isVisible]);
-
   const handleLogoClick = (e: React.MouseEvent) => {
     if (isHome) {
       e.preventDefault();
@@ -95,10 +98,15 @@ function Logo() {
     }
   };
 
+  // Hide logo when on about/projects pages and scrolled to top
+  const shouldHideLogo = isAboutOrProjects && scrollY < 10;
+
   return (
     <div
       ref={containerRef}
-      className="fixed top-4 left-4 z-50 flex items-center"
+      className={`fixed top-4 left-4 z-50 flex items-center transition-opacity duration-300 ${
+        shouldHideLogo ? 'opacity-0 pointer-events-none' : 'opacity-100'
+      }`}
     >
       <Link
         to="/"
