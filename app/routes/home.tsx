@@ -13,9 +13,13 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center py-4 sm:py-6 md:py-10 px-4 sm:px-6 mt-10 sm:mx-10 md:mt-30 sm:gap-20 md:gap-0">
-    <div className="flex flex-col items-center justify-end min-h-[20vh] sm:min-h-[20vh] md:h-1/2 gap-10 sm:gap-10 md:gap-10 mb-4 sm:mb-6 md:mb-8">
-      <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-center">Sep Keuchenius</h1>
+    <main className="flex flex-col items-center py-4 sm:py-6 md:py-10 px-4 sm:px-6 mt-30 md:mt-30 sm:gap-20 md:gap-0">
+    <div className="flex flex-col items-center justify-end min-h-[20vh] sm:min-h-[20vh] md:h-1/2 gap-10 sm:gap-10 md:gap-10 mb-4 sm:mb-6 md:mb-8 w-full">
+      <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-center flex items-center justify-baseline gap-2 sm:gap-3">
+        Sep&nbsp;
+        Keuchenius
+
+      </h1>
       <HoverableImage />
       {/* <PortraitSVG /> */}
       <h1 className="text-sm sm:text-base md:text-lg text-center px-4 italic">Software Engineer - AI Engineer - Dev Lead</h1>
@@ -430,9 +434,9 @@ function HoverableImage() {
   const [isHovered, setIsHovered] = React.useState(false);
 
   return (
-    <div className="p-3 rounded-lg border-draw-hover">
+    <div className="p-3 rounded-lg border-draw-hover max-w-2/3">
     <div
-      className="relative w-100 h-40 rounded-lg opacity-80 p-3"
+      className="relative w-100 max-w-full h-40 rounded-lg opacity-80 p-3"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
