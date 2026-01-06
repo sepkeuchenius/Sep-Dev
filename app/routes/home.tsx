@@ -6,8 +6,10 @@ import { Dots } from "../components/dots";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Sep Keuchenius" },
-    { name: "description", content: "Sep Keuchenius" },
+    { title: "Sep Keuchenius - Software Engineer & AI Engineer" },
+    { name: "description", content: "Sep Keuchenius - Full-stack Software Engineer & AI Engineer. Expert in React, TypeScript, Python, AI/ML, Kubernetes, and cloud infrastructure. Lead Developer at Y. Digital." },
+    { property: "og:url", content: "https://sep.dev" },
+    { property: "og:type", content: "profile" },
   ];
 }
 

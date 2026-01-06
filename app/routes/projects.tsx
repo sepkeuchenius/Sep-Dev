@@ -3,8 +3,10 @@ import type { Route } from "./+types/projects";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Projects - Sep Keuchenius" },
-    { name: "description", content: "Projects by Sep Keuchenius - Software Engineer & AI Engineer" },
+    { title: "Projects - Sep Keuchenius | Software Engineer & AI Engineer" },
+    { name: "description", content: "Explore projects by Sep Keuchenius - Software Engineer & AI Engineer. Including Spotter, MoneyFlow, Politics Navigator, and professional work on AI platforms and automation solutions." },
+    { property: "og:url", content: "https://sep.dev/projects" },
+    { property: "og:type", content: "website" },
   ];
 }
 

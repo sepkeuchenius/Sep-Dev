@@ -14,6 +14,8 @@ import { Linkedin, Github } from "lucide-react";
 import type { Route } from "./+types/root";
 import "./app.css";
 
+const SITE_URL = "https://sep.dev";
+
 export const links: Route.LinksFunction = () => [
   { rel: "icon", href: "/logo.svg", type: "image/svg+xml" },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -28,14 +30,72 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
+export const meta: Route.MetaFunction = ({ data, matches }) => {
+  const routeMatch = matches.find((match) => match?.meta);
+  const routeMeta = routeMatch?.meta || [];
+  
+  // Extract title and description from route meta, handling different meta descriptor types
+  let title = "Sep Keuchenius - Software Engineer & AI Engineer";
+  let description = "Sep Keuchenius - Full-stack Software Engineer & AI Engineer. Expert in React, TypeScript, Python, AI/ML, and cloud infrastructure.";
+  let url = SITE_URL;
+  
+  for (const meta of routeMeta) {
+    if ("title" in meta && typeof meta.title === "string") {
+      title = meta.title;
+    }
+    if ("name" in meta && meta.name === "description" && "content" in meta && typeof meta.content === "string") {
+      description = meta.content;
+    }
+    if ("property" in meta && meta.property === "og:url" && "content" in meta && typeof meta.content === "string") {
+      url = meta.content;
+    }
+  }
+  
+  const image = `${SITE_URL}/images/sep.jpg`;
+
+  return [
+    { title },
+    { name: "description", content: description },
+    { name: "keywords", content: "Sep Keuchenius, Software Engineer, AI Engineer, Full-stack Developer, React, TypeScript, Python, Machine Learning, NLP, Kubernetes, DevOps, Lead Developer" },
+    { name: "author", content: "Sep Keuchenius" },
+    { name: "robots", content: "index, follow" },
+    { name: "googlebot", content: "index, follow" },
+    
+    // Open Graph
+    { property: "og:type", content: "website" },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:url", content: url },
+    { property: "og:image", content: image },
+    { property: "og:image:alt", content: "Sep Keuchenius - Software Engineer & AI Engineer" },
+    { property: "og:site_name", content: "Sep Keuchenius" },
+    { property: "og:locale", content: "en_US" },
+    
+    // Twitter Card
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: image },
+    { name: "twitter:image:alt", content: "Sep Keuchenius - Software Engineer & AI Engineer" },
+    
+    // Additional SEO
+    { name: "theme-color", content: "#89986D" },
+  ];
+};
+
 export function Layout({ children }: { children: React.ReactNode }) {
+  const location = useLocation();
+  const canonicalUrl = `${SITE_URL}${location.pathname === "/" ? "" : location.pathname}`;
+
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href={canonicalUrl} />
         <Meta />
         <Links />
+        <StructuredData />
       </head>
       <body>
         <Logo />
@@ -45,6 +105,51 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Scripts />
       </body>
     </html>
+  );
+}
+
+function StructuredData() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Sep Keuchenius",
+    "jobTitle": "Lead Developer & AI Engineer",
+    "url": SITE_URL,
+    "sameAs": [
+      "https://www.linkedin.com/in/sep-k-10065a141/",
+      "https://github.com/sepkeuchenius"
+    ],
+    "image": `${SITE_URL}/images/sep.jpg`,
+    "description": "Full-stack Software Engineer & AI Engineer. Expert in React, TypeScript, Python, AI/ML, Kubernetes, and cloud infrastructure.",
+    "knowsAbout": [
+      "Software Engineering",
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Natural Language Processing",
+      "Full-stack Development",
+      "React",
+      "TypeScript",
+      "Python",
+      "Kubernetes",
+      "DevOps",
+      "Cloud Computing"
+    ],
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "University of Utrecht",
+      "degree": "Bachelor's in AI"
+    },
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Y. Digital"
+    }
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
   );
 }
 

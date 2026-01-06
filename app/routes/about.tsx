@@ -3,8 +3,10 @@ import type { Route } from "./+types/about";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "About Sep Keuchenius" },
-    { name: "description", content: "About Sep Keuchenius - Senior Full-stack & AI Engineer" },
+    { title: "About Sep Keuchenius - Software Engineer & AI Engineer" },
+    { name: "description", content: "Learn about Sep Keuchenius - Full-stack Software Engineer & AI Engineer with expertise in React, TypeScript, Python, AI/ML, and cloud infrastructure. Lead Developer at Y. Digital with experience in NLP, Knowledge Graphs, and scalable AI platforms." },
+    { property: "og:url", content: "https://sep.dev/about" },
+    { property: "og:type", content: "profile" },
   ];
 }
 
