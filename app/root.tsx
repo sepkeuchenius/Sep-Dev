@@ -13,6 +13,7 @@ import { Linkedin, Github } from "lucide-react";
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import { EasterEgg } from "./components/easter-egg";
 
 const SITE_URL = "https://sep.dev";
 
@@ -100,6 +101,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <Logo />
         <SocialLinks />
+        <EasterEgg />
         {children}
         <ScrollRestoration />
         <Scripts />
