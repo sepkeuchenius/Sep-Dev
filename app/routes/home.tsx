@@ -14,22 +14,37 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
+  const [showContent, setShowContent] = React.useState(false);
+
+  React.useEffect(() => {
+    // After 1.2 seconds, trigger the move-up animation and show rest of content
+    const timer = setTimeout(() => {
+      setShowContent(true);
+    }, 1200);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <main className="flex flex-col items-center py-4 sm:py-6 md:py-10 px-4 sm:px-6 mt-30 md:mt-30 sm:gap-20 md:gap-0">
-    <div className="flex flex-col items-center justify-center min-h-[50vh] sm:min-h-[50vh] md:min-h-[60vh] gap-10 sm:gap-10 md:gap-10 mb-4 sm:mb-6 md:mb-8 w-full">
-      <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-center flex items-center justify-baseline gap-2 sm:gap-3 animate-slide-in" style={{ animationDelay: '0ms' }}>
+    <main className="flex flex-col items-center py-4 sm:py-6 md:py-10 px-4 sm:px-6 mt-30 md:mt-30 sm:gap-20 md:gap-0 relative">
+    {/* Splash screen name - centered initially, then moves to top */}
+    <div className={showContent ? 'name-splash-container moved' : 'name-splash-container'}>
+      <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-center flex items-center justify-baseline gap-2 sm:gap-3 animate-name-splash">
         Sep&nbsp;
         Keuchenius
-
       </h1>
+    </div>
+
+    {/* Rest of content - appears after name moves */}
+    <div className={`flex flex-col items-center justify-end min-h-[20vh] sm:min-h-[20vh] md:h-1/2 gap-10 sm:gap-10 md:gap-10 mb-4 sm:mb-6 md:mb-8 w-full transition-opacity duration-500 ${showContent ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+      <div className="h-12 sm:h-14 md:h-16"></div> {/* Spacer for name */}
       <HoverableImage />
       {/* <PortraitSVG /> */}
-      <h1 className="text-sm sm:text-base md:text-lg text-center px-4 italic animate-slide-in" style={{ animationDelay: '1500ms' }}>Software Engineer - AI Engineer - Dev Lead</h1>
+      <h1 className="text-sm sm:text-base md:text-lg text-center px-4 italic animate-slide-in" style={{ animationDelay: showContent ? '200ms' : '0ms' }}>Software Engineer - AI Engineer - Dev Lead</h1>
     
     </div>
     <SoftwareChain />
     <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 md:gap-20 mt-6 sm:mt-8 md:mt-10 w-full max-w-7xl">
-      <Article delay={2800}>
+      <Article delay={1200}>
         <h1 className="text-xl sm:text-2xl font-bold text-center sm:text-left">About me</h1>
         <p className="text-sm sm:text-base md:text-lg text-center sm:text-left">A skilled, quick-learning full-stack & AI engineer. Comfortable behind a screen and in front of an audience, taking energy from building complete tools that help people.</p>
         <Link to="/about" className="w-full sm:w-auto">
@@ -37,7 +52,7 @@ export default function Home() {
         </Link>
       </Article>
 
-      <Article delay={3000}>
+      <Article delay={1400}>
         <h1 className="text-xl sm:text-2xl font-bold text-center sm:text-left">My work</h1>
         <p className="text-sm sm:text-base md:text-lg text-center sm:text-left">From leading AI platform development to freelance automation projects and personal ventures. Building scalable solutions modern technologies, and cutting-edge AI technologies.</p>
         <Link to="/projects" className="w-full sm:w-auto">
@@ -72,20 +87,20 @@ function SoftwareChain() {
       {/* Dotted line from left edge to first item */}
       <div className="w-2 sm:flex-1 sm:min-w-[20px] h-[1px] sm:h-px bg-[#3a3a3a] opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1px, transparent 1px)', backgroundSize: '8px 2px', backgroundPosition: 'center' }} />
       
-      <Backend delay={2000} />
+      <Backend delay={400} />
       
       {/* Dotted line between items */}
       <div className="h-[1px] sm:h-px w-2 sm:w-4 md:w-5 bg-[#3a3a3a] opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1.5px, transparent 1.5px)', backgroundSize: '6px 2px', backgroundPosition: 'center' }} />
       
-      <Frontend delay={2200} />
+      <Frontend delay={600} />
       
       <div className="h-[1px] sm:h-px w-2 sm:w-4 md:w-5 bg-[#3a3a3a] opacity-80 sm:opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1.5px, transparent 1.5px)', backgroundSize: '6px 2px', backgroundPosition: 'center' }} />
       
-      <AI delay={2400} />
+      <AI delay={800} />
       
       <div className="h-[1px] sm:h-px w-2 sm:w-4 md:w-5 bg-[#3a3a3a] opacity-80 sm:opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1.5px, transparent 1.5px)', backgroundSize: '6px 2px', backgroundPosition: 'center' }} />
       
-      <DevOps delay={2600} />
+      <DevOps delay={1000} />
       
       {/* Dotted line from last item to right edge */}
       <div className="w-2 sm:flex-1 sm:min-w-[20px] h-[1px] sm:h-px bg-[#3a3a3a] opacity-80 sm:opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1px, transparent 1px)', backgroundSize: '8px 2px', backgroundPosition: 'center' }} />
@@ -441,7 +456,7 @@ function HoverableImage() {
   const [isHovered, setIsHovered] = React.useState(false);
 
   return (
-    <div className="p-3 rounded-lg border-draw-hover max-w-2/3 animate-slide-in" style={{ animationDelay: '1200ms' }}>
+    <div className="p-3 rounded-lg border-draw-hover max-w-2/3 animate-slide-in" style={{ animationDelay: '0ms' }}>
     <div
       className="relative w-100 max-w-full h-40 rounded-lg opacity-90 p-3"
       onMouseEnter={() => setIsHovered(true)}
