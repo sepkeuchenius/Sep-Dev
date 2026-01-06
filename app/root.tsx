@@ -117,9 +117,7 @@ function Logo() {
         <div className={`flex items-center gap-2 ml-2 z-20 transition-opacity duration-300 ${
           isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}>
-          <span className="text-xs sm:text-sm text-[#3a3a3a] font-medium whitespace-nowrap">
-            You are here
-          </span>
+          
           {/* Arrow pointing left to logo */}
           <svg 
             className="w-4 h-4 sm:w-5 sm:h-5 text-[#89986D]"
@@ -135,6 +133,10 @@ function Logo() {
               strokeLinejoin="round"
             />
           </svg>
+
+          <span className="text-xs sm:text-sm text-[#3a3a3a] font-medium whitespace-nowrap">
+            You are here already!
+          </span>
         </div>
       )}
     </div>
