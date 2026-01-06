@@ -1,3 +1,4 @@
+import * as React from "react";
 import {
   isRouteErrorResponse,
   Links,
@@ -6,6 +7,7 @@ import {
   Scripts,
   ScrollRestoration,
   Link,
+  useLocation,
 } from "react-router";
 import { Linkedin, Github } from "lucide-react";
 
@@ -47,18 +49,95 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 function Logo() {
+  const location = useLocation();
+  const [isVisible, setIsVisible] = React.useState(false);
+  const isHome = location.pathname === "/";
+  const containerRef = React.useRef<HTMLDivElement>(null);
+
+  // Hide on click outside
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setIsVisible(false);
+      }
+    };
+
+    if (isVisible) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [isVisible]);
+
+  // Hide on scroll
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsVisible(false);
+    };
+
+    if (isVisible) {
+      window.addEventListener('scroll', handleScroll, { passive: true });
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isVisible]);
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (isHome) {
+      e.preventDefault();
+      setIsVisible(!isVisible);
+    }
+  };
+
   return (
-    <Link
-      to="/"
-      className="fixed top-4 left-4 z-50 opacity-50 hover:opacity-100 transition-opacity duration-300 p-2 rounded-full hover:bg-[#C5D89D]/20"
-      aria-label="Home"
+    <div
+      ref={containerRef}
+      className="fixed top-4 left-4 z-50 flex items-center"
     >
-      <img
-        src="/logo.svg"
-        alt="Logo"
-        className="w-6 h-6"
-      />
-    </Link>
+      <Link
+        to="/"
+        onClick={handleLogoClick}
+        className="opacity-50 hover:opacity-100 transition-opacity duration-300 p-2 rounded-full hover:bg-[#C5D89D]/20"
+        aria-label="Home"
+      >
+        <img
+          src="/logo.svg"
+          alt="Logo"
+          className="w-6 h-6"
+        />
+      </Link>
+      {/* "You are here" indicator - shown when on home page and clicked */}
+      {isHome && (
+        <div className={`flex items-center gap-2 ml-2 z-20 transition-opacity duration-300 ${
+          isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}>
+          <span className="text-xs sm:text-sm text-[#3a3a3a] font-medium whitespace-nowrap">
+            You are here
+          </span>
+          {/* Arrow pointing left to logo */}
+          <svg 
+            className="w-4 h-4 sm:w-5 sm:h-5 text-[#89986D]"
+            viewBox="0 0 24 24" 
+            fill="none" 
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path 
+              d="M20 12L4 12M4 12L8 8M4 12L8 16" 
+              stroke="currentColor" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            />
+          </svg>
+        </div>
+      )}
+    </div>
   );
 }
 
