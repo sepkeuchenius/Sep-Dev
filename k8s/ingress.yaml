@@ -34,8 +34,29 @@ spec:
   - hosts:
     - website.sep.dev
     secretName: sep-dev-website-tls
-
-
+---
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: sep-dev-website-sep-dev-ingress
+  namespace: sep-dev
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: sep.dev
+    http:
+      paths:
+      - backend:
+          service:
+            name: sep-dev-website
+            port:
+              number: 3000
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - sep.dev
+    secretName: sep-dev-website-sep-dev-tls
 ---
 kind: Service
 apiVersion: v1
@@ -50,6 +71,47 @@ spec:
     targetPort: 3000
 
 
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: sep-dev-website-cert
+  namespace: sep-dev
+spec:
+  secretName: sep-dev-website-tls
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  dnsNames:
+  - website.sep.dev
+
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: sep-dev-website-sep-dev-cert
+  namespace: sep-dev
+spec:
+  secretName: sep-dev-website-sep-dev-tls
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  dnsNames:
+  - sep.dev
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: sep-dev-website-www-sep-dev-cert
+  namespace: sep-dev
+spec:
+  secretName: sep-dev-website-www-sep-dev-tls
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  dnsNames:
+  - www.sep.dev
 
 
 

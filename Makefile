@@ -16,4 +16,6 @@ yeet: build push
 deploy: yeet restart
 
 restart:
-	kubectl rollout restart deployment/${NAME} -n ${NAME}
+	kubectl apply -f k8s/deploy.yaml
+	kubectl apply -f k8s/ingress.yaml
+	kubectl rollout restart deployment/${NAME} -n sep-dev

@@ -436,7 +436,7 @@ function HoverableImage() {
   return (
     <div className="p-3 rounded-lg border-draw-hover max-w-2/3">
     <div
-      className="relative w-100 max-w-full h-40 rounded-lg opacity-80 p-3"
+      className="relative w-100 max-w-full h-40 rounded-lg opacity-90 p-3"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
