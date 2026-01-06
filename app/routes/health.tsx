@@ -80,7 +80,7 @@ export default function About() {
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
                   <h3 className="text-lg sm:text-xl font-semibold">Sep Dev / Freelance Software Developer</h3>
-                  <span className="text-sm sm:text-base text-[#6D7A55]">September 2020 - PRESENT, Zeist</span>
+                  <span className="text-sm sm:text-base text-[#6D7A55]">September 2020 - Now, Zeist</span>
                 </div>
                 <p className="text-sm sm:text-base leading-relaxed">
                   During my studies, I started my own freelance company and helped many clients with 
@@ -93,7 +93,7 @@ export default function About() {
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
                   <h3 className="text-lg sm:text-xl font-semibold">WXNDER / Owner, Software Developer</h3>
-                  <span className="text-sm sm:text-base text-[#6D7A55]">September 2020 - December 2021, Leersum</span>
+                  <span className="text-sm sm:text-base text-[#6D7A55]">September 2020 - Now, Leersum</span>
                 </div>
                 <p className="text-sm sm:text-base leading-relaxed">
                   Part of the creation of WXNDER, which was a company that sold a combination of picnic 
@@ -110,7 +110,7 @@ export default function About() {
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
                   <h3 className="text-lg sm:text-xl font-semibold">PB International / Junior Software Developer</h3>
-                  <span className="text-sm sm:text-base text-[#6D7A55]">Maart 2019 - December 2019, Doetinchem</span>
+                  <span className="text-sm sm:text-base text-[#6D7A55]">September 2020 - Now, Zeist</span>
                 </div>
                 <p className="text-sm sm:text-base leading-relaxed">
                   Designed and created a complete internal asset management tool in PHP that solved 

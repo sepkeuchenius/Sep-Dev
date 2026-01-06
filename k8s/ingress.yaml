@@ -1,0 +1,56 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    meta.helm.sh/release-name: sep-dev
+    meta.helm.sh/release-namespace: sep-dev
+    nginx.ingress.kubernetes.io/proxy-body-size: 25m
+    nginx.ingress.kubernetes.io/proxy-buffer-size: 25m
+    nginx.ingress.kubernetes.io/proxy-buffers-number: "8"
+    nginx.ingress.kubernetes.io/proxy-busy-buffers-size: 25m
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "60"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  name: sep-dev-website
+  namespace: sep-dev
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: website.sep.dev
+    http:
+      paths:
+      - backend:
+          service:
+            name: sep-dev-website
+            port:
+              number: 3000
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - website.sep.dev
+    secretName: sep-dev-website-tls
+
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: sep-dev-website
+  namespace: sep-dev
+spec:
+  selector:
+    app: sep-dev-website
+  ports:
+  - port: 3000
+    targetPort: 3000
+
+
+
+
+
+
