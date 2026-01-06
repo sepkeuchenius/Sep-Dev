@@ -18,7 +18,7 @@ export default function Home() {
       <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-center">Sep Keuchenius</h1>
       <HoverableImage />
       {/* <PortraitSVG /> */}
-      <h1 className="text-sm sm:text-base md:text-lg text-center px-4">Software Engineer - AI Engineer - Dev Lead</h1>
+      <h1 className="text-sm sm:text-base md:text-lg text-center px-4 italic">Software Engineer - AI Engineer - Dev Lead</h1>
     
     </div>
     <SoftwareChain />
@@ -62,27 +62,27 @@ function ArticleButton({ children }: { children: React.ReactNode }) {
 
 function SoftwareChain() {
   return (
-    <div className="flex flex-row flex-nowrap items-center justify-center min-h-[40vh] md:h-1/3 w-full gap-4 sm:gap-6 md:gap-8 lg:gap-12 px-4 sm:px-6 md:px-0">
+    <div className="flex flex-row flex-nowrap items-center justify-center min-h-[40vh] md:h-1/3 w-full gap-2 sm:gap-6 md:gap-8 lg:gap-12 px-2 sm:px-6 md:px-0">
       {/* Dotted line from left edge to first item */}
-      <div className="flex-1 min-w-[20px] h-[2px] sm:h-px bg-[#3a3a3a] opacity-80" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1px, transparent 1px)', backgroundSize: '8px 2px', backgroundPosition: 'center' }} />
+      <div className="w-2 sm:flex-1 sm:min-w-[20px] h-[1px] sm:h-px bg-[#3a3a3a] opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1px, transparent 1px)', backgroundSize: '8px 2px', backgroundPosition: 'center' }} />
       
       <Backend />
       
       {/* Dotted line between items */}
-      <div className="h-[1px] sm:h-px w-8 sm:w-4 md:w-5 min-w-[20px] sm:min-w-0 bg-[#3a3a3a] opacity-80" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1.5px, transparent 1.5px)', backgroundSize: '6px 2px', backgroundPosition: 'center' }} />
+      <div className="h-[1px] sm:h-px w-2 sm:w-4 md:w-5 bg-[#3a3a3a] opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1.5px, transparent 1.5px)', backgroundSize: '6px 2px', backgroundPosition: 'center' }} />
       
       <Frontend />
       
-      <div className="h-[1px] sm:h-px w-8 sm:w-4 md:w-5 min-w-[20px] sm:min-w-0 bg-[#3a3a3a] opacity-80 sm:opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1.5px, transparent 1.5px)', backgroundSize: '6px 2px', backgroundPosition: 'center' }} />
+      <div className="h-[1px] sm:h-px w-2 sm:w-4 md:w-5 bg-[#3a3a3a] opacity-80 sm:opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1.5px, transparent 1.5px)', backgroundSize: '6px 2px', backgroundPosition: 'center' }} />
       
       <AI />
       
-      <div className="h-[1px] sm:h-px w-8 sm:w-4 md:w-5 min-w-[20px] sm:min-w-0 bg-[#3a3a3a] opacity-80 sm:opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1.5px, transparent 1.5px)', backgroundSize: '6px 2px', backgroundPosition: 'center' }} />
+      <div className="h-[1px] sm:h-px w-2 sm:w-4 md:w-5 bg-[#3a3a3a] opacity-80 sm:opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1.5px, transparent 1.5px)', backgroundSize: '6px 2px', backgroundPosition: 'center' }} />
       
       <DevOps />
       
       {/* Dotted line from last item to right edge */}
-      <div className="flex-1 min-w-[20px] h-[1px] sm:h-px bg-[#3a3a3a] opacity-80 sm:opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1px, transparent 1px)', backgroundSize: '8px 2px', backgroundPosition: 'center' }} />
+      <div className="w-2 sm:flex-1 sm:min-w-[20px] h-[1px] sm:h-px bg-[#3a3a3a] opacity-80 sm:opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1px, transparent 1px)', backgroundSize: '8px 2px', backgroundPosition: 'center' }} />
     </div>
   )
 }
@@ -133,7 +133,7 @@ function SoftwareChainItem({ title, description, icon, subItems }: { title: stri
       </div>
       
       {showSubItems && subItems && subItems.length > 0 && (
-        <div className="absolute top-full mt-2 sm:mt-4 left-1/2 transform -translate-x-1/2 flex flex-wrap gap-1.5 sm:gap-2 justify-center min-w-[150px] sm:min-w-[200px] max-w-[250px] sm:max-w-[300px] z-10 px-2">
+        <div className="absolute top-full mt-2 sm:mt-4 left-1/2 transform -translate-x-1/2 flex flex-wrap gap-1.5 sm:gap-2 justify-center min-w-[300px] sm:min-w-[300px] max-w-[300px] sm:max-w-[500px] z-10 px-2">
           {subItems.map((item, index) => (
             <div 
               key={index}
@@ -432,7 +432,7 @@ function HoverableImage() {
   return (
     <div className="p-3 rounded-lg border-draw-hover">
     <div
-      className="relative w-80 h-40 rounded-lg opacity-80 p-3"
+      className="relative w-100 h-40 rounded-lg opacity-80 p-3"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -441,7 +441,7 @@ function HoverableImage() {
         <img
           src="/images/sepcevtor.jpg"
           alt="Sep Keuchenius"
-          className={`absolute inset-0 w-full h-full object-cover object-[50%_0%] rounded-lg transition-opacity duration-700 ${
+          className={`absolute inset-0 w-full h-full object-cover object-[50%_40%] rounded-lg transition-opacity duration-700 ${
             isHovered ? "opacity-0" : "opacity-100"
           }`}
         />
@@ -449,7 +449,7 @@ function HoverableImage() {
         <img
           src="/images/sep.jpg"
           alt="Sep Keuchenius"
-          className={`absolute inset-0 w-full h-full object-cover object-[50%_5%] rounded-lg transition-opacity duration-700 ${
+          className={`absolute inset-0 w-full h-full object-cover object-[50%_41%] rounded-lg transition-opacity duration-700 ${
             isHovered ? "opacity-100" : "opacity-0"
           }`}
         />
