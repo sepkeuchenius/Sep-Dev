@@ -16,20 +16,20 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   return (
     <main className="flex flex-col items-center py-4 sm:py-6 md:py-10 px-4 sm:px-6 mt-30 md:mt-30 sm:gap-20 md:gap-0">
-    <div className="flex flex-col items-center justify-end min-h-[20vh] sm:min-h-[20vh] md:h-1/2 gap-10 sm:gap-10 md:gap-10 mb-4 sm:mb-6 md:mb-8 w-full">
-      <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-center flex items-center justify-baseline gap-2 sm:gap-3">
+    <div className="flex flex-col items-center justify-center min-h-[50vh] sm:min-h-[50vh] md:min-h-[60vh] gap-10 sm:gap-10 md:gap-10 mb-4 sm:mb-6 md:mb-8 w-full">
+      <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-center flex items-center justify-baseline gap-2 sm:gap-3 animate-slide-in" style={{ animationDelay: '0ms' }}>
         Sep&nbsp;
         Keuchenius
 
       </h1>
       <HoverableImage />
       {/* <PortraitSVG /> */}
-      <h1 className="text-sm sm:text-base md:text-lg text-center px-4 italic">Software Engineer - AI Engineer - Dev Lead</h1>
+      <h1 className="text-sm sm:text-base md:text-lg text-center px-4 italic animate-slide-in" style={{ animationDelay: '1500ms' }}>Software Engineer - AI Engineer - Dev Lead</h1>
     
     </div>
     <SoftwareChain />
     <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 md:gap-20 mt-6 sm:mt-8 md:mt-10 w-full max-w-7xl">
-      <Article>
+      <Article delay={2800}>
         <h1 className="text-xl sm:text-2xl font-bold text-center sm:text-left">About me</h1>
         <p className="text-sm sm:text-base md:text-lg text-center sm:text-left">A skilled, quick-learning full-stack & AI engineer. Comfortable behind a screen and in front of an audience, taking energy from building complete tools that help people.</p>
         <Link to="/about" className="w-full sm:w-auto">
@@ -37,7 +37,7 @@ export default function Home() {
         </Link>
       </Article>
 
-      <Article>
+      <Article delay={3000}>
         <h1 className="text-xl sm:text-2xl font-bold text-center sm:text-left">My work</h1>
         <p className="text-sm sm:text-base md:text-lg text-center sm:text-left">From leading AI platform development to freelance automation projects and personal ventures. Building scalable solutions modern technologies, and cutting-edge AI technologies.</p>
         <Link to="/projects" className="w-full sm:w-auto">
@@ -50,9 +50,9 @@ export default function Home() {
   )
 }
 
-function Article({ children }: { children: React.ReactNode }) {
+function Article({ children, delay = 0 }: { children: React.ReactNode, delay?: number }) {
   return (
-    <div className="flex flex-col items-center sm:items-start justify-start gap-6 sm:gap-8 md:gap-10 w-full sm:w-80 md:w-96 border-[#C5D89D] rounded-lg p-6 sm:p-8 md:p-10 border-draw-hover">
+    <div className="flex flex-col items-center sm:items-start justify-start gap-6 sm:gap-8 md:gap-10 w-full sm:w-80 md:w-96 border-[#C5D89D] rounded-lg p-6 sm:p-8 md:p-10 border-draw-hover animate-slide-in" style={{ animationDelay: `${delay}ms` }}>
       {children}
     </div>
   )
@@ -72,20 +72,20 @@ function SoftwareChain() {
       {/* Dotted line from left edge to first item */}
       <div className="w-2 sm:flex-1 sm:min-w-[20px] h-[1px] sm:h-px bg-[#3a3a3a] opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1px, transparent 1px)', backgroundSize: '8px 2px', backgroundPosition: 'center' }} />
       
-      <Backend />
+      <Backend delay={2000} />
       
       {/* Dotted line between items */}
       <div className="h-[1px] sm:h-px w-2 sm:w-4 md:w-5 bg-[#3a3a3a] opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1.5px, transparent 1.5px)', backgroundSize: '6px 2px', backgroundPosition: 'center' }} />
       
-      <Frontend />
+      <Frontend delay={2200} />
       
       <div className="h-[1px] sm:h-px w-2 sm:w-4 md:w-5 bg-[#3a3a3a] opacity-80 sm:opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1.5px, transparent 1.5px)', backgroundSize: '6px 2px', backgroundPosition: 'center' }} />
       
-      <AI />
+      <AI delay={2400} />
       
       <div className="h-[1px] sm:h-px w-2 sm:w-4 md:w-5 bg-[#3a3a3a] opacity-80 sm:opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1.5px, transparent 1.5px)', backgroundSize: '6px 2px', backgroundPosition: 'center' }} />
       
-      <DevOps />
+      <DevOps delay={2600} />
       
       {/* Dotted line from last item to right edge */}
       <div className="w-2 sm:flex-1 sm:min-w-[20px] h-[1px] sm:h-px bg-[#3a3a3a] opacity-80 sm:opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1px, transparent 1px)', backgroundSize: '8px 2px', backgroundPosition: 'center' }} />
@@ -93,7 +93,7 @@ function SoftwareChain() {
   )
 }
 
-function SoftwareChainItem({ title, description, icon, subItems }: { title: string, description: string, icon: React.ReactNode, subItems?: string[] }) {
+function SoftwareChainItem({ title, description, icon, subItems, delay = 0 }: { title: string, description: string, icon: React.ReactNode, subItems?: string[], delay?: number }) {
   const [isHovered, setIsHovered] = React.useState(false);
   const [isTouched, setIsTouched] = React.useState(false);
   const itemRef = React.useRef<HTMLDivElement>(null);
@@ -128,7 +128,8 @@ function SoftwareChainItem({ title, description, icon, subItems }: { title: stri
   return (
     <div 
       ref={itemRef}
-      className="relative flex flex-col items-center justify-center p-6 sm:p-10 md:p-12 lg:p-15 gap-3 sm:gap-4 md:gap-5 rounded cursor-pointer border-draw-hover rounded-full w-20 h-20 sm:w-16 sm:h-16 md:w-16 md:h-16"
+      className="relative flex flex-col items-center justify-center p-6 sm:p-10 md:p-12 lg:p-15 gap-3 sm:gap-4 md:gap-5 rounded cursor-pointer border-draw-hover rounded-full w-20 h-20 sm:w-16 sm:h-16 md:w-16 md:h-16 animate-slide-in"
+      style={{ animationDelay: `${delay}ms` }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onTouchStart={handleTouch}
@@ -155,18 +156,19 @@ function SoftwareChainItem({ title, description, icon, subItems }: { title: stri
   )
 }
 
-function Backend() {
+function Backend({ delay = 0 }: { delay?: number }) {
   return (
     <SoftwareChainItem 
       title="Backend" 
       description="Backend" 
       icon={<Server />} 
       subItems={["Python", "C#", "Rust", "Kubernetes", "Docker", "PostgreSQL", "Redis"]}
+      delay={delay}
     />
   )
 }
 
-function Frontend() {
+function Frontend({ delay = 0 }: { delay?: number }) {
   const [isHovered, setIsHovered] = React.useState(false);
 
   return (
@@ -203,29 +205,32 @@ function Frontend() {
         description="Frontend" 
         icon={<Code />} 
         subItems={["React", "TypeScript", "Tailwind CSS", "Vite", "Prisma", "GraphQL", "REST", "WebSocket"]}
+        delay={delay}
       />
     </div>
   )
 }
 
-function AI() {
+function AI({ delay = 0 }: { delay?: number }) {
   return (
     <SoftwareChainItem 
       title="AI" 
       description="AI" 
       icon={<Brain />} 
       subItems={["NLP", "Knowledge Graphs", "RAG", "OpenAI", "LangChain", "LLMs", "MLOps", "Huggingface", "Transformers"]}
+      delay={delay}
     />
   )
 }
 
-function DevOps() {
+function DevOps({ delay = 0 }: { delay?: number }) {
   return (
     <SoftwareChainItem 
       title="DevOps" 
       description="DevOps" 
       icon={<Rocket />} 
       subItems={["AWS", "Azure", "CI/CD", "Ansible", "GitHub Actions", "Monitoring"]}
+      delay={delay}
     />
   )
 }
@@ -436,7 +441,7 @@ function HoverableImage() {
   const [isHovered, setIsHovered] = React.useState(false);
 
   return (
-    <div className="p-3 rounded-lg border-draw-hover max-w-2/3">
+    <div className="p-3 rounded-lg border-draw-hover max-w-2/3 animate-slide-in" style={{ animationDelay: '1200ms' }}>
     <div
       className="relative w-100 max-w-full h-40 rounded-lg opacity-90 p-3"
       onMouseEnter={() => setIsHovered(true)}
