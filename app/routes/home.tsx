@@ -62,27 +62,27 @@ function ArticleButton({ children }: { children: React.ReactNode }) {
 
 function SoftwareChain() {
   return (
-    <div className="flex flex-row items-center justify-center min-h-[40vh] md:h-1/3 w-full gap-4 sm:gap-6 md:gap-8 lg:gap-12 px-4 sm:px-6 md:px-0">
+    <div className="flex flex-row flex-nowrap items-center justify-center min-h-[40vh] md:h-1/3 w-full gap-4 sm:gap-6 md:gap-8 lg:gap-12 px-4 sm:px-6 md:px-0">
       {/* Dotted line from left edge to first item */}
-      <div className="flex-1 h-px bg-[#3a3a3a] opacity-80 sm:opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1px, transparent 1px)', backgroundSize: '8px 2px', backgroundPosition: 'center' }} />
+      <div className="flex-1 min-w-[20px] h-[2px] sm:h-px bg-[#3a3a3a] opacity-80" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1px, transparent 1px)', backgroundSize: '8px 2px', backgroundPosition: 'center' }} />
       
       <Backend />
       
       {/* Dotted line between items */}
-      <div className="h-px w-8 sm:w-4 md:w-5 bg-[#3a3a3a] opacity-80 sm:opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1.5px, transparent 1.5px)', backgroundSize: '6px 2px', backgroundPosition: 'center' }} />
+      <div className="h-[1px] sm:h-px w-8 sm:w-4 md:w-5 min-w-[20px] sm:min-w-0 bg-[#3a3a3a] opacity-80" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1.5px, transparent 1.5px)', backgroundSize: '6px 2px', backgroundPosition: 'center' }} />
       
       <Frontend />
       
-      <div className="h-px w-8 sm:w-4 md:w-5 bg-[#3a3a3a] opacity-80 sm:opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1.5px, transparent 1.5px)', backgroundSize: '6px 2px', backgroundPosition: 'center' }} />
+      <div className="h-[1px] sm:h-px w-8 sm:w-4 md:w-5 min-w-[20px] sm:min-w-0 bg-[#3a3a3a] opacity-80 sm:opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1.5px, transparent 1.5px)', backgroundSize: '6px 2px', backgroundPosition: 'center' }} />
       
       <AI />
       
-      <div className="h-px w-8 sm:w-4 md:w-5 bg-[#3a3a3a] opacity-80 sm:opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1.5px, transparent 1.5px)', backgroundSize: '6px 2px', backgroundPosition: 'center' }} />
+      <div className="h-[1px] sm:h-px w-8 sm:w-4 md:w-5 min-w-[20px] sm:min-w-0 bg-[#3a3a3a] opacity-80 sm:opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1.5px, transparent 1.5px)', backgroundSize: '6px 2px', backgroundPosition: 'center' }} />
       
       <DevOps />
       
       {/* Dotted line from last item to right edge */}
-      <div className="flex-1 h-px bg-[#3a3a3a] opacity-80 sm:opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1px, transparent 1px)', backgroundSize: '8px 2px', backgroundPosition: 'center' }} />
+      <div className="flex-1 min-w-[20px] h-[1px] sm:h-px bg-[#3a3a3a] opacity-80 sm:opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #3a3a3a 1px, transparent 1px)', backgroundSize: '8px 2px', backgroundPosition: 'center' }} />
     </div>
   )
 }
