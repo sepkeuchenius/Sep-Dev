@@ -113,6 +113,37 @@ export default function Projects() {
             <div className="space-y-6 sm:space-y-8">
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                  <h3 className="text-lg sm:text-xl font-semibold">MultiCopy Clipboard</h3>
+                  <span className="text-sm sm:text-base text-[#6D7A55]">Chrome Extension</span>
+                </div>
+                <p className="text-sm sm:text-base mb-3 leading-relaxed">
+                  Your infinite clipboard manager for Chrome. Copy unlimited text, organize with tags, pin favorites, search instantly, and never lose a snippet again.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-3">
+                  <span className="px-3 py-1 bg-[#C5D89D] rounded-full text-xs sm:text-sm text-[#3a3a3a]">JavaScript</span>
+                  <span className="px-3 py-1 bg-[#C5D89D] rounded-full text-xs sm:text-sm text-[#3a3a3a]">Chrome Extension</span>
+                  <span className="px-3 py-1 bg-[#C5D89D] rounded-full text-xs sm:text-sm text-[#3a3a3a]">IndexedDB</span>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link 
+                    to="/multicopy"
+                    className="text-[#89986D] hover:text-[#6D7A55] transition-colors text-sm sm:text-base"
+                  >
+                    Learn more →
+                  </Link>
+                  <a 
+                    href="https://chromewebstore.google.com/detail/multicopy-clipboard-copy/fahoojlhneomlloahghepkcegggkpahh" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-[#89986D] hover:text-[#6D7A55] transition-colors text-sm sm:text-base"
+                  >
+                    Chrome Web Store →
+                  </a>
+                </div>
+              </div>
+
+              <div>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
                   <h3 className="text-lg sm:text-xl font-semibold">Vibe-coded decorator</h3>
                 </div>
                 <p className="text-sm sm:text-base mb-3 leading-relaxed">

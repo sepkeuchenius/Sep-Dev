@@ -73,8 +73,8 @@ export default function About() {
                 <p className="text-sm sm:text-base leading-relaxed">
                   As an AI engineer, I was at the forefront of developing features for our AI platform, 
                   testing & validating those in production with the customer, and always striving for 
-                  the most optimal solution in the code. Using already existing AI solutions, finetuning 
-                  those, but also training models, creating synthetic data, and making sure that the 
+                  the optimal solution in the code. Using already existing AI solutions, finetuning 
+                  those, but also training models, creating synthetic data, and making sure the 
                   infrastructure runs smoothly in Development, Testing, and Production environments.
                 </p>
               </div>
